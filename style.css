@@ -6,4 +6,21 @@
   height: 190px;
   overflow: hidden;
 }
+/* اصلاح اندازه و نمایش کامل عکس محصولات */
+.product-visual {
+  height: 160px !important;
+  min-height: 160px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
 
+.product-visual .product-photo {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 160px !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+}
