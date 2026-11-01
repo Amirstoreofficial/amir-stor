@@ -25,3 +25,51 @@
   display: block !important;
   visibility: visible !important;
 }
+/* اصلاح نمایش کارت محصولات */
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.product-visual {
+  height: 160px !important;
+  min-height: 160px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.product-visual .product-photo {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 160px !important;
+  object-fit: contain !important;
+}
+
+.product-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  padding: 14px !important;
+}
+
+.product-info h3,
+.product-info p {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  font-size: 14px !important;
+  overflow: visible !important;
+}
+
+.product-bottom {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
