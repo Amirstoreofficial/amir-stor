@@ -6,21 +6,45 @@
   height: 190px;
   overflow: hidden;
 }
-/* اصلاح اندازه و نمایش کامل عکس محصولات */
+/* تنظیم کامل کارت محصولات فروشگاه امیر */
+.product-card {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
 .product-visual {
-  height: 160px !important;
-  min-height: 160px !important;
+  width: 100% !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  padding: 8px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
+  flex-shrink: 0 !important;
 }
 
-.product-visual .product-photo {
+.product-photo {
   width: 100% !important;
   height: 100% !important;
-  max-height: 160px !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
   object-fit: contain !important;
   object-position: center !important;
+}
+
+.product-info {
   display: block !important;
+  width: 100% !important;
+  padding: 12px !important;
+  text-align: right !important;
+}
+
+.product-info h3,
+.product-info p,
+.product-bottom {
+  display: block !important;
+  visibility: visible !important;
+  width: 100% !important;
 }
