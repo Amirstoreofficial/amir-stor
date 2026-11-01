@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102d2a">
+<meta name="description" content="فروشگاه ظروف یکبار مصرف امیر؛ انواع جار، بطری، ظروف IML، محصولات پلاستیکی و سلولزی.">
+<title>فروشگاه ظروف یکبار مصرف امیر</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">A</span><span><b>امیر</b><small>فروشگاه ظروف یکبار مصرف</small></span></a>
+  <nav><a href="#categories">دسته‌بندی‌ها</a><a href="#products">محصولات</a><a href="#about">درباره ما</a><a href="#contact">تماس</a></nav>
+  <button class="cart-btn" id="openCart">سبد سفارش <span id="cartCount">۰</span></button>
+</header>
+<main>
+<section class="hero">
+ <div class="hero-copy">
+  <span class="eyebrow">کیفیت، تنوع و خرید آسان</span>
+  <h1>هر آنچه برای بسته‌بندی و پذیرایی نیاز دارید</h1>
+  <p>محصولات متنوع یکبار مصرف، جار و بطری را در کاتالوگ فروشگاه امیر ببینید و سفارش خود را مستقیم ثبت کنید.</p>
+  <div class="hero-actions"><a class="primary" href="#products">مشاهده محصولات</a><a class="secondary" href="https://wa.me/989152206325" target="_blank" rel="noopener">مشاوره در واتساپ ↗</a></div>
+  <div class="hero-points"><span>✓ تنوع محصولات</span><span>✓ ثبت سفارش آسان</span><span>✓ پاسخگویی مستقیم</span></div>
+ </div>
+ <div class="hero-art" aria-label="تصویر تزئینی محصولات بسته‌بندی">
+   <div class="orb"></div><div class="pack pack-one"><i></i></div><div class="pack pack-two"><i></i></div><div class="pack pack-three"><i></i></div>
+   <div class="art-label">AMIR STORE <small>PACKAGING & DISPOSABLE</small></div>
+ </div>
+</section>
+<section class="trust-strip"><div><b>محصولات متنوع</b><small>برای فروشگاه و کسب‌وکار شما</small></div><div><b>استعلام سریع</b><small>قیمت و موجودی از طریق تماس</small></div><div><b>ثبت سفارش آنلاین</b><small>بدون نیاز به ساخت حساب</small></div></section>
+<section id="categories" class="section">
+ <div class="section-head"><div><span class="eyebrow">دسته‌بندی محصولات</span><h2>از کجا شروع کنیم؟</h2></div><p>دسته موردنظرتان را انتخاب کنید.</p></div>
+ <div class="category-grid" id="categoryGrid"></div>
+</section>
+<section id="products" class="section products-section">
+ <div class="section-head"><div><span class="eyebrow">کاتالوگ فروشگاه</span><h2>محصولات امیر</h2></div><div class="filters"><input id="search" placeholder="جست‌وجوی محصول..."><select id="categoryFilter"><option value="همه">همه دسته‌ها</option></select></div></div>
+ <div id="productGrid" class="product-grid"></div>
+</section>
+<section id="about" class="about section"><div><span class="eyebrow">درباره فروشگاه</span><h2>همراه مطمئن خریدهای عمده و روزمره</h2><p>در فروشگاه ظروف یکبار مصرف امیر می‌توانید گروه‌های مختلف محصولات بسته‌بندی، ظروف یکبار مصرف، جار و بطری را بررسی کنید. برای دریافت قیمت و موجودی روز، سفارش خود را ثبت کنید یا با ما تماس بگیرید.</p></div><div class="about-badge"><strong>AMIR</strong><span>STORE</span><small>از انتخاب تا سفارش، کنار شما هستیم.</small></div></section>
+<section id="contact" class="contact section"><div><span class="eyebrow">ارتباط با ما</span><h2>برای سفارش یا استعلام قیمت در تماس باشید</h2><p>قاسم‌آباد، شریعتی ۴۴</p><p class="phone">۰۹۱۵۲۲۰۶۳۲۵</p><p>اینستاگرام: <b dir="ltr"> @amirpelast55</b></p></div><div class="contact-actions"><a class="primary" href="tel:09152206325">تماس با فروشگاه</a><a class="whatsapp" href="https://wa.me/989152206325" target="_blank" rel="noopener">پیام در واتساپ</a><a class="secondary" href="https://www.instagram.com/amirpelast55/" target="_blank" rel="noopener">صفحه اینستاگرام ↗</a></div></section>
+</main>
+<footer><span>© فروشگاه ظروف یکبار مصرف امیر</span><span>طراحی‌شده برای نمایش و ثبت سفارش آنلاین</span></footer>
+<div class="overlay" id="overlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="سبد سفارش"><div class="drawer-head"><h3>سبد سفارش شما</h3><button id="closeCart" aria-label="بستن">✕</button></div><div id="cartItems" class="cart-items"><p class="empty">هنوز محصولی انتخاب نکرده‌اید.</p></div><div class="drawer-foot"><div class="total-line"><span>جمع اقلام دارای قیمت</span><b id="cartTotal">—</b></div><p>قیمت اقلام استعلامی پس از هماهنگی اعلام می‌شود.</p><button class="primary full" id="sendOrder">ثبت سفارش در واتساپ</button></div></aside>
+<script src="products.js"></script><script src="app.js"></script>
+</body></html>
