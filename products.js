@@ -61,9 +61,7 @@ window.AMIR_PRODUCTS = [
     price: null,
     unit: "بسته",
     symbol: "Ⅱ"
-  }
-];
-
+   },
   {
     id: 9,
     name: "ظرف فوم تک پرسی",
