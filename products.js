@@ -71,5 +71,5 @@ window.AMIR_PRODUCTS = [
   price: 15000,
   unit: "عدد",
   symbol: "▣",
-  image: "images/foam.jpg"
+  image: "Gemini_Generated_Image_2agpmg2agpmg2agp"
 }
