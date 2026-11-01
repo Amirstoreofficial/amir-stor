@@ -21,8 +21,12 @@
       <input type="hidden" id="productId">
       <label>نام محصول<input id="name" required maxlength="100" placeholder="مثلاً ظرف فوم تک‌پرسی"></label>
       <label>دسته‌بندی<select id="category" required><option>جار و بطری</option><option>ظروف IML</option><option>محصولات پلاستیکی</option><option>محصولات سلولزی</option><option>متفرقه</option></select></label>
-      <label>قیمت به تومان<input id="price" inputmode="numeric" placeholder="برای استعلام قیمت خالی بگذارید"></label>
+      <label>قیمت عددی (تومان)<input id="price" inputmode="numeric" placeholder="برای استعلام قیمت خالی بگذارید"></label>
       <label>واحد فروش<select id="unit"><option>عدد</option><option>بسته</option><option>کارتن</option><option>کیلو</option><option>ست</option></select></label>
+      <label>تعداد در هر بسته<input id="packCount" inputmode="numeric" placeholder="مثلاً ۱۰۰ عدد"></label>
+      <label>قیمت هر بسته (تومان)<input id="packPrice" inputmode="numeric" placeholder="اختیاری"></label>
+      <label>ابعاد محصول<input id="dimensions" placeholder="مثلاً ۲۰ × ۱۵ سانتی‌متر"></label>
+      <label>قطر دهانه<input id="mouthSize" placeholder="مثلاً ۱۰ سانتی‌متر"></label>
       <label class="wide">توضیحات محصول<textarea id="description" rows="3" placeholder="مشخصات و توضیحات محصول"></textarea></label>
       <label class="wide">عکس محصول<input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><small>فرمت JPG، PNG یا WEBP؛ ترجیحاً کمتر از ۲ مگابایت.</small></label>
       <div id="previewBox" class="preview wide" hidden><img id="preview" alt="پیش‌نمایش عکس"><span>پیش‌نمایش عکس محصول</span></div>
