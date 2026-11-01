@@ -63,3 +63,13 @@ window.AMIR_PRODUCTS = [
     symbol: "Ⅱ"
   }
 ];
+{
+  id: 9,
+  name: "ظرف فوم تک پرسی",
+  category: "محصولات پلاستیکی",
+  description: "ظرف فوم تک پرسی مناسب رستوران و بیرون‌بر",
+  price: 15000,
+  unit: "عدد",
+  symbol: "▣",
+  image: "images/foam.jpg"
+}
