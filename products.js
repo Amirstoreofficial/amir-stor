@@ -70,9 +70,9 @@ window.AMIR_PRODUCTS = [
   price: 3250,
   unit: "عدد",
   packCount: 300,
-  packagePrice: 975000,
+  packPrice: 975000,
   dimensions: "",
-  mouth: "",
+  mouthSize: "",
   symbol: "▣",
   image: "Gemini_Generated_Image_2agpmg2agpmg2agp.jpg"
 }
