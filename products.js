@@ -76,5 +76,16 @@ window.AMIR_PRODUCTS = [
     "mouthSize": "",
     "symbol": "▣",
     "image": "Gemini_Generated_Image_2agpmg2agpmg2agp.jpg"
+  },
+  {
+    "id": 10,
+    "name": "بطری گرد پافیلی ۴ لیتری",
+    "category": "بطری‌ها",
+    "description": "بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر؛ در وزن‌های مختلف",
+    "price": null,
+    "unit": "عدد",
+    "dimensions": "",
+    "mouthSize": "۴۵ میلی‌متر",
+    "symbol": "♧"
   }
 ];
