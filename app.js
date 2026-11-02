@@ -7,7 +7,7 @@ const fallbackProducts = [
   {id:6,name:"بشقاب و کاسه یکبار مصرف",category:"محصولات پلاستیکی",description:"مناسب پذیرایی و رستوران",price:null,unit:"بسته",symbol:"◍"},
   {id:7,name:"قاشق و چنگال یکبار مصرف",category:"محصولات پلاستیکی",description:"انواع قاشق و چنگال",price:null,unit:"بسته",symbol:"Ⅱ"},
   {id:9,name:"فوم تک پرسی",category:"محصولات پلاستیکی",description:"ظرف فوم تک پرسی، بسته ۳۰۰ عددی",price:3250,unit:"عدد",packCount:300,packPrice:975000,symbol:"▣",image:"Gemini_Generated_Image_2agpmg2agpmg2agp.jpg"},
-  {id:10,name:"بطری گرد پافیلی ۴ لیتری",category:"بطری‌ها",description:"بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر؛ در وزن‌های مختلف",price:null,unit:"عدد",mouthSize:"۴۵ میلی‌متر",symbol:"♧",image:"images/bottle-gard-pafili-4l.jpg"}
+  {id:10,name:"بطری گرد پافیلی ۴ لیتری",category:"بطری‌ها",description:"بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر، درب و دستگیره با رنگ‌های مختلف و وزن‌های متنوع",price:40000,unit:"عدد",packCount:40,volume:"۴ لیتر",mouthSize:"۴۵ میلی‌متر",capHandle:"درب و دستگیره در رنگ‌های مختلف",weight:"در وزن‌های مختلف",symbol:"♧",image:"images/bottle-gard-pafili-4l.jpg"}
 ];
 const products = Array.isArray(window.AMIR_PRODUCTS) && window.AMIR_PRODUCTS.length
   ? window.AMIR_PRODUCTS
@@ -32,7 +32,9 @@ function openProductDetail(id){
     {title:"تعداد در بسته",value:p.packCount?new Intl.NumberFormat("fa-IR").format(p.packCount)+" عدد":null,note:"تعداد محصول موجود در هر بسته"},
     {title:"واحد فروش",value:p.unit||null,note:"واحد محاسبه و ثبت سفارش"},
     {title:"ابعاد محصول",value:p.dimensions||null,note:"اندازه و ابعاد اعلام‌شده محصول"},
+    {title:"حجم محصول",value:p.volume||null,note:"ظرفیت اعلام‌شده محصول"},
     {title:"قطر دهانه",value:p.mouthSize||null,note:"اندازه دهانه یا محل ورودی بطری"},
+    {title:"درب و دستگیره",value:p.capHandle||null,note:"رنگ‌بندی درب و دستگیره"},
     {title:"وزن",value:p.weight||p.weights||null,note:"وزن اعلام‌شده محصول"}
   ].filter(x=>x.value);
   $("#detailSpecs").innerHTML=specs.map(x=>`<div class="detail-spec"><small>${x.title}</small><b>${x.value}</b><span>${x.note}</span></div>`).join("");
