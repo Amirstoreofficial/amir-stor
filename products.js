@@ -86,6 +86,7 @@ window.AMIR_PRODUCTS = [
     "unit": "عدد",
     "dimensions": "",
     "mouthSize": "۴۵ میلی‌متر",
-    "symbol": "♧"
+    "symbol": "♧",
+    "image": "images/bottle-gard-pafili-4l.jpg"
   }
 ];
