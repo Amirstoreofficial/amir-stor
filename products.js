@@ -81,11 +81,14 @@ window.AMIR_PRODUCTS = [
     "id": 10,
     "name": "بطری گرد پافیلی ۴ لیتری",
     "category": "بطری‌ها",
-    "description": "بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر؛ در وزن‌های مختلف",
-    "price": null,
+    "description": "بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر، درب و دستگیره با رنگ‌های مختلف و وزن‌های متنوع",
+    "price": 40000,
     "unit": "عدد",
-    "dimensions": "",
+    "packCount": 40,
+    "volume": "۴ لیتر",
     "mouthSize": "۴۵ میلی‌متر",
+    "capHandle": "درب و دستگیره در رنگ‌های مختلف",
+    "weight": "در وزن‌های مختلف",
     "symbol": "♧",
     "image": "images/bottle-gard-pafili-4l.jpg"
   }
