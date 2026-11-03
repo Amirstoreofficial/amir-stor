@@ -330,3 +330,40 @@ footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
   color:#075b35!important;
   border:1px solid #a9c8a6!important;
 }
+
+
+/* Pistachio palette refresh */
+:root{--ink:#263d2c;--muted:#68796a;--cream:#f2f6e9;--green:#a8c879;--lime:#e5efcf;--line:#dce6d2}
+.announcement-bar{background:#dcebc4!important;color:#30452e!important}
+.announcement-bar b{color:#405d31!important}
+.brand-mark{background:#a8c879!important;color:#263d2c!important}
+.brand b{color:#405d31!important}
+.cart-btn{background:#dcebc4!important;color:#354d2e!important}
+.cart-btn span{background:#8eae60!important;color:#fff!important}
+.hero{background:radial-gradient(ellipse at 18% 25%,#d7e9b8 0%,transparent 40%),radial-gradient(ellipse at 78% 80%,#c4dda0 0%,transparent 43%),linear-gradient(118deg,#e8f1d6 0%,#cfe3aa 54%,#dcebc4 100%)!important;color:#263d2c!important}
+.hero:before{opacity:.22;background-image:radial-gradient(#ffffff 1px,transparent 1.5px)!important}
+.hero:after{background:linear-gradient(90deg,#ffffff30,transparent 65%),radial-gradient(ellipse at 50% 100%,#ffffff55,transparent 48%)!important}
+.hero .eyebrow{color:#56783b!important}
+.hero h1,.hero h1 em{color:#30482d!important;text-shadow:none!important}
+.hero-copy>p,.hero-points{color:#52684a!important}
+.hero .primary,.primary{background:#91b65e!important;color:#203b26!important}
+.hero .secondary{background:#ffffffa8!important;border:1px solid #a9c58b!important;color:#354d2e!important}
+.whatsapp{background:#e5efcf!important;color:#38552f!important}
+.hero-platform{background:linear-gradient(180deg,#b6d48b,#8eae60 70%)!important}
+.hero-glow{background:#ffffff88!important}
+.trust-strip{background:linear-gradient(180deg,#f0f6e5cc,#f7f9f0aa)!important}
+.about-badge{background:radial-gradient(circle at 50% 20%,#c5dda0,#91b65e)!important;color:#30482d!important}
+.about-badge small{color:#405b38!important}
+.contact{background:linear-gradient(180deg,#e9f1d9,#dcebc4)!important}
+.contact .phone{color:#557a37!important}
+#contact.contact{background:linear-gradient(180deg,#e9f1d9,#dcebc4)!important}
+#contact .contact-actions .primary{background:#91b65e!important;color:#203b26!important}
+#contact .contact-actions .whatsapp{background:#edf4df!important;color:#405d31!important;border-color:#b8cf96!important}
+#contact .contact-actions .secondary{color:#405d31!important;border-color:#b8cf96!important}
+footer{background:linear-gradient(180deg,#e4edcf,#cfe1ad)!important;color:#40553a!important}
+.category-card:hover{border-color:#a9c58b!important;background:#eef5df!important}
+.cat-icon{background:#e5efcf!important;color:#557a37!important}
+.product-bottom button{background:#a8c879!important;color:#263d2c!important}
+.product-bottom b{color:#557a37!important}
+.drawer-head button,.qty button{background:#e5efcf!important;color:#405d31!important}
+@media(max-width:620px){nav#mainNav.open{background:#f8faef!important}}
