@@ -156,3 +156,19 @@ main>section:not(.hero):before{content:"";position:absolute;top:-35px;left:0;rig
 .category-card,.product-card,.experience-grid article{backdrop-filter:blur(12px);background:#ffffffc9}
 @media(max-width:620px){.scroll-item{opacity:.075;filter:blur(2px)}.fork-a{left:-2%}.spoon-a{right:-1%}.foam-a{right:-8%}.fork-b{left:8%}}
 @media(prefers-reduced-motion:reduce){.scroll-item{transition:none}}
+
+
+/* FIX: keep decorative silhouettes visible behind all page content */
+.scroll-atmosphere{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw;
+  height:100vh;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+.announcement-bar{position:relative;z-index:2}
+.topbar{position:sticky;top:0;z-index:5}
+main,footer{position:relative;z-index:1}
+.scroll-atmosphere .scroll-item{pointer-events:none}
