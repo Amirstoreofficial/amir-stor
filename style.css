@@ -367,3 +367,44 @@ footer{background:linear-gradient(180deg,#e4edcf,#cfe1ad)!important;color:#40553
 .product-bottom b{color:#557a37!important}
 .drawer-head button,.qty button{background:#e5efcf!important;color:#405d31!important}
 @media(max-width:620px){nav#mainNav.open{background:#f8faef!important}}
+
+
+/* Full-page drifting tableware atmosphere */
+.scroll-atmosphere{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:100%!important;
+  overflow:visible!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+.scroll-atmosphere .scroll-item{
+  position:absolute!important;
+  stroke:#587b43!important;
+  opacity:.115!important;
+  filter:blur(2.6px)!important;
+  pointer-events:none!important;
+}
+.scroll-atmosphere .plate-a{
+  width:clamp(105px,16vw,220px);
+  height:auto;
+  top:17%;
+  right:18%;
+  transform:rotate(-13deg);
+}
+.scroll-atmosphere .fork-a{top:7%;left:7%}
+.scroll-atmosphere .spoon-a{top:29%;right:8%}
+.scroll-atmosphere .cup-a{top:44%;left:3%}
+.scroll-atmosphere .foam-a{top:61%;right:4%}
+.scroll-atmosphere .fork-b{top:76%;left:21%}
+.scroll-atmosphere .cup-b{top:90%;right:26%}
+@media(max-width:620px){
+ .scroll-atmosphere .scroll-item{opacity:.09!important;filter:blur(2.2px)!important}
+ .scroll-atmosphere .plate-a{top:20%;right:4%;width:clamp(95px,27vw,145px)}
+ .scroll-atmosphere .fork-a{left:0}
+ .scroll-atmosphere .spoon-a{right:0}
+ .scroll-atmosphere .foam-a{right:-4%}
+ .scroll-atmosphere .fork-b{left:8%}
+}
