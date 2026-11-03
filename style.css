@@ -495,3 +495,113 @@ footer{background:transparent!important}
   .scroll-atmosphere .cup-c{top:52%;right:27%}
   .scroll-atmosphere .fork-d{top:36%;right:4%}
 }
+
+
+/* FINAL CORRECTION: viewport-pinned atmosphere + truly seamless page */
+html,body{min-height:100%;background:#edf3e7!important}
+body{
+  position:relative!important;
+  isolation:isolate!important;
+  background:
+    radial-gradient(ellipse at 13% 9%,#cfe2bd 0%,transparent 31%),
+    radial-gradient(ellipse at 87% 36%,#d9e7cd 0%,transparent 33%),
+    radial-gradient(ellipse at 40% 83%,#e1ead7 0%,transparent 36%),
+    linear-gradient(180deg,#e6efd9 0%,#edf3e7 35%,#f0f4e9 68%,#e7efdc 100%)!important;
+}
+.scroll-atmosphere{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  z-index:0!important;
+}
+.announcement-bar,.topbar,main,footer{position:relative;z-index:1}
+.topbar{border-bottom:0!important;box-shadow:none!important}
+main>section,.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
+  background:transparent!important;
+  border:0!important;
+  border-top:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+main>section::before,main>section::after,
+.trust-strip::before,.trust-strip::after,
+.experience-section::before,.experience-section::after,
+.about::before,.about::after,.contact::before,.contact::after{
+  display:none!important;content:none!important;
+}
+.hero{
+  background:
+    radial-gradient(ellipse at 20% 22%,#d6e7bb70 0%,transparent 48%),
+    radial-gradient(ellipse at 82% 74%,#c6dda070 0%,transparent 48%),
+    linear-gradient(180deg,#e1edcdb0 0%,#e8f0dca0 72%,#e8f0dc00 100%)!important;
+  border:0!important;box-shadow:none!important;
+}
+.trust-strip{margin:0!important;backdrop-filter:none!important}
+.experience-grid article,.about-badge,.experience-heading,.section-head,
+.about>div,.contact>div:first-child{
+  border:0!important;outline:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+.experience-grid article{padding-left:8px!important;padding-right:8px!important}
+.about-badge{min-height:0!important}
+#contact.contact,.contact,#contact.contact.contact{
+  background:transparent!important;backdrop-filter:none!important;
+}
+#contact.contact p b{background:transparent!important;padding:0!important;border-radius:0!important}
+footer{background:transparent!important}
+.scroll-atmosphere .scroll-item{
+  position:absolute!important;
+  display:block!important;
+  stroke:#6b8953!important;
+  stroke-width:5!important;
+  opacity:.075!important;
+  filter:blur(2.8px)!important;
+  pointer-events:none!important;
+  will-change:translate;
+}
+.scroll-atmosphere .utensil{width:clamp(40px,6vw,82px)!important;height:auto!important}
+.scroll-atmosphere .cup-a,.scroll-atmosphere .cup-b,.scroll-atmosphere .cup-c,.scroll-atmosphere .cup-d{width:clamp(65px,9vw,125px)!important;height:auto!important}
+.scroll-atmosphere .foam-a,.scroll-atmosphere .foam-b{width:clamp(95px,14vw,185px)!important;height:auto!important}
+.scroll-atmosphere .plate-a,.scroll-atmosphere .plate-b,.scroll-atmosphere .plate-c{width:clamp(90px,13vw,175px)!important;height:auto!important}
+.scroll-atmosphere .fork-a{top:5%;left:5%}
+.scroll-atmosphere .spoon-a{top:20%;right:8%}
+.scroll-atmosphere .plate-a{top:12%;right:38%}
+.scroll-atmosphere .cup-a{top:34%;left:2%}
+.scroll-atmosphere .foam-a{top:45%;right:3%}
+.scroll-atmosphere .fork-b{top:58%;left:23%}
+.scroll-atmosphere .cup-b{top:70%;right:25%}
+.scroll-atmosphere .fork-c{top:83%;right:7%}
+.scroll-atmosphere .spoon-b{top:91%;left:8%}
+.scroll-atmosphere .foam-b{top:75%;left:39%}
+.scroll-atmosphere .plate-b{top:93%;right:39%}
+.scroll-atmosphere .cup-c{top:52%;right:42%}
+.scroll-atmosphere .fork-d{top:31%;right:18%}
+.scroll-atmosphere .spoon-c{top:3%;right:67%}
+.scroll-atmosphere .plate-c{top:39%;left:42%}
+.scroll-atmosphere .cup-d{top:62%;left:4%}
+@media(max-width:620px){
+ .scroll-atmosphere .scroll-item{opacity:.065!important;filter:blur(2.5px)!important}
+ .scroll-atmosphere .utensil{width:clamp(34px,10vw,54px)!important}
+ .scroll-atmosphere .cup-a,.scroll-atmosphere .cup-b,.scroll-atmosphere .cup-c,.scroll-atmosphere .cup-d{width:clamp(54px,16vw,82px)!important}
+ .scroll-atmosphere .foam-a,.scroll-atmosphere .foam-b{width:clamp(82px,24vw,120px)!important}
+ .scroll-atmosphere .plate-a,.scroll-atmosphere .plate-b,.scroll-atmosphere .plate-c{width:clamp(75px,21vw,115px)!important}
+ .scroll-atmosphere .plate-a{top:13%;right:3%}
+ .scroll-atmosphere .spoon-a{right:0}
+ .scroll-atmosphere .cup-a{top:32%;left:-2%}
+ .scroll-atmosphere .foam-a{top:46%;right:-4%}
+ .scroll-atmosphere .fork-b{top:58%;left:8%}
+ .scroll-atmosphere .cup-b{top:70%;right:3%}
+ .scroll-atmosphere .fork-c{top:84%;right:0}
+ .scroll-atmosphere .spoon-b{top:92%;left:0}
+ .scroll-atmosphere .foam-b{top:76%;left:24%}
+ .scroll-atmosphere .plate-b{top:94%;right:18%}
+ .scroll-atmosphere .cup-c{top:52%;right:25%}
+ .scroll-atmosphere .fork-d{top:34%;right:2%}
+ .scroll-atmosphere .spoon-c{top:4%;right:65%}
+ .scroll-atmosphere .plate-c{top:40%;left:34%}
+ .scroll-atmosphere .cup-d{top:62%;left:0}
+}
