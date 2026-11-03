@@ -172,3 +172,48 @@ main>section:not(.hero):before{content:"";position:absolute;top:-35px;left:0;rig
 .topbar{position:sticky;top:0;z-index:5}
 main,footer{position:relative;z-index:1}
 .scroll-atmosphere .scroll-item{pointer-events:none}
+
+
+/* FINAL VISUAL FIX: remove hard section bands; one continuous blended canvas */
+html,body{background:#f1f5ed!important}
+body{
+  background:
+    radial-gradient(ellipse at 12% 16%,#c8ddc2 0%,transparent 30%),
+    radial-gradient(ellipse at 88% 48%,#d5e4ce 0%,transparent 32%),
+    radial-gradient(ellipse at 28% 78%,#dce8d5 0%,transparent 34%),
+    linear-gradient(180deg,#073d2b 0%,#174d37 13%,#dfeadd 27%,#f2f5ed 48%,#e4eddf 68%,#f3f5ef 86%,#e3ecde 100%)!important;
+  background-attachment:scroll!important;
+}
+main>section,
+.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
+  background:transparent!important;
+  border-top:0!important;
+  box-shadow:none;
+}
+main>section:not(.hero):before,
+main>section:not(.hero):after{display:none!important;content:none!important}
+.hero{
+  background:
+    radial-gradient(ellipse at 72% 42%,#23854b 0%,transparent 42%),
+    radial-gradient(ellipse at 12% 15%,#1a7542 0%,transparent 42%),
+    linear-gradient(180deg,#032d20 0%,#075b35 68%,#176044 88%,#477b5a00 100%)!important;
+  box-shadow:none!important;
+}
+.trust-strip{
+  margin-top:-24px!important;
+  border:0!important;
+  border-radius:0!important;
+  backdrop-filter:blur(18px);
+  background:linear-gradient(180deg,#edf3e8a0,#edf3e800)!important;
+}
+.experience-section,.products-section,#categories,.about,.contact{
+  backdrop-filter:none!important;
+}
+.experience-grid article,.category-card,.product-card{
+  border-color:#ffffff70!important;
+  box-shadow:0 12px 34px #173b3209!important;
+}
+.contact{
+  background:linear-gradient(180deg,#dce8d800,#d4e3d0a8 55%,#d4e3d0c0 100%)!important;
+}
+footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
