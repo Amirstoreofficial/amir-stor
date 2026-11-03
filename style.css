@@ -217,3 +217,24 @@ main>section:not(.hero):after{display:none!important;content:none!important}
   background:linear-gradient(180deg,#dce8d800,#d4e3d0a8 55%,#d4e3d0c0 100%)!important;
 }
 footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
+
+/* Seamless feature cards: remove visible frames and fade card edges */
+.experience-grid article{
+  border:0!important;
+  outline:0!important;
+  background:linear-gradient(145deg,#ffffff72 0%,#ffffff38 55%,#eaf1e544 100%)!important;
+  box-shadow:0 18px 42px #173b3208!important;
+  border-radius:26px!important;
+  backdrop-filter:blur(14px);
+}
+.experience-grid article::before,
+.experience-grid article::after{
+  content:none!important;
+  display:none!important;
+}
+@media(max-width:620px){
+  .experience-grid article{
+    background:linear-gradient(110deg,#ffffff70,#ffffff35)!important;
+    box-shadow:0 12px 30px #173b3207!important;
+  }
+}
