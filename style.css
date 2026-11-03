@@ -283,3 +283,50 @@ footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
  .foil-tray{width:100px;height:65px;right:0;top:20%}
  .tray-base{top:13px}.tray-rim{height:15px}
 }
+
+
+/* Contact section: restore strong readable contrast on the light blended background */
+#contact.contact{
+  color:#123d2b!important;
+  background:linear-gradient(180deg,#e7f0e2 0%,#dcebd7 55%,#d3e5cf 100%)!important;
+}
+#contact.contact h2{
+  color:#103d2b!important;
+  text-shadow:none!important;
+}
+#contact.contact .eyebrow{
+  color:#477b39!important;
+  font-weight:900!important;
+}
+#contact.contact p{
+  color:#294f3a!important;
+  font-weight:600!important;
+  opacity:1!important;
+}
+#contact.contact p.phone{
+  color:#075b35!important;
+  font-size:clamp(23px,2.5vw,30px)!important;
+  font-weight:900!important;
+  text-shadow:0 1px 0 #ffffffa8;
+}
+#contact.contact p b{
+  color:#064c2d!important;
+  background:#ffffffc9;
+  padding:3px 9px;
+  border-radius:8px;
+  font-weight:900!important;
+}
+#contact .contact-actions .primary{
+  background:#075b35!important;
+  color:#fff!important;
+}
+#contact .contact-actions .whatsapp{
+  background:#d4f1dc!important;
+  color:#145b32!important;
+  border:1px solid #9bcaa7!important;
+}
+#contact .contact-actions .secondary{
+  background:#fff!important;
+  color:#075b35!important;
+  border:1px solid #a9c8a6!important;
+}
