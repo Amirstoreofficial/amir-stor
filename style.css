@@ -238,3 +238,48 @@ footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
     box-shadow:0 12px 30px #173b3207!important;
   }
 }
+
+/* Hero showcase: paper cup, plastic cutlery, foam meal box, bottle and foil tray */
+.hero-art{overflow:visible}
+.showcase-product{position:absolute;z-index:3;display:block;filter:drop-shadow(0 24px 20px #001b1460);will-change:transform;animation:productFloat 7s ease-in-out infinite}
+.showcase-product span{position:absolute;display:block}
+.paper-cup{width:105px;height:150px;left:9%;bottom:75px;transform:rotate(-10deg);animation-delay:-1s}
+.cup-body{inset:18px 7px 0;background:linear-gradient(90deg,#dce7df,#fff 24%,#f8fbf7 70%,#c8d8cb);clip-path:polygon(5% 0,95% 0,78% 100%,22% 100%);border-radius:5px 5px 20px 20px}
+.cup-lid{z-index:2;top:12px;left:2px;width:101px;height:17px;border-radius:50%;background:linear-gradient(#fff,#cbd9ce);border:2px solid #fafffa;box-shadow:0 4px 7px #183c2b35}
+.cup-sleeve{z-index:1;left:19px;right:19px;top:70px;height:35px;background:linear-gradient(90deg,#d8e4d6,#f4f8ef,#bdcfbf);transform:skewY(-3deg);border-radius:3px;opacity:.9}
+.plastic-cutlery{width:125px;height:155px;left:31%;top:8%;transform:rotate(12deg);animation-delay:-3s}
+.fork{left:19px;top:8px;width:15px;height:130px;border-radius:8px;background:linear-gradient(90deg,#cbd8d0,#fff 42%,#dce7df);box-shadow:0 8px 15px #001b1425}
+.fork:before{content:"";position:absolute;left:-5px;top:0;width:25px;height:43px;background:linear-gradient(90deg,#dce7df,#fff,#cbd8d0);clip-path:polygon(0 0,18% 0,18% 65%,32% 65%,32% 0,45% 0,45% 65%,59% 65%,59% 0,73% 0,73% 65%,87% 65%,87% 0,100% 0,100% 78%,82% 100%,18% 100%,0 78%)}
+.spoon{left:76px;top:7px;width:15px;height:132px;border-radius:10px;background:linear-gradient(90deg,#cbd8d0,#fff 45%,#d3dfd6)}
+.spoon:before{content:"";position:absolute;left:-12px;top:0;width:39px;height:53px;border-radius:50%;background:linear-gradient(100deg,#d4e0d8,#fff 50%,#c7d5cc);box-shadow:inset 0 -3px 5px #78917f55}
+.foam-box{width:160px;height:105px;right:6%;bottom:83px;transform:rotate(8deg);animation-delay:-2s}
+.foam-base{left:3px;right:3px;bottom:0;height:56px;border-radius:12px 12px 22px 22px;background:linear-gradient(145deg,#fff,#e8eee8 55%,#c9d7cb);box-shadow:inset 0 -7px 10px #a8b9aa55}
+.foam-lid{left:0;right:0;top:0;height:57px;border-radius:14px 14px 10px 10px;background:linear-gradient(145deg,#fff,#e4ece5 60%,#c5d5c8);border:2px solid #fafffb;box-shadow:0 5px 9px #173b3230}
+.foam-lid:after{content:"";position:absolute;inset:8px;border:2px solid #d0ddd2;border-radius:9px}
+.clear-bottle{width:76px;height:175px;right:27%;top:5%;animation-delay:-4s}
+.bottle-body{left:5px;right:5px;bottom:0;height:132px;border-radius:18px 18px 22px 22px;background:linear-gradient(90deg,#a9cbb9aa,#ffffffd9 30%,#d9eee1b8 62%,#8fb5a0aa);border:2px solid #eafff0;box-shadow:inset 7px 0 12px #fff9,inset -7px 0 12px #426c5033}
+.bottle-body:after{content:"";position:absolute;left:13px;right:13px;top:48px;height:34px;border-radius:8px;background:#ffffff8a;border:1px solid #fff}
+.bottle-cap{left:24px;top:15px;width:28px;height:30px;border-radius:5px 5px 2px 2px;background:repeating-linear-gradient(90deg,#d9e6dc 0 3px,#fff 3px 6px);box-shadow:0 3px 6px #183c2b35}
+.foil-tray{width:140px;height:85px;right:1%;top:19%;transform:rotate(-12deg);animation-delay:-5s}
+.tray-base{left:8px;right:8px;top:16px;bottom:0;background:linear-gradient(145deg,#fff,#bfc9c2 50%,#eef2ee);clip-path:polygon(8% 0,92% 0,78% 100%,22% 100%);border-radius:5px 5px 18px 18px;box-shadow:inset 0 0 12px #82908788}
+.tray-rim{left:0;right:0;top:8px;height:19px;border-radius:50%;background:linear-gradient(#fff,#aebbb2 48%,#f8fbf8 72%);border:2px solid #f8fbf8;box-shadow:0 4px 8px #001b1430}
+@keyframes productFloat{0%,100%{translate:0 0}50%{translate:0 -13px}}
+.art-label{display:none!important}
+.hero-product,.hero-product-main,.hero-product-bottle,.floating-pack,.floating-bottle{display:none!important}
+@media(max-width:850px){
+ .paper-cup{left:4%;bottom:60px}.plastic-cutlery{left:28%;top:3%}.foam-box{right:2%;bottom:60px}.clear-bottle{right:25%;top:2%}.foil-tray{right:0;top:18%}
+}
+@media(max-width:620px){
+ .hero-art{height:285px;max-width:440px}
+ .paper-cup{width:75px;height:112px;left:3%;bottom:48px}
+ .cup-lid{width:73px;height:13px;top:9px}.cup-body{top:14px}.cup-sleeve{top:52px;height:26px;left:14px;right:14px}
+ .plastic-cutlery{width:85px;height:112px;left:30%;top:2%}
+ .fork{left:12px;height:95px;width:11px}.fork:before{left:-4px;width:19px;height:32px}
+ .spoon{left:53px;height:96px;width:11px}.spoon:before{left:-9px;width:29px;height:39px}
+ .foam-box{width:115px;height:78px;right:1%;bottom:53px}
+ .foam-base{height:42px}.foam-lid{height:43px}.foam-lid:after{inset:6px}
+ .clear-bottle{width:56px;height:132px;right:24%;top:1%}
+ .bottle-body{height:100px;left:4px;right:4px}.bottle-cap{left:18px;top:11px;width:21px;height:23px}
+ .foil-tray{width:100px;height:65px;right:0;top:20%}
+ .tray-base{top:13px}.tray-rim{height:15px}
+}
