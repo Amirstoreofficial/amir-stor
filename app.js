@@ -1,23 +1,11 @@
-const fallbackProducts = [
-  {id:1,name:"ظرف و لیوان کاغذی",category:"محصولات سلولزی",description:"انواع ظرف و لیوان کاغذی در سایزهای مختلف",price:null,unit:"بسته",symbol:"▤"},
-  {id:2,name:"جار پلاستیکی",category:"جار و بطری",description:"انواع جار از ۳۵۰ سی‌سی تا ۱۰ کیلویی",price:null,unit:"عدد",symbol:"◉"},
-  {id:3,name:"بطری پلاستیکی",category:"جار و بطری",description:"انواع بطری از یک تا چهار لیتری",price:null,unit:"عدد",symbol:"♧"},
-  {id:4,name:"ظروف یکبار مصرف IML",category:"ظروف IML",description:"انواع ظروف بسته‌بندی مواد غذایی",price:null,unit:"عدد",symbol:"▣"},
-  {id:5,name:"کیسه فریزر و زباله",category:"محصولات پلاستیکی",description:"انواع پلاستیک فریزر، میوه و زباله",price:null,unit:"بسته",symbol:"◇"},
-  {id:6,name:"بشقاب و کاسه یکبار مصرف",category:"محصولات پلاستیکی",description:"مناسب پذیرایی و رستوران",price:null,unit:"بسته",symbol:"◍"},
-  {id:7,name:"قاشق و چنگال یکبار مصرف",category:"محصولات پلاستیکی",description:"انواع قاشق و چنگال",price:null,unit:"بسته",symbol:"Ⅱ"},
-  {id:9,name:"فوم تک پرسی",category:"محصولات پلاستیکی",description:"ظرف فوم تک پرسی، بسته ۳۰۰ عددی",price:3250,unit:"عدد",packCount:300,packPrice:975000,symbol:"▣",image:"Gemini_Generated_Image_2agpmg2agpmg2agp.jpg"},
-  {id:10,name:"بطری گرد پافیلی ۴ لیتری",category:"بطری‌ها",description:"بطری گرد پافیلی با حجم ۴ لیتر، دهانه ۴۵ میلی‌متر، درب و دستگیره با رنگ‌های مختلف و وزن‌های متنوع",price:40000,unit:"عدد",packCount:40,volume:"۴ لیتر",mouthSize:"۴۵ میلی‌متر",capHandle:"درب و دستگیره در رنگ‌های مختلف",weight:"در وزن‌های مختلف",symbol:"♧",image:"images/bottle-gard-pafili-4l.jpg"}
-];
-const products = Array.isArray(window.AMIR_PRODUCTS) && window.AMIR_PRODUCTS.length
-  ? window.AMIR_PRODUCTS
-  : fallbackProducts;let cart={};let activeCategory="همه";
+const products = Array.isArray(window.AMIR_PRODUCTS) ? window.AMIR_PRODUCTS : [];let cart={};let activeCategory="همه";
 const $=s=>document.querySelector(s);
 const money=n=>new Intl.NumberFormat("fa-IR").format(n)+" تومان";
 const categories=[...new Set(products.map(p=>p.category))];
+if(!products.length){document.querySelector("#categories").hidden=true;document.querySelector("#products").hidden=true;}
 $("#categoryGrid").innerHTML=categories.map((c,i)=>`<button class="category-card" data-category="${c}"><span class="cat-icon">${["▤","▣","◉","♧","◇","✳"][i%6]}</span><b>${c}</b><small>مشاهده محصولات ←</small></button>`).join("");
 $("#categoryFilter").innerHTML+=[...categories].map(c=>`<option>${c}</option>`).join("");
-function renderProducts(){let q=$("#search").value.trim();let cat=$("#categoryFilter").value;let list=products.filter(p=>(cat==="همه"||p.category===cat)&&(activeCategory==="همه"||p.category===activeCategory)&&(`${p.name} ${p.description}`.includes(q)));$("#productGrid").innerHTML=list.length?list.map(p=>`<article class="product-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo" src="${p.image}" alt="${p.name}" loading="lazy">`:`<span>${p.symbol||"▣"}</span>`}<small>${p.category}</small></div><div class="product-info"><h3>${p.name}</h3><p>${p.description||"برای مشاهده مشخصات بیشتر کلیک کنید."}</p><div class="product-bottom"><b>${p.price==null?"استعلام قیمت":money(p.price)}</b><button type="button" onclick="event.stopPropagation();addToCart(${p.id})">افزودن به سفارش +</button></div><small class="detail-hint">مشاهده تصویر بزرگ و مشخصات ←</small></div></article>`).join(""):`<p class="empty">محصولی با این مشخصات پیدا نشد.</p>`}
+function renderProducts(){let q=$("#search").value.trim();let cat=$("#categoryFilter").value;let list=products.filter(p=>(cat==="همه"||p.category===cat)&&(activeCategory==="همه"||p.category===activeCategory)&&(`${p.name} ${p.description}`.includes(q)));$("#productGrid").innerHTML=list.length?list.map(p=>`<article class="product-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo" src="${p.image}" alt="${p.name}" loading="lazy">`:`<span>${p.symbol||"▣"}</span>`}<small>${p.category}</small></div><div class="product-info"><h3>${p.name}</h3><p>${p.description||"برای مشاهده مشخصات بیشتر کلیک کنید."}</p><div class="product-bottom"><b>${p.price==null?"استعلام قیمت":money(p.price)}</b><button type="button" onclick="event.stopPropagation();addToCart(${p.id})">افزودن به سفارش +</button></div><small class="detail-hint">مشاهده تصویر بزرگ و مشخصات ←</small></div></article>`).join(""):`<div class="catalog-empty"><span>AMIR / CATALOG</span><b>کاتالوگ محصولات در حال آماده‌سازی است</b><small>به‌زودی تصاویر و مشخصات محصولات فروشگاه در این بخش قرار می‌گیرد.</small></div>`}
 function openProductDetail(id){
   const p=products.find(x=>x.id==id);if(!p)return;
   const modal=$("#productModal");
