@@ -124,3 +124,35 @@ body{background:#fbfcf8}.announcement-bar{min-height:34px;padding:7px max(5vw,22
 @media(max-width:850px){.hero{min-height:570px}.hero-art{height:390px}.experience-grid{gap:12px}.experience-grid article{padding:19px}}
 @media(max-width:620px){.hero{min-height:0;padding:22px 18px 44px}.hero-art{height:285px;max-width:440px;margin:0 auto}.hero-glow{width:250px;height:250px}.hero-platform{bottom:18px;height:48px}.hero-product-main{width:48%;height:73%;left:23%;bottom:42px}.hero-product-bottle{width:26%;height:74%;right:12%;bottom:53px}.floating-pack{border-radius:17px 17px 22px 22px}.experience-section{padding:55px 18px 62px}.experience-heading{margin-bottom:24px}.experience-grid{grid-template-columns:1fr;gap:11px}.experience-grid article{min-height:0;padding:18px;gap:8px}.ambient-one{width:65px;height:90px;left:-15px}.ambient-two{width:60px;height:80px;right:-12px}}
 @media(prefers-reduced-motion:reduce){.hero-glow,.floating-cup,.floating-box,.float-dot{animation:none!important}}
+
+
+/* Seamless atmospheric page treatment: blurred product silhouettes drift with scroll */
+html,body{background:#f5f7f1}
+body{position:relative;isolation:isolate;background:linear-gradient(180deg,#073d2b 0%,#174d37 9%,#e8efe4 24%,#f7f8f3 42%,#e8efe5 61%,#f8f8f4 78%,#e8efe6 100%)}
+body:before{content:"";position:fixed;inset:-12vh -8vw;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 22%,#7ca87628,transparent 34%),radial-gradient(ellipse at 82% 55%,#3c785025,transparent 35%),radial-gradient(ellipse at 38% 88%,#dce9d426,transparent 38%);filter:blur(22px)}
+.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 72% 42%,#23854b 0%,transparent 35%),radial-gradient(ellipse at 12% 15%,#1a7542 0%,transparent 34%),linear-gradient(120deg,#032d20 0%,#075b35 55%,#063c29 100%)}
+.trust-strip,.experience-section,.section#categories,.products-section,.about,.contact{position:relative;isolation:isolate;background:transparent}
+.trust-strip{background:linear-gradient(180deg,#e8efe4a8,#f4f7f0b8);backdrop-filter:blur(18px);border-color:#ffffff88}
+.experience-section{background:linear-gradient(180deg,#eef4e9b8,#e6eee1a8);backdrop-filter:blur(2px)}
+#categories{background:linear-gradient(180deg,#e6eee18c,#f5f7f1a8)}
+.products-section{background:linear-gradient(180deg,#f3f6efb5,#e5eee1a8)}
+.about{background:linear-gradient(180deg,#e5eee18c,#f5f7f1a8)}
+.contact{background:linear-gradient(180deg,#e5eee1b5,#dce8d8c9);backdrop-filter:blur(10px)}
+main>section:not(.hero){border-top:1px solid #ffffff6b}
+main>section:not(.hero):before{content:"";position:absolute;top:-35px;left:0;right:0;height:70px;pointer-events:none;background:linear-gradient(180deg,transparent,#edf3e9a8 48%,transparent);filter:blur(18px);z-index:-1}
+.scroll-atmosphere{position:absolute;inset:0;overflow:clip;pointer-events:none;z-index:0}
+.scroll-item{position:absolute;fill:none;stroke:#426b4d;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.105;filter:blur(2.5px);will-change:transform;transition:opacity .3s}
+.scroll-item.utensil{width:clamp(42px,7vw,96px);height:auto}
+.scroll-item.cup-a,.scroll-item.cup-b{width:clamp(74px,12vw,160px);stroke-width:3.5}
+.scroll-item.foam-a{width:clamp(110px,17vw,230px);stroke-width:3.5}
+.fork-a{top:8%;left:7%;transform:rotate(-18deg)}
+.spoon-a{top:27%;right:8%;transform:rotate(18deg)}
+.cup-a{top:43%;left:3%;transform:rotate(12deg)}
+.foam-a{top:62%;right:4%;transform:rotate(-12deg)}
+.fork-b{top:77%;left:21%;transform:rotate(12deg)}
+.cup-b{top:87%;right:26%;transform:rotate(-10deg)}
+#categories,#products,#about,#contact,.experience-section{overflow:hidden}
+#categories>.section-head,#categories>.category-grid,#products>.section-head,#products>#productGrid,.about>*,.contact>*,.experience-section>*{position:relative;z-index:1}
+.category-card,.product-card,.experience-grid article{backdrop-filter:blur(12px);background:#ffffffc9}
+@media(max-width:620px){.scroll-item{opacity:.075;filter:blur(2px)}.fork-a{left:-2%}.spoon-a{right:-1%}.foam-a{right:-8%}.fork-b{left:8%}}
+@media(prefers-reduced-motion:reduce){.scroll-item{transition:none}}
