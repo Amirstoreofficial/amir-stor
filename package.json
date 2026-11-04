@@ -1,0 +1,8 @@
+{
+  "name": "amir-store-static",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Amir Store static site is ready for deployment'"
+  }
+}
