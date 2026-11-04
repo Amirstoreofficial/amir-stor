@@ -637,3 +637,26 @@ body>.scroll-atmosphere img.cup-photo-c{top:43%!important;right:42%!important}
     filter:blur(.9px)!important;
   }
 }
+
+
+/* Refine the three cup placements: one per section, scattered naturally at the same scale. */
+#categories>.section-cup-background img.cup-photo,
+#products>.section-cup-background img.cup-photo,
+#about>.section-cup-background img.cup-photo{
+  width:clamp(105px,13vw,170px)!important;
+  max-height:210px!important;
+  opacity:.23!important;
+  filter:blur(1.2px)!important;
+}
+#categories>.section-cup-background img.cup-photo{top:24%!important;left:5%!important;right:auto!important}
+#products>.section-cup-background img.cup-photo{top:58%!important;right:5%!important;left:auto!important}
+#about>.section-cup-background img.cup-photo{top:18%!important;left:12%!important;right:auto!important;bottom:auto!important}
+@media(max-width:620px){
+  #categories>.section-cup-background img.cup-photo,
+  #products>.section-cup-background img.cup-photo,
+  #about>.section-cup-background img.cup-photo{
+    width:clamp(78px,21vw,112px)!important;
+    max-height:140px!important;
+    opacity:.19!important;
+  }
+}
