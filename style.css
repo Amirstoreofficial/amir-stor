@@ -564,3 +564,29 @@ body .hero .hero-products-showcase .hero-products-image{
   body .hero .hero-products-showcase .hero-products-image{animation-duration:6.4s!important}
   @keyframes amirHeroFloatClean{0%,100%{translate:0 0}50%{translate:0 -6px}}
 }
+
+
+/* Amir Store: scattered, faded image backgrounds from the owner's numbered assets.
+   The hero and its floating product artwork are intentionally untouched. */
+body>.scroll-atmosphere>svg{display:none!important}
+body>.scroll-atmosphere>.bg-product{
+  position:absolute!important;display:block!important;height:auto!important;
+  object-fit:contain!important;pointer-events:none!important;z-index:0!important;
+  opacity:.19!important;filter:blur(1.8px)!important;
+  mix-blend-mode:multiply!important;will-change:transform;
+}
+body>.scroll-atmosphere>.bg-p1{width:clamp(100px,13vw,175px)!important;top:4%!important;left:5%!important;transform:rotate(-13deg)}
+body>.scroll-atmosphere>.bg-p2{width:clamp(115px,15vw,195px)!important;top:13%!important;right:7%!important;transform:rotate(12deg)}
+body>.scroll-atmosphere>.bg-p3{width:clamp(90px,11vw,150px)!important;top:25%!important;right:39%!important;transform:rotate(18deg)}
+body>.scroll-atmosphere>.bg-p4{width:clamp(115px,14vw,185px)!important;top:36%!important;left:12%!important;transform:rotate(-8deg)}
+body>.scroll-atmosphere>.bg-p5{width:clamp(105px,13vw,170px)!important;top:48%!important;right:5%!important;transform:rotate(-17deg)}
+body>.scroll-atmosphere>.bg-p6{width:clamp(110px,14vw,180px)!important;top:59%!important;left:43%!important;transform:rotate(9deg)}
+body>.scroll-atmosphere>.bg-p7{width:clamp(95px,12vw,160px)!important;top:71%!important;right:25%!important;transform:rotate(15deg)}
+body>.scroll-atmosphere>.bg-p8{width:clamp(110px,14vw,180px)!important;top:83%!important;left:4%!important;transform:rotate(-12deg)}
+body>.scroll-atmosphere>.bg-p9{width:clamp(90px,11vw,150px)!important;top:94%!important;right:43%!important;transform:rotate(7deg)}
+@media(max-width:620px){
+ body>.scroll-atmosphere>.bg-product{opacity:.14!important;filter:blur(1.5px)!important}
+ body>.scroll-atmosphere>.bg-p1,body>.scroll-atmosphere>.bg-p4,body>.scroll-atmosphere>.bg-p8{width:clamp(70px,22vw,105px)!important}
+ body>.scroll-atmosphere>.bg-p2,body>.scroll-atmosphere>.bg-p5,body>.scroll-atmosphere>.bg-p6{width:clamp(78px,24vw,118px)!important}
+ body>.scroll-atmosphere>.bg-p3,body>.scroll-atmosphere>.bg-p7,body>.scroll-atmosphere>.bg-p9{width:clamp(68px,20vw,100px)!important}
+}
