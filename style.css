@@ -870,3 +870,104 @@ body>main,body>footer{position:relative;z-index:1}@media(max-width:620px){
 @media(prefers-reduced-motion:reduce){
   body>.scroll-atmosphere .scroll-item{will-change:auto!important}
 }
+
+
+/* === FINAL REPAIR: visible scroll-parallax silhouettes + independent hero float === */
+/* Keep the decorative layer above transparent section canvases, below actual content. */
+body{isolation:isolate!important}
+body>.scroll-atmosphere{
+  position:fixed!important;
+  inset:0!important;
+  width:100vw!important;
+  height:100vh!important;
+  overflow:hidden!important;
+  pointer-events:none!important;
+  z-index:2!important;
+}
+body>.scroll-atmosphere .scroll-item{
+  position:absolute!important;
+  display:block!important;
+  height:auto!important;
+  fill:none!important;
+  stroke:#426b4d!important;
+  stroke-width:5!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+  opacity:.045!important;
+  filter:blur(3.4px)!important;
+  pointer-events:none!important;
+  will-change:translate;
+}
+/* Give every SVG a real size; SVGs without width/height otherwise use browser defaults. */
+body>.scroll-atmosphere .utensil{width:clamp(38px,5.4vw,72px)!important}
+body>.scroll-atmosphere .cup-a,
+body>.scroll-atmosphere .cup-b,
+body>.scroll-atmosphere .cup-c,
+body>.scroll-atmosphere .cup-d{width:clamp(76px,10vw,132px)!important;stroke-width:3.5!important}
+body>.scroll-atmosphere .foam-a,
+body>.scroll-atmosphere .foam-b{width:clamp(110px,15vw,190px)!important;stroke-width:3.5!important}
+body>.scroll-atmosphere .plate-a,
+body>.scroll-atmosphere .plate-b,
+body>.scroll-atmosphere .plate-c{width:clamp(90px,12vw,155px)!important;stroke-width:3.5!important}
+/* Fixed positions are intentionally viewport-relative; app.js moves them on scroll. */
+body>.scroll-atmosphere .fork-a{top:7%!important;left:6%!important}
+body>.scroll-atmosphere .spoon-a{top:24%!important;right:7%!important}
+body>.scroll-atmosphere .plate-a{top:13%!important;right:34%!important}
+body>.scroll-atmosphere .cup-a{top:44%!important;left:2%!important}
+body>.scroll-atmosphere .foam-a{top:62%!important;right:3%!important}
+body>.scroll-atmosphere .fork-b{top:78%!important;left:19%!important}
+body>.scroll-atmosphere .cup-b{top:85%!important;right:25%!important}
+body>.scroll-atmosphere .fork-c{top:53%!important;right:5%!important}
+body>.scroll-atmosphere .spoon-b{top:72%!important;left:8%!important}
+body>.scroll-atmosphere .foam-b{top:33%!important;left:37%!important}
+body>.scroll-atmosphere .plate-b{top:91%!important;right:35%!important}
+body>.scroll-atmosphere .cup-c{top:39%!important;right:41%!important}
+body>.scroll-atmosphere .fork-d{top:18%!important;right:18%!important}
+body>.scroll-atmosphere .spoon-c{top:5%!important;right:64%!important}
+body>.scroll-atmosphere .plate-c{top:70%!important;left:42%!important}
+body>.scroll-atmosphere .cup-d{top:62%!important;left:5%!important}
+/* Foreground controls and copy remain crisp and clickable. */
+body>.announcement-bar{position:relative!important;z-index:6!important}
+body>.topbar{position:sticky!important;top:0;z-index:7!important}
+body>main{position:relative!important;z-index:auto!important}
+body>main>section>*{position:relative;z-index:3}
+body>main>.hero{position:relative!important;z-index:3!important}
+body>main>.trust-strip>*{position:relative;z-index:3}
+body>main>.experience-section>*,
+body>main>#categories>*,
+body>main>.products-section>*,
+body>main>.about>*,
+body>main>.contact>*{position:relative;z-index:3}
+body>footer{position:relative!important;z-index:3!important}
+@media(max-width:620px){
+  body>.scroll-atmosphere .scroll-item{opacity:.038!important;filter:blur(2.8px)!important}
+  body>.scroll-atmosphere .utensil{width:clamp(30px,8vw,45px)!important}
+  body>.scroll-atmosphere .cup-a,
+  body>.scroll-atmosphere .cup-b,
+  body>.scroll-atmosphere .cup-c,
+  body>.scroll-atmosphere .cup-d{width:clamp(54px,14vw,82px)!important}
+  body>.scroll-atmosphere .foam-a,
+  body>.scroll-atmosphere .foam-b{width:clamp(76px,20vw,112px)!important}
+  body>.scroll-atmosphere .plate-a,
+  body>.scroll-atmosphere .plate-b,
+  body>.scroll-atmosphere .plate-c{width:clamp(66px,18vw,100px)!important}
+}
+/* Hero animation is independent of the parallax layer and preserves the enlarged artwork. */
+body .hero .hero-products-showcase .hero-products-image{
+  position:relative!important;
+  top:auto!important;
+  animation:amirHeroFloatFinal 5.6s ease-in-out infinite!important;
+}
+@keyframes amirHeroFloatFinal{
+  0%,100%{translate:0 0}
+  50%{translate:0 -9px}
+}
+@media(max-width:620px){
+  body .hero .hero-products-showcase .hero-products-image{
+    animation-duration:6.4s!important;
+  }
+  @keyframes amirHeroFloatFinal{
+    0%,100%{translate:0 0}
+    50%{translate:0 -6px}
+  }
+}
