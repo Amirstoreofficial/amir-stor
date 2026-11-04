@@ -631,8 +631,14 @@ body>.scroll-photo-layer{
   min-height:100%!important;
   overflow:hidden!important;
   pointer-events:none!important;
-  z-index:2!important;
+  z-index:0!important;
 }
+body>.scroll-photo-layer .scroll-photo-one-b{top:38%!important;right:8%!important;left:auto!important}
+body>.scroll-photo-layer .scroll-photo-one-c{top:76%!important;left:29%!important;right:auto!important}
+body>.scroll-photo-layer .scroll-photo-one-d{top:91%!important;right:38%!important;left:auto!important}
+body>.scroll-photo-layer .scroll-photo-two-b{top:9%!important;right:38%!important;left:auto!important}
+body>.scroll-photo-layer .scroll-photo-two-c{top:49%!important;left:43%!important;right:auto!important}
+body>.scroll-photo-layer .scroll-photo-two-d{top:83%!important;right:17%!important;left:auto!important}
 body>.scroll-photo-layer .scroll-photo{
   display:block!important;
   position:absolute!important;
