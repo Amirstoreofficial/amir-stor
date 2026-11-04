@@ -590,3 +590,8 @@ body>.scroll-atmosphere>.bg-p9{width:clamp(90px,11vw,150px)!important;top:94%!im
  body>.scroll-atmosphere>.bg-p2,body>.scroll-atmosphere>.bg-p5,body>.scroll-atmosphere>.bg-p6{width:clamp(78px,24vw,118px)!important}
  body>.scroll-atmosphere>.bg-p3,body>.scroll-atmosphere>.bg-p7,body>.scroll-atmosphere>.bg-p9{width:clamp(68px,20vw,100px)!important}
 }
+
+
+/* Strictly allow only the two approved numbered images in the page background. */
+body>.scroll-atmosphere>:not(.bg-product){display:none!important;}
+body>.scroll-atmosphere>.bg-product{visibility:visible!important;}
