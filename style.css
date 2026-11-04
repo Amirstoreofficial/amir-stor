@@ -564,3 +564,54 @@ body .hero .hero-products-showcase .hero-products-image{
   body .hero .hero-products-showcase .hero-products-image{animation-duration:6.4s!important}
   @keyframes amirHeroFloatClean{0%,100%{translate:0 0}50%{translate:0 -6px}}
 }
+
+
+/* Numbered real product photos: small, softly blurred, and scroll-linked.
+   This layer is independent of the approved hero showcase. */
+body>.scroll-atmosphere .scroll-photo{
+  display:block!important;
+  position:absolute!important;
+  width:clamp(88px,10vw,132px)!important;
+  height:clamp(88px,10vw,132px)!important;
+  max-width:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  fill:initial!important;
+  stroke:initial!important;
+  opacity:.14!important;
+  filter:blur(3.2px) saturate(.82)!important;
+  mix-blend-mode:multiply;
+  pointer-events:none!important;
+  will-change:translate;
+}
+body>.scroll-atmosphere .scroll-photo-one{
+  top:20%!important;
+  left:13%!important;
+}
+body>.scroll-atmosphere .scroll-photo-two{
+  top:61%!important;
+  right:13%!important;
+}
+@media(max-width:850px){
+  body>.scroll-atmosphere .scroll-photo{
+    width:clamp(76px,13vw,108px)!important;
+    height:clamp(76px,13vw,108px)!important;
+    opacity:.125!important;
+  }
+}
+@media(max-width:620px){
+  body>.scroll-atmosphere .scroll-photo{
+    width:clamp(58px,17vw,82px)!important;
+    height:clamp(58px,17vw,82px)!important;
+    opacity:.115!important;
+    filter:blur(2.8px) saturate(.8)!important;
+  }
+  body>.scroll-atmosphere .scroll-photo-one{
+    top:23%!important;
+    left:5%!important;
+  }
+  body>.scroll-atmosphere .scroll-photo-two{
+    top:64%!important;
+    right:5%!important;
+  }
+}
