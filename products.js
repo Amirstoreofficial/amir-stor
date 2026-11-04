@@ -23,5 +23,16 @@ window.AMIR_PRODUCTS = [
     price: null,
     unit: "عدد",
     symbol: "▱"
+  },
+  {
+    id: 9,
+    name: "فوم تک پرسی",
+    category: "محصولات پلاستیکی",
+    description: "ظرف فوم تک‌پرسی مناسب بسته‌بندی و سرو غذا.",
+    image: "images/Picsart_26-11-04_16-43-28-177.png",
+    packCount: 300,
+    price: 3250,
+    unit: "عدد",
+    symbol: "▣"
   }
 ];
