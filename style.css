@@ -636,3 +636,50 @@ footer{background:transparent!important}
 .product-image-placeholder span{font-size:54px;line-height:1}
 .product-image-placeholder small{font-size:10px;color:#81917f;text-shadow:none}
 @media(max-width:620px){.product-info{min-height:132px;padding:13px}.product-card-meta{align-items:flex-start;flex-direction:column;gap:5px;padding-top:12px}.product-card-meta b{font-size:11px}.product-card-meta span{font-size:9px}}
+
+
+/* Hero showcase: use the supplied real product composition in the original left-side area */
+.hero-products-showcase{
+  position:relative!important;
+  width:100%!important;
+  min-width:0!important;
+  height:clamp(350px,36vw,470px)!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:visible!important;
+  background:transparent!important;
+  isolation:isolate;
+}
+.hero-products-image{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:100%!important;
+  max-height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  filter:drop-shadow(0 24px 28px rgba(31,57,37,.16));
+  transform:scale(1.08);
+  transform-origin:center;
+  animation:heroProductsFloat 6s ease-in-out infinite;
+}
+@keyframes heroProductsFloat{
+  0%,100%{transform:translateY(0) scale(1.08)}
+  50%{transform:translateY(-9px) scale(1.08)}
+}
+@media(max-width:620px){
+  .hero-products-showcase{
+    height:clamp(220px,62vw,300px)!important;
+    min-height:220px!important;
+    margin:0 auto 4px!important;
+  }
+  .hero-products-image{transform:scale(1.04);animation-duration:7s}
+  @keyframes heroProductsFloat{
+    0%,100%{transform:translateY(0) scale(1.04)}
+    50%{transform:translateY(-5px) scale(1.04)}
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-products-image{animation:none!important}
+}
