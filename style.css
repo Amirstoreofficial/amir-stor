@@ -595,3 +595,7 @@ body>.scroll-atmosphere>.bg-p9{width:clamp(90px,11vw,150px)!important;top:94%!im
 /* Strictly allow only the two approved numbered images in the page background. */
 body>.scroll-atmosphere>:not(.bg-product){display:none!important;}
 body>.scroll-atmosphere>.bg-product{visibility:visible!important;}
+
+
+/* Remove any legacy decorative utensil SVGs, including stale markup outside the background wrapper. */
+.scroll-item,.utensil,.fork-a,.fork-b,.fork-c,.fork-d,.spoon-a,.spoon-b,.spoon-c,.cup-a,.cup-b,.cup-c,.cup-d,.foam-a,.foam-b,.plate-a,.plate-b,.plate-c{display:none!important;}
