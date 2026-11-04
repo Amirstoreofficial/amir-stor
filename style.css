@@ -564,3 +564,31 @@ body .hero .hero-products-showcase .hero-products-image{
   body .hero .hero-products-showcase .hero-products-image{animation-duration:6.4s!important}
   @keyframes amirHeroFloatClean{0%,100%{translate:0 0}50%{translate:0 -6px}}
 }
+
+
+/* Three real cup photos in the existing scroll atmosphere layer.
+   Scoped only to these background images; approved hero animation is untouched. */
+body>.scroll-atmosphere img.cup-photo{
+  position:absolute!important;
+  display:block!important;
+  width:clamp(72px,9vw,118px)!important;
+  height:auto!important;
+  max-height:150px!important;
+  object-fit:contain!important;
+  opacity:.19!important;
+  filter:blur(1.4px)!important;
+  stroke:none!important;
+  pointer-events:none!important;
+  will-change:translate;
+}
+body>.scroll-atmosphere img.cup-photo-a{top:29%!important;left:2%!important}
+body>.scroll-atmosphere img.cup-photo-b{top:57%!important;right:24%!important}
+body>.scroll-atmosphere img.cup-photo-c{top:43%!important;right:42%!important}
+@media(max-width:620px){
+  body>.scroll-atmosphere img.cup-photo{
+    width:clamp(54px,14vw,82px)!important;
+    max-height:105px!important;
+    opacity:.15!important;
+    filter:blur(1.1px)!important;
+  }
+}
