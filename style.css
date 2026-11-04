@@ -678,3 +678,56 @@ body>.scroll-photo-layer .scroll-photo-two{
   body>.scroll-photo-layer .scroll-photo-one{top:22%!important;left:4%!important}
   body>.scroll-photo-layer .scroll-photo-two{top:65%!important;right:4%!important}
 }
+
+
+/* Amir Store: use the uploaded real cup and cutlery photos instead of decorative SVG dishes.
+   Scoped to the page background only; the approved hero artwork and animation are untouched. */
+body>.scroll-atmosphere .scroll-photo{
+  display:block!important;position:absolute!important;
+  width:clamp(112px,12vw,158px)!important;
+  height:clamp(112px,12vw,158px)!important;
+  max-width:none!important;object-fit:contain!important;object-position:center!important;
+  opacity:.22!important;filter:blur(1.15px) saturate(.92)!important;
+  mix-blend-mode:multiply!important;pointer-events:none!important;
+  fill:none!important;stroke:none!important;will-change:translate;
+}
+body>.scroll-atmosphere .photo-cup-a{top:13%!important;right:8%!important}
+body>.scroll-atmosphere .photo-utensil-a{top:7%!important;left:8%!important}
+body>.scroll-atmosphere .photo-cup-b{top:29%!important;left:4%!important}
+body>.scroll-atmosphere .photo-utensil-b{top:35%!important;right:7%!important}
+body>.scroll-atmosphere .photo-cup-c{top:48%!important;right:14%!important}
+body>.scroll-atmosphere .photo-utensil-c{top:55%!important;left:19%!important}
+body>.scroll-atmosphere .photo-cup-d{top:67%!important;left:5%!important}
+body>.scroll-atmosphere .photo-utensil-d{top:73%!important;right:8%!important}
+body>.scroll-atmosphere .photo-cup-e{top:84%!important;right:31%!important}
+body>.scroll-atmosphere .photo-utensil-e{top:91%!important;left:32%!important}
+body>.scroll-atmosphere .photo-cup-f{top:108%!important;left:10%!important}
+body>.scroll-atmosphere .photo-utensil-f{top:116%!important;right:12%!important}
+body>.scroll-atmosphere .photo-cup-g{top:132%!important;right:7%!important}
+body>.scroll-atmosphere .photo-utensil-g{top:140%!important;left:17%!important}
+@media(max-width:850px){
+  body>.scroll-atmosphere .scroll-photo{
+    width:clamp(92px,16vw,126px)!important;height:clamp(92px,16vw,126px)!important;
+    opacity:.19!important;
+  }
+}
+@media(max-width:620px){
+  body>.scroll-atmosphere .scroll-photo{
+    width:clamp(72px,20vw,104px)!important;height:clamp(72px,20vw,104px)!important;
+    opacity:.17!important;filter:blur(1.4px) saturate(.9)!important;
+  }
+  body>.scroll-atmosphere .photo-cup-a{top:13%!important;right:3%!important}
+  body>.scroll-atmosphere .photo-utensil-a{top:7%!important;left:3%!important}
+  body>.scroll-atmosphere .photo-cup-b{top:29%!important;left:1%!important}
+  body>.scroll-atmosphere .photo-utensil-b{top:35%!important;right:2%!important}
+  body>.scroll-atmosphere .photo-cup-c{top:48%!important;right:3%!important}
+  body>.scroll-atmosphere .photo-utensil-c{top:55%!important;left:5%!important}
+  body>.scroll-atmosphere .photo-cup-d{top:67%!important;left:1%!important}
+  body>.scroll-atmosphere .photo-utensil-d{top:73%!important;right:2%!important}
+  body>.scroll-atmosphere .photo-cup-e{top:84%!important;right:23%!important}
+  body>.scroll-atmosphere .photo-utensil-e{top:91%!important;left:22%!important}
+  body>.scroll-atmosphere .photo-cup-f{top:108%!important;left:2%!important}
+  body>.scroll-atmosphere .photo-utensil-f{top:116%!important;right:2%!important}
+  body>.scroll-atmosphere .photo-cup-g{top:132%!important;right:1%!important}
+  body>.scroll-atmosphere .photo-utensil-g{top:140%!important;left:5%!important}
+}
