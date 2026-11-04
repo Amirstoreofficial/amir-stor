@@ -845,9 +845,7 @@ body>.scroll-atmosphere .cup-d{top:63%!important;left:4%!important;transform:rot
 /* Foreground content stays above the decorative layer; hero layout and artwork are untouched */
 body>.announcement-bar{position:relative;z-index:2}
 body>.topbar{position:sticky;z-index:5}
-body>main,body>footer{position:relative;z-index:1}
-body>.overlay,body>.cart-drawer,body>.product-modal,body>.ai-panel,body>.ai-launcher{z-index:20}
-@media(max-width:620px){
+body>main,body>footer{position:relative;z-index:1}@media(max-width:620px){
   body>.scroll-atmosphere .scroll-item{opacity:.052!important;filter:blur(2.7px)!important}
   body>.scroll-atmosphere .utensil{width:clamp(32px,9vw,52px)!important}
   body>.scroll-atmosphere .cup-a,body>.scroll-atmosphere .cup-b,body>.scroll-atmosphere .cup-c,body>.scroll-atmosphere .cup-d{width:clamp(52px,15vw,78px)!important}
