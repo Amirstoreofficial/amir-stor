@@ -126,119 +126,6 @@ body{background:#fbfcf8}.announcement-bar{min-height:34px;padding:7px max(5vw,22
 @media(prefers-reduced-motion:reduce){.hero-glow,.floating-cup,.floating-box,.float-dot{animation:none!important}}
 
 
-/* Seamless atmospheric page treatment: blurred product silhouettes drift with scroll */
-html,body{background:#f5f7f1}
-body{position:relative;isolation:isolate;background:linear-gradient(180deg,#073d2b 0%,#174d37 9%,#e8efe4 24%,#f7f8f3 42%,#e8efe5 61%,#f8f8f4 78%,#e8efe6 100%)}
-body:before{content:"";position:fixed;inset:-12vh -8vw;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 22%,#7ca87628,transparent 34%),radial-gradient(ellipse at 82% 55%,#3c785025,transparent 35%),radial-gradient(ellipse at 38% 88%,#dce9d426,transparent 38%);filter:blur(22px)}
-.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 72% 42%,#23854b 0%,transparent 35%),radial-gradient(ellipse at 12% 15%,#1a7542 0%,transparent 34%),linear-gradient(120deg,#032d20 0%,#075b35 55%,#063c29 100%)}
-.trust-strip,.experience-section,.section#categories,.products-section,.about,.contact{position:relative;isolation:isolate;background:transparent}
-.trust-strip{background:linear-gradient(180deg,#e8efe4a8,#f4f7f0b8);backdrop-filter:blur(18px);border-color:#ffffff88}
-.experience-section{background:linear-gradient(180deg,#eef4e9b8,#e6eee1a8);backdrop-filter:blur(2px)}
-#categories{background:linear-gradient(180deg,#e6eee18c,#f5f7f1a8)}
-.products-section{background:linear-gradient(180deg,#f3f6efb5,#e5eee1a8)}
-.about{background:linear-gradient(180deg,#e5eee18c,#f5f7f1a8)}
-.contact{background:linear-gradient(180deg,#e5eee1b5,#dce8d8c9);backdrop-filter:blur(10px)}
-main>section:not(.hero){border-top:1px solid #ffffff6b}
-main>section:not(.hero):before{content:"";position:absolute;top:-35px;left:0;right:0;height:70px;pointer-events:none;background:linear-gradient(180deg,transparent,#edf3e9a8 48%,transparent);filter:blur(18px);z-index:-1}
-.scroll-atmosphere{position:absolute;inset:0;overflow:clip;pointer-events:none;z-index:0}
-.scroll-item{position:absolute;fill:none;stroke:#426b4d;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.105;filter:blur(2.5px);will-change:transform;transition:opacity .3s}
-.scroll-item.utensil{width:clamp(42px,7vw,96px);height:auto}
-.scroll-item.cup-a,.scroll-item.cup-b{width:clamp(74px,12vw,160px);stroke-width:3.5}
-.scroll-item.foam-a{width:clamp(110px,17vw,230px);stroke-width:3.5}
-.fork-a{top:8%;left:7%;transform:rotate(-18deg)}
-.spoon-a{top:27%;right:8%;transform:rotate(18deg)}
-.cup-a{top:43%;left:3%;transform:rotate(12deg)}
-.foam-a{top:62%;right:4%;transform:rotate(-12deg)}
-.fork-b{top:77%;left:21%;transform:rotate(12deg)}
-.cup-b{top:87%;right:26%;transform:rotate(-10deg)}
-#categories,#products,#about,#contact,.experience-section{overflow:hidden}
-#categories>.section-head,#categories>.category-grid,#products>.section-head,#products>#productGrid,.about>*,.contact>*,.experience-section>*{position:relative;z-index:1}
-.category-card,.product-card,.experience-grid article{backdrop-filter:blur(12px);background:#ffffffc9}
-@media(max-width:620px){.scroll-item{opacity:.075;filter:blur(2px)}.fork-a{left:-2%}.spoon-a{right:-1%}.foam-a{right:-8%}.fork-b{left:8%}}
-@media(prefers-reduced-motion:reduce){.scroll-item{transition:none}}
-
-
-/* FIX: keep decorative silhouettes visible behind all page content */
-.scroll-atmosphere{
-  position:fixed!important;
-  inset:0!important;
-  width:100vw;
-  height:100vh;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  z-index:0!important;
-}
-.announcement-bar{position:relative;z-index:2}
-.topbar{position:sticky;top:0;z-index:5}
-main,footer{position:relative;z-index:1}
-.scroll-atmosphere .scroll-item{pointer-events:none}
-
-
-/* FINAL VISUAL FIX: remove hard section bands; one continuous blended canvas */
-html,body{background:#f1f5ed!important}
-body{
-  background:
-    radial-gradient(ellipse at 12% 16%,#c8ddc2 0%,transparent 30%),
-    radial-gradient(ellipse at 88% 48%,#d5e4ce 0%,transparent 32%),
-    radial-gradient(ellipse at 28% 78%,#dce8d5 0%,transparent 34%),
-    linear-gradient(180deg,#073d2b 0%,#174d37 13%,#dfeadd 27%,#f2f5ed 48%,#e4eddf 68%,#f3f5ef 86%,#e3ecde 100%)!important;
-  background-attachment:scroll!important;
-}
-main>section,
-.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
-  background:transparent!important;
-  border-top:0!important;
-  box-shadow:none;
-}
-main>section:not(.hero):before,
-main>section:not(.hero):after{display:none!important;content:none!important}
-.hero{
-  background:
-    radial-gradient(ellipse at 72% 42%,#23854b 0%,transparent 42%),
-    radial-gradient(ellipse at 12% 15%,#1a7542 0%,transparent 42%),
-    linear-gradient(180deg,#032d20 0%,#075b35 68%,#176044 88%,#477b5a00 100%)!important;
-  box-shadow:none!important;
-}
-.trust-strip{
-  margin-top:-24px!important;
-  border:0!important;
-  border-radius:0!important;
-  backdrop-filter:blur(18px);
-  background:linear-gradient(180deg,#edf3e8a0,#edf3e800)!important;
-}
-.experience-section,.products-section,#categories,.about,.contact{
-  backdrop-filter:none!important;
-}
-.experience-grid article,.category-card,.product-card{
-  border-color:#ffffff70!important;
-  box-shadow:0 12px 34px #173b3209!important;
-}
-.contact{
-  background:linear-gradient(180deg,#dce8d800,#d4e3d0a8 55%,#d4e3d0c0 100%)!important;
-}
-footer{background:linear-gradient(180deg,#d4e3d000,#073d2b 100%)!important}
-
-/* Seamless feature cards: remove visible frames and fade card edges */
-.experience-grid article{
-  border:0!important;
-  outline:0!important;
-  background:linear-gradient(145deg,#ffffff72 0%,#ffffff38 55%,#eaf1e544 100%)!important;
-  box-shadow:0 18px 42px #173b3208!important;
-  border-radius:26px!important;
-  backdrop-filter:blur(14px);
-}
-.experience-grid article::before,
-.experience-grid article::after{
-  content:none!important;
-  display:none!important;
-}
-@media(max-width:620px){
-  .experience-grid article{
-    background:linear-gradient(110deg,#ffffff70,#ffffff35)!important;
-    box-shadow:0 12px 30px #173b3207!important;
-  }
-}
-
 /* Hero showcase: paper cup, plastic cutlery, foam meal box, bottle and foil tray */
 .hero-art{overflow:visible}
 .showcase-product{position:absolute;z-index:3;display:block;filter:drop-shadow(0 24px 20px #001b1460);will-change:transform;animation:productFloat 7s ease-in-out infinite}
@@ -367,275 +254,6 @@ footer{background:linear-gradient(180deg,#e4edcf,#cfe1ad)!important;color:#40553
 .product-bottom b{color:#557a37!important}
 .drawer-head button,.qty button{background:#e5efcf!important;color:#405d31!important}
 @media(max-width:620px){nav#mainNav.open{background:#f8faef!important}}
-
-
-/* Full-page drifting tableware atmosphere */
-.scroll-atmosphere{
-  position:absolute!important;
-  inset:0!important;
-  width:100%!important;
-  height:100%!important;
-  min-height:100%!important;
-  overflow:visible!important;
-  pointer-events:none!important;
-  z-index:0!important;
-}
-.scroll-atmosphere .scroll-item{
-  position:absolute!important;
-  stroke:#587b43!important;
-  opacity:.115!important;
-  filter:blur(2.6px)!important;
-  pointer-events:none!important;
-}
-.scroll-atmosphere .plate-a{
-  width:clamp(105px,16vw,220px);
-  height:auto;
-  top:17%;
-  right:18%;
-  transform:rotate(-13deg);
-}
-.scroll-atmosphere .fork-a{top:7%;left:7%}
-.scroll-atmosphere .spoon-a{top:29%;right:8%}
-.scroll-atmosphere .cup-a{top:44%;left:3%}
-.scroll-atmosphere .foam-a{top:61%;right:4%}
-.scroll-atmosphere .fork-b{top:76%;left:21%}
-.scroll-atmosphere .cup-b{top:90%;right:26%}
-@media(max-width:620px){
- .scroll-atmosphere .scroll-item{opacity:.09!important;filter:blur(2.2px)!important}
- .scroll-atmosphere .plate-a{top:20%;right:4%;width:clamp(95px,27vw,145px)}
- .scroll-atmosphere .fork-a{left:0}
- .scroll-atmosphere .spoon-a{right:0}
- .scroll-atmosphere .foam-a{right:-4%}
- .scroll-atmosphere .fork-b{left:8%}
-}
-
-
-/* Seamless page treatment: no section seams or text-panel frames */
-html,body{background:#edf3e7!important}
-body{
-  background:
-    radial-gradient(ellipse at 12% 12%,#c9dfb8 0%,transparent 30%),
-    radial-gradient(ellipse at 86% 38%,#d6e6c8 0%,transparent 32%),
-    radial-gradient(ellipse at 38% 82%,#dce9d2 0%,transparent 35%),
-    linear-gradient(180deg,#e5efd7 0%,#edf3e7 28%,#f1f5eb 58%,#e8f0df 100%)!important;
-  background-attachment:scroll!important;
-}
-main,main>section,.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
-  background:transparent!important;
-  border:0!important;
-  border-top:0!important;
-  box-shadow:none!important;
-}
-main>section:before,main>section:after,
-.trust-strip:before,.trust-strip:after,
-.experience-section:before,.experience-section:after,
-.about:before,.about:after,.contact:before,.contact:after{
-  content:none!important;display:none!important;
-}
-.hero{
-  background:
-    radial-gradient(ellipse at 22% 18%,#d8e9bc88 0%,transparent 46%),
-    radial-gradient(ellipse at 78% 70%,#c8dda988 0%,transparent 48%),
-    linear-gradient(180deg,#dcebc4b8 0%,#e5efd6a8 72%,#e5efd600 100%)!important;
-  border:0!important;box-shadow:none!important;
-}
-.trust-strip{backdrop-filter:none!important;margin-top:0!important}
-.experience-grid article,
-.about-badge,
-.experience-heading,
-.section-head,
-.about>div,
-.contact>div:first-child{
-  border:0!important;outline:0!important;border-radius:0!important;
-  background:transparent!important;box-shadow:none!important;
-  backdrop-filter:none!important;
-}
-.experience-grid article{padding-left:8px!important;padding-right:8px!important}
-.about-badge{min-height:0!important}
-#contact.contact,.contact,#contact.contact.contact{
-  background:transparent!important;
-  backdrop-filter:none!important;
-}
-#contact.contact p b{background:transparent!important;padding:0!important;border-radius:0!important}
-footer{background:transparent!important}
-.scroll-atmosphere{
-  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;
-  min-height:100%!important;overflow:visible!important;z-index:0!important;
-}
-.scroll-atmosphere .scroll-item{
-  stroke:#6c8b53!important;opacity:.055!important;
-  filter:blur(3.8px)!important;stroke-width:5.5!important;
-}
-.scroll-atmosphere .fork-a{top:5%;left:5%}
-.scroll-atmosphere .spoon-a{top:21%;right:8%}
-.scroll-atmosphere .plate-a{top:15%;right:39%;width:clamp(110px,17vw,220px)}
-.scroll-atmosphere .cup-a{top:34%;left:2%}
-.scroll-atmosphere .foam-a{top:43%;right:3%}
-.scroll-atmosphere .fork-b{top:56%;left:24%}
-.scroll-atmosphere .cup-b{top:67%;right:27%}
-.scroll-atmosphere .fork-c{top:82%;right:8%;width:clamp(42px,7vw,96px)}
-.scroll-atmosphere .spoon-b{top:91%;left:9%;width:clamp(42px,7vw,96px)}
-.scroll-atmosphere .foam-b{top:72%;left:39%;width:clamp(110px,17vw,230px)}
-.scroll-atmosphere .plate-b{top:93%;right:36%;width:clamp(95px,14vw,180px)}
-.scroll-atmosphere .cup-c{top:51%;right:43%;width:clamp(74px,12vw,160px)}
-.scroll-atmosphere .fork-d{top:32%;right:19%;width:clamp(42px,7vw,96px)}
-@media(max-width:620px){
-  .scroll-atmosphere .scroll-item{opacity:.045!important;filter:blur(3.2px)!important}
-  .scroll-atmosphere .plate-a{top:14%;right:3%;width:clamp(90px,25vw,140px)}
-  .scroll-atmosphere .fork-a{left:0}
-  .scroll-atmosphere .spoon-a{right:0}
-  .scroll-atmosphere .cup-a{top:31%;left:-2%}
-  .scroll-atmosphere .foam-a{top:46%;right:-5%}
-  .scroll-atmosphere .fork-b{top:59%;left:7%}
-  .scroll-atmosphere .cup-b{top:70%;right:4%}
-  .scroll-atmosphere .fork-c{top:84%;right:2%}
-  .scroll-atmosphere .spoon-b{top:92%;left:1%}
-  .scroll-atmosphere .foam-b{top:77%;left:24%}
-  .scroll-atmosphere .plate-b{top:96%;right:20%}
-  .scroll-atmosphere .cup-c{top:52%;right:27%}
-  .scroll-atmosphere .fork-d{top:36%;right:4%}
-}
-
-
-/* FINAL CORRECTION: viewport-pinned atmosphere + truly seamless page */
-html,body{min-height:100%;background:#edf3e7!important}
-body{
-  position:relative!important;
-  isolation:isolate!important;
-  background:
-    radial-gradient(ellipse at 13% 9%,#cfe2bd 0%,transparent 31%),
-    radial-gradient(ellipse at 87% 36%,#d9e7cd 0%,transparent 33%),
-    radial-gradient(ellipse at 40% 83%,#e1ead7 0%,transparent 36%),
-    linear-gradient(180deg,#e6efd9 0%,#edf3e7 35%,#f0f4e9 68%,#e7efdc 100%)!important;
-}
-.scroll-atmosphere{
-  position:fixed!important;
-  inset:0!important;
-  width:100vw!important;
-  height:100vh!important;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  z-index:0!important;
-}
-.announcement-bar,.topbar,main,footer{position:relative;z-index:1}
-.topbar{border-bottom:0!important;box-shadow:none!important}
-main>section,.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
-  background:transparent!important;
-  border:0!important;
-  border-top:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-}
-main>section::before,main>section::after,
-.trust-strip::before,.trust-strip::after,
-.experience-section::before,.experience-section::after,
-.about::before,.about::after,.contact::before,.contact::after{
-  display:none!important;content:none!important;
-}
-.hero{
-  background:
-    radial-gradient(ellipse at 20% 22%,#d6e7bb70 0%,transparent 48%),
-    radial-gradient(ellipse at 82% 74%,#c6dda070 0%,transparent 48%),
-    linear-gradient(180deg,#e1edcdb0 0%,#e8f0dca0 72%,#e8f0dc00 100%)!important;
-  border:0!important;box-shadow:none!important;
-}
-.trust-strip{margin:0!important;backdrop-filter:none!important}
-.experience-grid article,.about-badge,.experience-heading,.section-head,
-.about>div,.contact>div:first-child{
-  border:0!important;outline:0!important;border-radius:0!important;
-  background:transparent!important;box-shadow:none!important;
-  backdrop-filter:none!important;
-}
-.experience-grid article{padding-left:8px!important;padding-right:8px!important}
-.about-badge{min-height:0!important}
-#contact.contact,.contact,#contact.contact.contact{
-  background:transparent!important;backdrop-filter:none!important;
-}
-#contact.contact p b{background:transparent!important;padding:0!important;border-radius:0!important}
-footer{background:transparent!important}
-.scroll-atmosphere .scroll-item{
-  position:absolute!important;
-  display:block!important;
-  stroke:#6b8953!important;
-  stroke-width:5!important;
-  opacity:.075!important;
-  filter:blur(2.8px)!important;
-  pointer-events:none!important;
-  will-change:translate;
-}
-.scroll-atmosphere .utensil{width:clamp(40px,6vw,82px)!important;height:auto!important}
-.scroll-atmosphere .cup-a,.scroll-atmosphere .cup-b,.scroll-atmosphere .cup-c,.scroll-atmosphere .cup-d{width:clamp(65px,9vw,125px)!important;height:auto!important}
-.scroll-atmosphere .foam-a,.scroll-atmosphere .foam-b{width:clamp(95px,14vw,185px)!important;height:auto!important}
-.scroll-atmosphere .plate-a,.scroll-atmosphere .plate-b,.scroll-atmosphere .plate-c{width:clamp(90px,13vw,175px)!important;height:auto!important}
-.scroll-atmosphere .fork-a{top:5%;left:5%}
-.scroll-atmosphere .spoon-a{top:20%;right:8%}
-.scroll-atmosphere .plate-a{top:12%;right:38%}
-.scroll-atmosphere .cup-a{top:34%;left:2%}
-.scroll-atmosphere .foam-a{top:45%;right:3%}
-.scroll-atmosphere .fork-b{top:58%;left:23%}
-.scroll-atmosphere .cup-b{top:70%;right:25%}
-.scroll-atmosphere .fork-c{top:83%;right:7%}
-.scroll-atmosphere .spoon-b{top:91%;left:8%}
-.scroll-atmosphere .foam-b{top:75%;left:39%}
-.scroll-atmosphere .plate-b{top:93%;right:39%}
-.scroll-atmosphere .cup-c{top:52%;right:42%}
-.scroll-atmosphere .fork-d{top:31%;right:18%}
-.scroll-atmosphere .spoon-c{top:3%;right:67%}
-.scroll-atmosphere .plate-c{top:39%;left:42%}
-.scroll-atmosphere .cup-d{top:62%;left:4%}
-@media(max-width:620px){
- .scroll-atmosphere .scroll-item{opacity:.065!important;filter:blur(2.5px)!important}
- .scroll-atmosphere .utensil{width:clamp(34px,10vw,54px)!important}
- .scroll-atmosphere .cup-a,.scroll-atmosphere .cup-b,.scroll-atmosphere .cup-c,.scroll-atmosphere .cup-d{width:clamp(54px,16vw,82px)!important}
- .scroll-atmosphere .foam-a,.scroll-atmosphere .foam-b{width:clamp(82px,24vw,120px)!important}
- .scroll-atmosphere .plate-a,.scroll-atmosphere .plate-b,.scroll-atmosphere .plate-c{width:clamp(75px,21vw,115px)!important}
- .scroll-atmosphere .plate-a{top:13%;right:3%}
- .scroll-atmosphere .spoon-a{right:0}
- .scroll-atmosphere .cup-a{top:32%;left:-2%}
- .scroll-atmosphere .foam-a{top:46%;right:-4%}
- .scroll-atmosphere .fork-b{top:58%;left:8%}
- .scroll-atmosphere .cup-b{top:70%;right:3%}
- .scroll-atmosphere .fork-c{top:84%;right:0}
- .scroll-atmosphere .spoon-b{top:92%;left:0}
- .scroll-atmosphere .foam-b{top:76%;left:24%}
- .scroll-atmosphere .plate-b{top:94%;right:18%}
- .scroll-atmosphere .cup-c{top:52%;right:25%}
- .scroll-atmosphere .fork-d{top:34%;right:2%}
- .scroll-atmosphere .spoon-c{top:4%;right:65%}
- .scroll-atmosphere .plate-c{top:40%;left:34%}
- .scroll-atmosphere .cup-d{top:62%;left:0}
-}
-
-
-/* Product catalog cards: image-first layout with clear future slots */
-.product-grid{align-items:stretch}
-.product-card{border:1px solid #dce7d2!important;background:#ffffffa8!important;box-shadow:0 8px 24px #536d3b0b!important}
-.product-visual{height:205px!important;padding:0!important;background:transparent!important;overflow:hidden}
-.product-image-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(145deg,#edf3e6,#e3ecd9);color:#819b69}
-.product-image-placeholder>span{font-size:64px;line-height:1;font-weight:400;opacity:.75}
-.product-image-placeholder>small{font-size:11px;color:#829477;letter-spacing:.2px}
-.product-info{padding:16px 17px 18px!important;text-align:center}
-.product-info h3{margin:0!important;font-size:14px!important;color:#29452f}
-.product-info .detail-hint{margin-top:8px!important}
-.product-empty-slot{border-style:dashed!important;border-color:#b9cba9!important;background:#ffffff55!important}
-.product-empty-slot .product-visual{background:transparent!important}
-.product-empty-slot .product-image-placeholder{background:linear-gradient(145deg,#f1f5eb,#e9f0e2)}
-.product-empty-slot .product-image-placeholder>span{font-size:52px}
-.product-empty-slot .product-info h3{color:#809174}
-.detail-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#edf3e6,#e3ecd9);color:#819b69;font-size:90px}
-@media(max-width:620px){.product-visual{height:165px!important}.product-info{padding:13px 10px 15px!important}.product-info h3{font-size:12px!important}}
-
-/* Product catalog cards: clearer pricing and stronger shopping hierarchy */
-.product-info{display:flex;flex-direction:column;min-height:145px}
-.product-card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:15px}
-.product-card-meta b{font-size:12px;color:#315e42;font-weight:800}
-.product-card-meta span{font-size:9px;color:#82965d;white-space:nowrap}
-.product-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
-.product-card:hover{border-color:#cbd8b8;box-shadow:0 16px 34px #17312e12}
-.product-image-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#78916a}
-.product-image-placeholder span{font-size:54px;line-height:1}
-.product-image-placeholder small{font-size:10px;color:#81917f;text-shadow:none}
-@media(max-width:620px){.product-info{min-height:132px;padding:13px}.product-card-meta{align-items:flex-start;flex-direction:column;gap:5px;padding-top:12px}.product-card-meta b{font-size:11px}.product-card-meta span{font-size:9px}}
 
 
 /* Hero showcase: use the supplied real product composition in the original left-side area */
@@ -790,184 +408,107 @@ footer{background:transparent!important}
 }
 
 
-/* Document-length product atmosphere: independent layer behind the entire page.
-   It scrolls naturally with the document and never intercepts clicks. */
-html{position:relative}
+
+/* Clean single source of truth: full-page product silhouettes */
+html,body{background:#edf3e7!important}
 body{
   position:relative!important;
   isolation:isolate!important;
   min-height:100vh;
+  background:
+    radial-gradient(ellipse at 13% 9%,#cfe2bd 0%,transparent 31%),
+    radial-gradient(ellipse at 87% 36%,#d9e7cd 0%,transparent 33%),
+    radial-gradient(ellipse at 40% 83%,#e1ead7 0%,transparent 36%),
+    linear-gradient(180deg,#e6efd9 0%,#edf3e7 35%,#f0f4e9 68%,#e7efdc 100%)!important;
 }
+main,main>section,.trust-strip,.experience-section,#categories,.products-section,.about,.contact,footer{
+  background:transparent!important;border:0!important;border-top:0!important;box-shadow:none!important;
+}
+main>section:before,main>section:after,.trust-strip:before,.trust-strip:after,
+.experience-section:before,.experience-section:after,.about:before,.about:after,
+.contact:before,.contact:after{content:none!important;display:none!important}
+.hero{
+  background:
+    radial-gradient(ellipse at 20% 22%,#d6e7bb70 0%,transparent 48%),
+    radial-gradient(ellipse at 82% 74%,#c6dda070 0%,transparent 48%),
+    linear-gradient(180deg,#e1edcdb0 0%,#e8f0dca0 72%,#e8f0dc00 100%)!important;
+  border:0!important;box-shadow:none!important;
+}
+.trust-strip{margin:0!important;backdrop-filter:none!important}
+.experience-grid article,.about-badge,.experience-heading,.section-head,.about>div,.contact>div:first-child{
+  border:0!important;outline:0!important;border-radius:0!important;background:transparent!important;
+  box-shadow:none!important;backdrop-filter:none!important;
+}
+.experience-grid article{padding-left:8px!important;padding-right:8px!important}
+.about-badge{min-height:0!important}
+#contact.contact,.contact,#contact.contact.contact{background:transparent!important;backdrop-filter:none!important}
+#contact.contact p b{background:transparent!important;padding:0!important;border-radius:0!important}
+footer{background:transparent!important}
+
+/* The decoration spans the complete document, not just the first screen.
+   The SVGs move gently at different speeds through app.js as the visitor scrolls. */
 body>.scroll-atmosphere{
-  position:absolute!important;
-  inset:0 0 0 0!important;
-  top:0!important;
-  right:0!important;
-  bottom:0!important;
-  left:0!important;
-  width:100%!important;
-  height:auto!important;
-  min-height:100%!important;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  z-index:0!important;
+  position:absolute!important;top:0!important;right:0!important;bottom:0!important;left:0!important;
+  width:100%!important;height:auto!important;min-height:100%!important;
+  overflow:hidden!important;pointer-events:none!important;z-index:0!important;
 }
 body>.scroll-atmosphere .scroll-item{
-  position:absolute!important;
-  display:block!important;
-  fill:none!important;
-  stroke:#64834f!important;
-  stroke-width:5!important;
-  stroke-linecap:round!important;
-  stroke-linejoin:round!important;
-  opacity:.068!important;
-  filter:blur(3px)!important;
-  pointer-events:none!important;
-  will-change:transform;
+  position:absolute!important;display:block!important;height:auto!important;
+  fill:none!important;stroke:#587b43!important;stroke-width:5!important;
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+  opacity:.075!important;filter:blur(2.8px)!important;
+  pointer-events:none!important;will-change:translate;
 }
-/* Keep every decorative object separate and distributed through the full page */
-body>.scroll-atmosphere .fork-a{top:4%!important;left:5%!important;transform:rotate(-18deg)}
-body>.scroll-atmosphere .spoon-a{top:17%!important;right:7%!important;transform:rotate(16deg)}
-body>.scroll-atmosphere .plate-a{top:12%!important;right:37%!important;width:clamp(100px,15vw,190px)!important}
-body>.scroll-atmosphere .cup-a{top:29%!important;left:2%!important;transform:rotate(10deg)}
-body>.scroll-atmosphere .foam-a{top:36%!important;right:3%!important;transform:rotate(-10deg)}
-body>.scroll-atmosphere .fork-b{top:47%!important;left:22%!important;transform:rotate(13deg)}
-body>.scroll-atmosphere .cup-b{top:57%!important;right:24%!important;transform:rotate(-9deg)}
-body>.scroll-atmosphere .fork-c{top:68%!important;right:7%!important;transform:rotate(-14deg)}
-body>.scroll-atmosphere .spoon-b{top:77%!important;left:8%!important;transform:rotate(14deg)}
-body>.scroll-atmosphere .foam-b{top:83%!important;left:38%!important;transform:rotate(8deg)}
-body>.scroll-atmosphere .plate-b{top:91%!important;right:34%!important;width:clamp(90px,13vw,165px)!important}
-body>.scroll-atmosphere .cup-c{top:43%!important;right:42%!important;transform:rotate(8deg)}
-body>.scroll-atmosphere .fork-d{top:25%!important;right:18%!important;transform:rotate(-12deg)}
-body>.scroll-atmosphere .spoon-c{top:3%!important;right:65%!important;transform:rotate(-10deg)}
-body>.scroll-atmosphere .plate-c{top:72%!important;left:42%!important;width:clamp(90px,13vw,165px)!important}
-body>.scroll-atmosphere .cup-d{top:63%!important;left:4%!important;transform:rotate(-8deg)}
-/* Foreground content stays above the decorative layer; hero layout and artwork are untouched */
-body>.announcement-bar{position:relative;z-index:2}
-body>.topbar{position:sticky;z-index:5}
-body>main,body>footer{position:relative;z-index:1}@media(max-width:620px){
-  body>.scroll-atmosphere .scroll-item{opacity:.052!important;filter:blur(2.7px)!important}
-  body>.scroll-atmosphere .utensil{width:clamp(32px,9vw,52px)!important}
-  body>.scroll-atmosphere .cup-a,body>.scroll-atmosphere .cup-b,body>.scroll-atmosphere .cup-c,body>.scroll-atmosphere .cup-d{width:clamp(52px,15vw,78px)!important}
-  body>.scroll-atmosphere .foam-a,body>.scroll-atmosphere .foam-b{width:clamp(78px,22vw,112px)!important}
-  body>.scroll-atmosphere .plate-a,body>.scroll-atmosphere .plate-b,body>.scroll-atmosphere .plate-c{width:clamp(72px,20vw,108px)!important}
-  body>.scroll-atmosphere .fork-a{left:1%!important}
-  body>.scroll-atmosphere .spoon-a{right:1%!important}
-  body>.scroll-atmosphere .plate-a{right:5%!important}
-  body>.scroll-atmosphere .cup-a{left:0!important}
-  body>.scroll-atmosphere .foam-a{right:0!important}
-  body>.scroll-atmosphere .fork-b{left:6%!important}
-  body>.scroll-atmosphere .cup-b{right:4%!important}
-  body>.scroll-atmosphere .fork-c{right:1%!important}
-  body>.scroll-atmosphere .spoon-b{left:1%!important}
-  body>.scroll-atmosphere .foam-b{left:22%!important}
-  body>.scroll-atmosphere .plate-b{right:18%!important}
-  body>.scroll-atmosphere .cup-c{right:28%!important}
-  body>.scroll-atmosphere .fork-d{right:3%!important}
-  body>.scroll-atmosphere .plate-c{left:37%!important}
-  body>.scroll-atmosphere .cup-d{left:1%!important}
+body>.scroll-atmosphere .utensil,
+body>.scroll-atmosphere .spoon-a,
+body>.scroll-atmosphere .spoon-c{width:clamp(38px,5.4vw,72px)!important}
+body>.scroll-atmosphere .cup-a,body>.scroll-atmosphere .cup-b,
+body>.scroll-atmosphere .cup-c,body>.scroll-atmosphere .cup-d{
+  width:clamp(76px,10vw,132px)!important;stroke-width:3.5!important
 }
-@media(prefers-reduced-motion:reduce){
-  body>.scroll-atmosphere .scroll-item{will-change:auto!important}
+body>.scroll-atmosphere .foam-a,body>.scroll-atmosphere .foam-b{
+  width:clamp(110px,15vw,190px)!important;stroke-width:3.5!important
 }
-
-
-/* === FINAL REPAIR: visible scroll-parallax silhouettes + independent hero float === */
-/* Keep the decorative layer above transparent section canvases, below actual content. */
-body{isolation:isolate!important}
-body>.scroll-atmosphere{
-  position:fixed!important;
-  inset:0!important;
-  width:100vw!important;
-  height:100vh!important;
-  overflow:hidden!important;
-  pointer-events:none!important;
-  z-index:2!important;
-}
-body>.scroll-atmosphere .scroll-item{
-  position:absolute!important;
-  display:block!important;
-  height:auto!important;
-  fill:none!important;
-  stroke:#426b4d!important;
-  stroke-width:5!important;
-  stroke-linecap:round!important;
-  stroke-linejoin:round!important;
-  opacity:.045!important;
-  filter:blur(3.4px)!important;
-  pointer-events:none!important;
-  will-change:translate;
-}
-/* Give every SVG a real size; SVGs without width/height otherwise use browser defaults. */
-body>.scroll-atmosphere .utensil{width:clamp(38px,5.4vw,72px)!important}
-body>.scroll-atmosphere .cup-a,
-body>.scroll-atmosphere .cup-b,
-body>.scroll-atmosphere .cup-c,
-body>.scroll-atmosphere .cup-d{width:clamp(76px,10vw,132px)!important;stroke-width:3.5!important}
-body>.scroll-atmosphere .foam-a,
-body>.scroll-atmosphere .foam-b{width:clamp(110px,15vw,190px)!important;stroke-width:3.5!important}
-body>.scroll-atmosphere .plate-a,
-body>.scroll-atmosphere .plate-b,
+body>.scroll-atmosphere .plate-a,body>.scroll-atmosphere .plate-b,
 body>.scroll-atmosphere .plate-c{width:clamp(90px,12vw,155px)!important;stroke-width:3.5!important}
-/* Fixed positions are intentionally viewport-relative; app.js moves them on scroll. */
-body>.scroll-atmosphere .fork-a{top:7%!important;left:6%!important}
-body>.scroll-atmosphere .spoon-a{top:24%!important;right:7%!important}
-body>.scroll-atmosphere .plate-a{top:13%!important;right:34%!important}
-body>.scroll-atmosphere .cup-a{top:44%!important;left:2%!important}
-body>.scroll-atmosphere .foam-a{top:62%!important;right:3%!important}
-body>.scroll-atmosphere .fork-b{top:78%!important;left:19%!important}
-body>.scroll-atmosphere .cup-b{top:85%!important;right:25%!important}
-body>.scroll-atmosphere .fork-c{top:53%!important;right:5%!important}
-body>.scroll-atmosphere .spoon-b{top:72%!important;left:8%!important}
-body>.scroll-atmosphere .foam-b{top:33%!important;left:37%!important}
-body>.scroll-atmosphere .plate-b{top:91%!important;right:35%!important}
-body>.scroll-atmosphere .cup-c{top:39%!important;right:41%!important}
-body>.scroll-atmosphere .fork-d{top:18%!important;right:18%!important}
-body>.scroll-atmosphere .spoon-c{top:5%!important;right:64%!important}
-body>.scroll-atmosphere .plate-c{top:70%!important;left:42%!important}
-body>.scroll-atmosphere .cup-d{top:62%!important;left:5%!important}
-/* Foreground controls and copy remain crisp and clickable. */
-body>.announcement-bar{position:relative!important;z-index:6!important}
-body>.topbar{position:sticky!important;top:0;z-index:7!important}
-body>main{position:relative!important;z-index:auto!important}
-body>main>section>*{position:relative;z-index:3}
-body>main>.hero{position:relative!important;z-index:3!important}
-body>main>.trust-strip>*{position:relative;z-index:3}
-body>main>.experience-section>*,
-body>main>#categories>*,
-body>main>.products-section>*,
-body>main>.about>*,
-body>main>.contact>*{position:relative;z-index:3}
-body>footer{position:relative!important;z-index:3!important}
+body>.scroll-atmosphere .fork-a{top:4%!important;left:5%!important}
+body>.scroll-atmosphere .spoon-a{top:17%!important;right:7%!important}
+body>.scroll-atmosphere .plate-a{top:12%!important;right:37%!important}
+body>.scroll-atmosphere .cup-a{top:29%!important;left:2%!important}
+body>.scroll-atmosphere .foam-a{top:36%!important;right:3%!important}
+body>.scroll-atmosphere .fork-b{top:47%!important;left:22%!important}
+body>.scroll-atmosphere .cup-b{top:57%!important;right:24%!important}
+body>.scroll-atmosphere .fork-c{top:68%!important;right:7%!important}
+body>.scroll-atmosphere .spoon-b{top:77%!important;left:8%!important}
+body>.scroll-atmosphere .foam-b{top:83%!important;left:38%!important}
+body>.scroll-atmosphere .plate-b{top:91%!important;right:34%!important}
+body>.scroll-atmosphere .cup-c{top:43%!important;right:42%!important}
+body>.scroll-atmosphere .fork-d{top:25%!important;right:18%!important}
+body>.scroll-atmosphere .spoon-c{top:3%!important;right:65%!important}
+body>.scroll-atmosphere .plate-c{top:72%!important;left:42%!important}
+body>.scroll-atmosphere .cup-d{top:63%!important;left:4%!important}
+
+/* Correct stacking: decoration behind all readable content; navigation remains on top. */
+body>.announcement-bar{position:relative!important;z-index:2!important}
+body>.topbar{position:sticky!important;top:0!important;z-index:5!important}
+body>main,body>footer{position:relative!important;z-index:1!important}
 @media(max-width:620px){
-  body>.scroll-atmosphere .scroll-item{opacity:.038!important;filter:blur(2.8px)!important}
-  body>.scroll-atmosphere .utensil{width:clamp(30px,8vw,45px)!important}
-  body>.scroll-atmosphere .cup-a,
-  body>.scroll-atmosphere .cup-b,
-  body>.scroll-atmosphere .cup-c,
-  body>.scroll-atmosphere .cup-d{width:clamp(54px,14vw,82px)!important}
-  body>.scroll-atmosphere .foam-a,
-  body>.scroll-atmosphere .foam-b{width:clamp(76px,20vw,112px)!important}
-  body>.scroll-atmosphere .plate-a,
-  body>.scroll-atmosphere .plate-b,
+  body>.scroll-atmosphere .scroll-item{opacity:.062!important;filter:blur(2.4px)!important}
+  body>.scroll-atmosphere .utensil,body>.scroll-atmosphere .spoon-a,
+  body>.scroll-atmosphere .spoon-c{width:clamp(30px,8vw,45px)!important}
+  body>.scroll-atmosphere .cup-a,body>.scroll-atmosphere .cup-b,
+  body>.scroll-atmosphere .cup-c,body>.scroll-atmosphere .cup-d{width:clamp(54px,14vw,82px)!important}
+  body>.scroll-atmosphere .foam-a,body>.scroll-atmosphere .foam-b{width:clamp(76px,20vw,112px)!important}
+  body>.scroll-atmosphere .plate-a,body>.scroll-atmosphere .plate-b,
   body>.scroll-atmosphere .plate-c{width:clamp(66px,18vw,100px)!important}
 }
-/* Hero animation is independent of the parallax layer and preserves the enlarged artwork. */
+/* Preserve the approved enlarged hero artwork and its subtle independent float. */
 body .hero .hero-products-showcase .hero-products-image{
-  position:relative!important;
-  top:auto!important;
-  animation:amirHeroFloatFinal 5.6s ease-in-out infinite!important;
+  position:relative!important;top:auto!important;
+  animation:amirHeroFloatClean 5.6s ease-in-out infinite!important;
 }
-@keyframes amirHeroFloatFinal{
-  0%,100%{translate:0 0}
-  50%{translate:0 -9px}
-}
+@keyframes amirHeroFloatClean{0%,100%{translate:0 0}50%{translate:0 -9px}}
 @media(max-width:620px){
-  body .hero .hero-products-showcase .hero-products-image{
-    animation-duration:6.4s!important;
-  }
-  @keyframes amirHeroFloatFinal{
-    0%,100%{translate:0 0}
-    50%{translate:0 -6px}
-  }
+  body .hero .hero-products-showcase .hero-products-image{animation-duration:6.4s!important}
+  @keyframes amirHeroFloatClean{0%,100%{translate:0 0}50%{translate:0 -6px}}
 }
