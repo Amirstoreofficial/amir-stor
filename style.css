@@ -660,3 +660,50 @@ body>.scroll-atmosphere img.cup-photo-c{top:43%!important;right:42%!important}
     opacity:.19!important;
   }
 }
+
+
+/* Nine faint cup photos: three scattered in the lower area of each selected section. */
+#categories>.section-cup-background,
+#products>.section-cup-background,
+#about>.section-cup-background{
+  inset:44% 0 0!important;
+  height:56%!important;
+  z-index:0!important;
+  overflow:hidden!important;
+}
+#categories>.section-cup-background img.cup-photo,
+#products>.section-cup-background img.cup-photo,
+#about>.section-cup-background img.cup-photo{
+  position:absolute!important;
+  display:block!important;
+  width:clamp(82px,10vw,132px)!important;
+  max-height:165px!important;
+  height:auto!important;
+  object-fit:contain!important;
+  opacity:.085!important;
+  filter:blur(2.4px)!important;
+  pointer-events:none!important;
+  will-change:translate;
+}
+/* Categories: deliberately irregular, never arranged in a line. */
+#categories>.section-cup-background .cup-photo-one{top:8%!important;left:7%!important;right:auto!important}
+#categories>.section-cup-background .cup-photo-two{top:48%!important;right:27%!important;left:auto!important}
+#categories>.section-cup-background .cup-photo-three{bottom:2%!important;left:57%!important;right:auto!important}
+/* Products */
+#products>.section-cup-background .cup-photo-one{top:4%!important;right:9%!important;left:auto!important}
+#products>.section-cup-background .cup-photo-two{top:43%!important;left:18%!important;right:auto!important}
+#products>.section-cup-background .cup-photo-three{bottom:0!important;right:48%!important;left:auto!important}
+/* About */
+#about>.section-cup-background .cup-photo-one{top:5%!important;left:12%!important;right:auto!important}
+#about>.section-cup-background .cup-photo-two{top:45%!important;right:8%!important;left:auto!important}
+#about>.section-cup-background .cup-photo-three{bottom:0!important;left:53%!important;right:auto!important}
+@media(max-width:620px){
+ #categories>.section-cup-background img.cup-photo,
+ #products>.section-cup-background img.cup-photo,
+ #about>.section-cup-background img.cup-photo{
+   width:clamp(62px,16vw,92px)!important;
+   max-height:118px!important;
+   opacity:.075!important;
+   filter:blur(2px)!important;
+ }
+}
