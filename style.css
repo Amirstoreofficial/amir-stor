@@ -502,6 +502,58 @@ body>main,body>footer{position:relative!important;z-index:1!important}
   body>.scroll-atmosphere .plate-a,body>.scroll-atmosphere .plate-b,
   body>.scroll-atmosphere .plate-c{width:clamp(66px,18vw,100px)!important}
 }
+
+/* Background tableware: softly filled, recognizable silhouettes scattered behind content.
+   Intentionally scoped to the decorative layer only; hero styles remain untouched. */
+body>.scroll-atmosphere{z-index:0!important}
+body>.scroll-atmosphere .scroll-item{
+  stroke:#78966b!important;
+  stroke-width:7!important;
+  opacity:.17!important;
+  filter:blur(4.2px)!important;
+}
+body>.scroll-atmosphere .cup-a path:first-child,
+body>.scroll-atmosphere .cup-b path:first-child,
+body>.scroll-atmosphere .cup-c path:first-child,
+body>.scroll-atmosphere .cup-d path:first-child{
+  fill:#9ab48a!important;fill-opacity:.34!important;
+  stroke:#66895e!important;stroke-width:3.5!important;
+}
+body>.scroll-atmosphere .cup-a path:nth-child(2),
+body>.scroll-atmosphere .cup-b path:nth-child(2),
+body>.scroll-atmosphere .cup-c path:nth-child(2),
+body>.scroll-atmosphere .cup-d path:nth-child(2){
+  stroke:#66895e!important;stroke-width:3!important;
+}
+body>.scroll-atmosphere .plate-a ellipse,
+body>.scroll-atmosphere .plate-b ellipse,
+body>.scroll-atmosphere .plate-c ellipse{
+  fill:#a8bd95!important;fill-opacity:.28!important;
+  stroke:#66895e!important;stroke-width:3!important;
+}
+body>.scroll-atmosphere .foam-a path:first-child,
+body>.scroll-atmosphere .foam-b path:first-child{
+  fill:#a8bd95!important;fill-opacity:.3!important;
+  stroke:#66895e!important;stroke-width:3.5!important;
+}
+body>.scroll-atmosphere .foam-a path:nth-child(2),
+body>.scroll-atmosphere .foam-b path:nth-child(2){
+  stroke:#66895e!important;stroke-width:3!important;
+}
+body>.scroll-atmosphere .utensil{
+  stroke:#6f8f63!important;stroke-width:8!important;
+  stroke-linecap:round!important;stroke-linejoin:round!important;
+}
+body>.scroll-atmosphere .spoon-a ellipse,
+body>.scroll-atmosphere .spoon-b ellipse,
+body>.scroll-atmosphere .spoon-c ellipse{
+  fill:#a8bd95!important;fill-opacity:.32!important;
+  stroke:#66895e!important;stroke-width:4!important;
+}
+@media(max-width:620px){
+  body>.scroll-atmosphere .scroll-item{opacity:.145!important;filter:blur(3.7px)!important}
+}
+
 /* Preserve the approved enlarged hero artwork and its subtle independent float. */
 body .hero .hero-products-showcase .hero-products-image{
   position:relative!important;top:auto!important;
