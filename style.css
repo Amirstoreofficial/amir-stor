@@ -599,3 +599,10 @@ body>.scroll-atmosphere>.bg-product{visibility:visible!important;}
 
 /* Remove any legacy decorative utensil SVGs, including stale markup outside the background wrapper. */
 .scroll-item,.utensil,.fork-a,.fork-b,.fork-c,.fork-d,.spoon-a,.spoon-b,.spoon-c,.cup-a,.cup-b,.cup-c,.cup-d,.foam-a,.foam-b,.plate-a,.plate-b,.plate-c{display:none!important;}
+
+
+/* Prevent translated background products from extending the document's scroll height. */
+body>.scroll-atmosphere{
+  right:auto!important;bottom:auto!important;left:0!important;top:0!important;
+  overflow:hidden!important;
+}
