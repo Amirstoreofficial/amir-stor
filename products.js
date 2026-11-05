@@ -9,6 +9,8 @@ window.AMIR_PRODUCTS = [
     mouthSize: "۲۸ میلی‌متر",
     weights: "در وزن‌های مختلف",
     price: 28000,
+    packPrice: 200000,
+    packCount: 100,
     unit: "عدد",
     symbol: "▱"
   },
