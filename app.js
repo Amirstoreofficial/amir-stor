@@ -44,21 +44,18 @@ function openOrderForm(){let entries=Object.entries(cart).filter(([id,n])=>n>0);
 function closeOrderForm(){$("#orderModal").classList.remove("show");$("#orderModal").setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")}
 $("#sendOrder").onclick=openOrderForm;$("#orderClose").onclick=closeOrderForm;$("#orderModal").addEventListener("click",e=>{if(e.target.matches("[data-close-order]"))closeOrderForm()});
 $("#orderForm").addEventListener("submit",async e=>{e.preventDefault();let entries=Object.entries(cart).filter(([id,n])=>n>0);if(!entries.length){alert("سبد سفارش خالی است.");closeOrderForm();return}let form=new FormData(e.currentTarget);let name=String(form.get("customerName")||"").trim(),phone=String(form.get("customerPhone")||"").trim(),address=String(form.get("customerAddress")||"").trim(),note=String(form.get("customerNote")||"").trim();if(!name||!phone||!address){alert("لطفاً نام، شماره تماس و آدرس را کامل کنید.");return}let lines=entries.map(([id,n])=>{let p=products.find(x=>x.id==id);return `• ${p.name} — تعداد: ${new Intl.NumberFormat("fa-IR").format(n)} ${p.unit||"عدد"} — ${p.price==null?"استعلام قیمت":money(p.price)}`});let total=entries.reduce((a,[id,n])=>a+(products.find(x=>x.id==id).price||0)*n,0);let msg=`سلام، درخواست سفارش جدید برای فروشگاه امیر دارم.\n\nمشخصات مشتری:\nنام: ${name}\nشماره تماس: ${phone}\nآدرس: ${address}\n\nاقلام درخواستی:\n${lines.join("\n")}\n\nجمع تقریبی اقلام قیمت‌دار: ${total?money(total):"نیازمند استعلام"}\n${note?"توضیحات: "+note+"\n":""}\nاین پیام صرفاً درخواست سفارش است؛ پرداختی انجام نشده و لطفاً موجودی و مبلغ نهایی را اعلام کنید.`;
-const rubikaTab=window.open("https://rubika.ir/AmirPlastics","_blank","noopener");
-try{
-await navigator.clipboard.writeText(msg);
-$("#orderStatus").innerHTML='متن کامل فاکتور کپی شد و صفحه روبیکای فروشگاه باز شد. وارد گفت‌وگوی فروشگاه شوید، متن را جای‌گذاری کنید و دکمه ارسال را بزنید. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">باز کردن روبیکا</a>';
-}catch(err){
 if(navigator.share){
 try{
 await navigator.share({title:"درخواست سفارش فروشگاه امیر",text:msg});
-$("#orderStatus").textContent="منوی اشتراک‌گذاری باز شد؛ روبیکا را انتخاب کنید و ارسال را بزنید.";
+$("#orderStatus").innerHTML='منوی اشتراک‌گذاری گوشی باز شد. روبیکا را انتخاب کنید، سپس گفت‌وگوی <b dir="ltr">@AmirPlastics</b> را به‌عنوان گیرنده انتخاب کنید و دکمه ارسال را بزنید. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">مشاهده حساب فروشگاه</a>';
 }catch(shareErr){
-$("#orderStatus").innerHTML='کپی خودکار انجام نشد. صفحه روبیکا را باز کنید و در صورت نیاز دوباره تلاش کنید: <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">ورود به روبیکا</a>';
+if(shareErr.name==="AbortError"){
+$("#orderStatus").textContent="اشتراک‌گذاری لغو شد؛ سفارش ارسال نشده است. برای تلاش دوباره، ثبت درخواست را بزنید.";
+}else{
+try{await navigator.clipboard.writeText(msg);$("#orderStatus").innerHTML='متن فاکتور کپی شد. روبیکا را باز کنید، گفت‌وگوی <b dir="ltr">@AmirPlastics</b> را انتخاب کنید، متن را جای‌گذاری و ارسال کنید. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">باز کردن حساب فروشگاه</a>';}catch(copyErr){$("#orderStatus").textContent="مرورگر اجازه اشتراک‌گذاری یا کپی خودکار نداد. لطفاً از مرورگر دیگری امتحان کنید.";}
 }
 }else{
-$("#orderStatus").innerHTML='کپی خودکار در مرورگر مجاز نشد. صفحه روبیکا را باز کنید و متن سفارش را دستی وارد کنید: <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">ورود به روبیکا</a>';
-}
+try{await navigator.clipboard.writeText(msg);$("#orderStatus").innerHTML='متن فاکتور کپی شد. روبیکا را باز کنید، گفت‌وگوی <b dir="ltr">@AmirPlastics</b> را انتخاب کنید، متن را جای‌گذاری و ارسال کنید. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">باز کردن حساب فروشگاه</a>';}catch(err){$("#orderStatus").textContent="این مرورگر امکان اشتراک‌گذاری یا کپی خودکار را نداد. لطفاً از مرورگر دیگری امتحان کنید.";}
 }});
 renderProducts();renderCart();
 
