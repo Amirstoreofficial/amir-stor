@@ -43,8 +43,23 @@ $("#categoryFilter").onchange=()=>{activeCategory="همه";renderProducts()};$("
 function openOrderForm(){let entries=Object.entries(cart).filter(([id,n])=>n>0);if(!entries.length){alert("ابتدا محصولی به سبد سفارش اضافه کنید.");return}closeCart();$("#orderStatus").textContent="";$("#orderModal").classList.add("show");$("#orderModal").setAttribute("aria-hidden","false");document.body.classList.add("modal-open")}
 function closeOrderForm(){$("#orderModal").classList.remove("show");$("#orderModal").setAttribute("aria-hidden","true");document.body.classList.remove("modal-open")}
 $("#sendOrder").onclick=openOrderForm;$("#orderClose").onclick=closeOrderForm;$("#orderModal").addEventListener("click",e=>{if(e.target.matches("[data-close-order]"))closeOrderForm()});
-$("#orderForm").addEventListener("submit",e=>{e.preventDefault();let entries=Object.entries(cart).filter(([id,n])=>n>0);if(!entries.length){alert("سبد سفارش خالی است.");closeOrderForm();return}let form=new FormData(e.currentTarget);let name=String(form.get("customerName")||"").trim(),phone=String(form.get("customerPhone")||"").trim(),address=String(form.get("customerAddress")||"").trim(),note=String(form.get("customerNote")||"").trim();if(!name||!phone||!address){alert("لطفاً نام، شماره تماس و آدرس را کامل کنید.");return}let lines=entries.map(([id,n])=>{let p=products.find(x=>x.id==id);return `• ${p.name} — تعداد: ${new Intl.NumberFormat("fa-IR").format(n)} ${p.unit||"عدد"} — ${p.price==null?"استعلام قیمت":money(p.price)}`});let total=entries.reduce((a,[id,n])=>a+(products.find(x=>x.id==id).price||0)*n,0);let msg=`سلام، درخواست سفارش جدید برای فروشگاه امیر دارم.\n\nمشخصات مشتری:\nنام: ${name}\nشماره تماس: ${phone}\nآدرس: ${address}\n\nاقلام درخواستی:\n${lines.join("\n")}\n\nجمع تقریبی اقلام قیمت‌دار: ${total?money(total):"نیازمند استعلام"}\n${note?"توضیحات: "+note+"\n":""}\nاین پیام صرفاً درخواست سفارش است؛ پرداختی انجام نشده و لطفاً موجودی و مبلغ نهایی را اعلام کنید.`;
-$("#orderStatus").textContent="ارسال سفارش از طریق روبیکا هنوز راه‌اندازی نشده است. فعلاً هیچ سفارشی ارسال نشده؛ پس از تکمیل اتصال امن ربات، همین فرم مستقیماً به حساب فروشگاه پیام می‌فرستد."});
+$("#orderForm").addEventListener("submit",async e=>{e.preventDefault();let entries=Object.entries(cart).filter(([id,n])=>n>0);if(!entries.length){alert("سبد سفارش خالی است.");closeOrderForm();return}let form=new FormData(e.currentTarget);let name=String(form.get("customerName")||"").trim(),phone=String(form.get("customerPhone")||"").trim(),address=String(form.get("customerAddress")||"").trim(),note=String(form.get("customerNote")||"").trim();if(!name||!phone||!address){alert("لطفاً نام، شماره تماس و آدرس را کامل کنید.");return}let lines=entries.map(([id,n])=>{let p=products.find(x=>x.id==id);return `• ${p.name} — تعداد: ${new Intl.NumberFormat("fa-IR").format(n)} ${p.unit||"عدد"} — ${p.price==null?"استعلام قیمت":money(p.price)}`});let total=entries.reduce((a,[id,n])=>a+(products.find(x=>x.id==id).price||0)*n,0);let msg=`سلام، درخواست سفارش جدید برای فروشگاه امیر دارم.\n\nمشخصات مشتری:\nنام: ${name}\nشماره تماس: ${phone}\nآدرس: ${address}\n\nاقلام درخواستی:\n${lines.join("\n")}\n\nجمع تقریبی اقلام قیمت‌دار: ${total?money(total):"نیازمند استعلام"}\n${note?"توضیحات: "+note+"\n":""}\nاین پیام صرفاً درخواست سفارش است؛ پرداختی انجام نشده و لطفاً موجودی و مبلغ نهایی را اعلام کنید.`;
+try{
+if(navigator.share){
+await navigator.share({title:"درخواست سفارش فروشگاه امیر",text:msg});
+$("#orderStatus").textContent="متن سفارش برای اشتراک‌گذاری باز شد. روبیکا را انتخاب کنید و در گفت‌وگوی فروشگاه دکمه ارسال را بزنید؛ تا قبل از زدن ارسال، سفارش به فروشگاه نرسیده است.";
+}else{
+await navigator.clipboard.writeText(msg);
+$("#orderStatus").innerHTML='متن سفارش کپی شد. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">ورود به گفت‌وگوی فروشگاه در روبیکا</a>؛ متن را آنجا جای‌گذاری و ارسال کنید.';
+}
+}catch(err){
+if(err&&err.name==="AbortError"){
+$("#orderStatus").textContent="اشتراک‌گذاری لغو شد؛ هیچ سفارشی ارسال نشد. دوباره ثبت درخواست را بزنید و روبیکا را انتخاب کنید.";
+}else{
+try{await navigator.clipboard.writeText(msg);$("#orderStatus").innerHTML='متن سفارش کپی شد. <a href="https://rubika.ir/AmirPlastics" target="_blank" rel="noopener">ورود به روبیکا</a> و متن را جای‌گذاری و ارسال کنید.';}
+catch(copyErr){$("#orderStatus").textContent="اشتراک‌گذاری خودکار در دسترس نیست. لطفاً از مرورگر دیگری استفاده کنید یا اطلاعات سفارش را دوباره بررسی کنید.";}
+}
+}});
 renderProducts();renderCart();
 
 
