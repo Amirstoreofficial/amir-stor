@@ -1380,3 +1380,30 @@ main>.about{
   .experience-section{padding-top:26px!important}
   #categories,#products{padding-top:32px!important}
 }
+
+
+/* FINAL FIX — remove the remaining hero panel background.
+   The earlier .hero selector had higher specificity than main>section,
+   so its gradient was still painting a separate block. */
+body > main > section.hero{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+body > main > section.hero::before,
+body > main > section.hero::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+body > main > section:not(#contact){
+  border-top:0!important;
+  border-bottom:0!important;
+  outline:0!important;
+}
