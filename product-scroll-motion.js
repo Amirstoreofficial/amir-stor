@@ -1,4 +1,4 @@
-/* Category-to-catalog scroll flight: independent 3D cutouts follow scroll and land with the first product row. */
+/* Smooth category-to-catalog scroll flight. */
 (()=>{'use strict';
  const grid=document.getElementById('productGrid');
  const categories=document.getElementById('categories');
@@ -7,7 +7,7 @@
  const records=new Map();
  let frame=0;
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
- const ease=v=>v*v*(3-2*v);
+ const ease=v=>v*v*v*(v*(v*6-15)+10);
  function sideFor(card,index){
   const name=(card.querySelector('.product-info h3')?.textContent||'').trim();
   if(/جار/.test(name))return 'left';
@@ -54,29 +54,34 @@
   const firstRowTop=Math.min(...cards.map(card=>card.getBoundingClientRect().top+scroll));
   let startScroll=categoryTop-vh*.72;
   let endScroll=firstRowTop-vh*.72;
-  if(endScroll-startScroll<vh*.28)endScroll=startScroll+vh*.28;
+  if(endScroll-startScroll<vh*.32)endScroll=startScroll+vh*.32;
   const range=endScroll-startScroll;
+  const jobs=[];
   for(const [card,rec] of records){
    if(!card.isConnected||!rec.img.isConnected)continue;
    const target=rec.img.getBoundingClientRect();
    if(!target.width||!target.height)continue;
-   const delay=rec.index*range*.012;
+   const delay=rec.index*range*.009;
    const p=clamp((scroll-startScroll-delay)/(range-delay),0,1);
    const t=ease(p);
    const w=target.width,h=target.height;
    const fromRight=rec.side==='right';
-   const startX=fromRight?vw+w*.62:-w*.62;
+   const startX=fromRight?vw+w*.58:-w*.58;
    const endX=target.left+w/2;
    const startY=categoryTop+vh*.18-scroll;
    const endY=target.top+h/2;
    const x=startX+(endX-startX)*t;
-   const y=startY+(endY-startY)*t-Math.sin(p*Math.PI)*vh*.075;
-   const scale=1.22-.22*t;
-   const rotate=(fromRight?1:-1)*(14*(1-t)+Math.sin(p*Math.PI*2)*1.8);
-   const fadeIn=clamp(p/.11,0,1);
-   const fadeOut=clamp((1-p)/.035,0,1);
+   const y=startY+(endY-startY)*t-Math.sin(p*Math.PI)*vh*.045;
+   const scale=1.12-.12*t;
+   const rotate=(fromRight?1:-1)*(8*(1-t)+Math.sin(p*Math.PI*2)*.8);
+   const fadeIn=clamp(p/.15,0,1);
+   const fadeOut=clamp((1-p)/.055,0,1);
    const alpha=Math.min(fadeIn,fadeOut);
    const active=p>0&&p<1;
+   jobs.push({rec,w,h,x,y,scale,rotate,alpha,active});
+  }
+  for(const job of jobs){
+   const {rec,w,h,x,y,scale,rotate,alpha,active}=job;
    rec.img.style.opacity=active?String(1-alpha):rec.originalOpacity;
    rec.img.style.visibility=rec.originalVisibility;
    rec.overlay.style.width=w+'px';
