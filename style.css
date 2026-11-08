@@ -723,3 +723,64 @@ footer{padding:16px 5%}
 @media(prefers-reduced-motion:reduce){
  .hero-products-image{animation:none!important}
 }
+
+
+/* Center the three trust messages and the three experience highlights */
+.trust-strip{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ align-items:center!important;
+ justify-items:center!important;
+ text-align:center!important;
+ gap:14px!important;
+}
+.trust-strip>div{
+ align-items:center!important;
+ justify-content:center!important;
+ text-align:center!important;
+ min-width:0!important;
+}
+.experience-grid{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ align-items:stretch!important;
+ justify-items:stretch!important;
+ gap:16px!important;
+}
+.experience-grid article{
+ min-height:0!important;
+ align-items:center!important;
+ justify-content:center!important;
+ text-align:center!important;
+ padding:20px 12px!important;
+ gap:9px!important;
+}
+.experience-grid article>span{display:none!important}
+.experience-grid article>b{display:block!important;text-align:center!important}
+.experience-grid article>small{text-align:center!important}
+@media(max-width:620px){
+ .trust-strip{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  padding:12px 8px!important;
+  gap:6px!important;
+ }
+ .trust-strip>div{gap:4px!important}
+ .trust-strip b{font-size:10px!important;line-height:1.5!important}
+ .trust-strip small{font-size:8px!important;line-height:1.6!important}
+ .experience-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:5px!important;
+ }
+ .experience-grid article{
+  padding:12px 5px!important;
+  gap:6px!important;
+ }
+ .experience-grid article>b{font-size:10px!important;line-height:1.7!important}
+ .experience-grid article>small{font-size:8px!important;line-height:1.7!important}
+}
+@media(max-width:360px){
+ .trust-strip b{font-size:9px!important}
+ .trust-strip small{font-size:7px!important}
+ .experience-grid article>b{font-size:9px!important}
+ .experience-grid article>small{font-size:7px!important}
+}
