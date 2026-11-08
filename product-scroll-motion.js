@@ -1,41 +1,35 @@
-/* Product-only scroll motion — fail-open, independent of generic reveal effects. */
+/* Product card side-entry motion — independent translate channel. */
 (()=>{'use strict';
  const grid=document.getElementById('productGrid');
  if(!grid)return;
- const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(reduced||!('IntersectionObserver' in window))return;
- const observed=new WeakSet();
- let observer;
+ const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+ if(reduce||!('IntersectionObserver' in window))return;
+ const seen=new WeakSet();
  try{
-   observer=new IntersectionObserver(entries=>{
-     entries.forEach(entry=>{
-       entry.target.classList.toggle('product-side-visible',entry.isIntersecting);
-     });
-   },{threshold:0.08,rootMargin:'0px 0px -3% 0px'});
-   function prepare(root){
-     if(!root)return;
-     const cards=[];
-     if(root.nodeType===1&&root.matches?.('#productGrid .product-card'))cards.push(root);
-     root.querySelectorAll?.('#productGrid .product-card').forEach(card=>cards.push(card));
-     cards.forEach(card=>{
-       if(observed.has(card))return;
-       observed.add(card);
-       const siblings=[...card.parentElement.children].filter(el=>el.matches('.product-card'));
-       if(siblings.indexOf(card)%2===1)card.classList.add('product-side-right');
-       observer.observe(card);
-     });
-   }
-   prepare(document);
-   const mutations=new MutationObserver(records=>{
-     records.forEach(record=>record.addedNodes.forEach(node=>{
-       if(node.nodeType===1)prepare(node);
-     }));
+  const observer=new IntersectionObserver(entries=>{
+   entries.forEach(entry=>{
+    entry.target.classList.toggle('product-side-visible',entry.isIntersecting);
    });
-   mutations.observe(grid,{childList:true,subtree:true});
-   // Activate hidden starting positions only after observer setup succeeds.
-   grid.classList.add('product-motion-ready');
+  },{threshold:0.04,rootMargin:'0px 0px -2% 0px'});
+  const prepare=node=>{
+   if(!node)return;
+   const cards=[];
+   if(node.nodeType===1&&node.matches?.('.product-card'))cards.push(node);
+   node.querySelectorAll?.('.product-card').forEach(card=>cards.push(card));
+   cards.forEach(card=>{
+    if(seen.has(card))return;
+    seen.add(card);
+    const siblings=[...card.parentElement.children].filter(el=>el.classList.contains('product-card'));
+    card.classList.toggle('product-side-right',siblings.indexOf(card)%2===1);
+    observer.observe(card);
+   });
+  };
+  prepare(grid);
+  new MutationObserver(records=>records.forEach(record=>record.addedNodes.forEach(prepare)))
+   .observe(grid,{childList:true,subtree:true});
+  grid.classList.add('product-motion-ready');
  }catch(error){
-   grid.classList.remove('product-motion-ready');
-   grid.querySelectorAll('.product-card').forEach(card=>card.classList.add('product-side-visible'));
+  grid.classList.remove('product-motion-ready');
+  grid.querySelectorAll('.product-card').forEach(card=>card.classList.add('product-side-visible'));
  }
 })();
