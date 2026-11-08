@@ -1,57 +1,70 @@
-/* Product images enter from the actual viewport edge, then settle in their own cards. */
+/* Scroll-linked 3D product flight: images travel from beyond the viewport into their own cards. */
 (()=>{'use strict';
  const grid=document.getElementById('productGrid');
  if(!grid)return;
  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if(reduce)return;
- const seen=new WeakSet();
  let frame=0;
- const cards=()=>[...grid.querySelectorAll('.product-card')];
- const register=(root)=>{
+ const registered=new WeakSet();
+ const getCards=()=>[...grid.querySelectorAll('.product-card')];
+ function register(root){
   const list=[];
   if(root.nodeType===1&&root.matches&&root.matches('.product-card'))list.push(root);
-  if(root.querySelectorAll)root.querySelectorAll('.product-card').forEach(c=>list.push(c));
+  if(root.querySelectorAll)root.querySelectorAll('.product-card').forEach(card=>list.push(card));
   list.forEach(card=>{
-   if(seen.has(card))return;
-   seen.add(card);
+   if(registered.has(card))return;
+   registered.add(card);
    const visual=card.querySelector('.product-visual');
-   if(visual)visual.style.setProperty('--product-entry-x','-110vw');
-   card.classList.remove('product-side-visible');
+   if(visual)visual.classList.add('product-flight-ready');
   });
- };
- const update=()=>{
+ }
+ function clamp(value,min,max){return Math.max(min,Math.min(max,value))}
+ function update(){
   frame=0;
   const width=window.innerWidth||document.documentElement.clientWidth;
   const height=window.innerHeight||document.documentElement.clientHeight;
-  const list=cards();
+  const scroll=window.scrollY||window.pageYOffset||0;
+  const list=getCards();
   list.forEach((card,index)=>{
    const visual=card.querySelector('.product-visual');
    if(!visual)return;
-   const rect=card.getBoundingClientRect();
-   const center=rect.left+rect.width/2;
-   let fromRight=center>width/2;
-   if(Math.abs(center-width/2)<rect.width*.12)fromRight=index%2===1;
-   /* Offset far enough that the complete visual begins beyond the chosen viewport edge. */
-   const distance=fromRight ? Math.max(0,width-rect.left)+rect.width*.15+40 : -(Math.max(0,rect.right)+rect.width*.15+40);
-   visual.style.setProperty('--product-entry-x',distance+'px');
-   const visible=rect.top<height*.88&&rect.bottom>height*.12;
-   card.classList.toggle('product-side-visible',visible);
+   const cardRect=card.getBoundingClientRect();
+   const visualRect=visual.getBoundingClientRect();
+   const cardTop=cardRect.top+scroll;
+   const center=cardRect.left+cardRect.width/2;
+   const fromRight=Math.abs(center-width/2)<cardRect.width*.16 ? index%2===1 : center>width/2;
+   const endScroll=cardTop-height*.55;
+   const startScroll=endScroll-height*.9;
+   const progress=clamp((scroll-startScroll)/(endScroll-startScroll),0,1);
+   const startX=(fromRight?1:-1)*(width+visualRect.width+80);
+   const startY=-(cardTop-startScroll+visualRect.height+24);
+   const x=startX*(1-progress);
+   const y=startY*(1-progress);
+   const opacity=clamp(progress*2.1,0,1);
+   const scale=.84+.16*progress;
+   const rotate=(fromRight?-1:1)*10*(1-progress);
+   visual.style.setProperty('--flight-x',x.toFixed(1)+'px');
+   visual.style.setProperty('--flight-y',y.toFixed(1)+'px');
+   visual.style.setProperty('--flight-opacity',opacity.toFixed(3));
+   visual.style.setProperty('--flight-scale',scale.toFixed(3));
+   visual.style.setProperty('--flight-rotate',rotate.toFixed(2)+'deg');
+   visual.classList.toggle('product-flight-landed',progress>=1);
   });
- };
- const schedule=()=>{if(!frame)frame=requestAnimationFrame(update)};
+ }
+ function schedule(){if(!frame)frame=requestAnimationFrame(update)}
  try{
   register(grid);
-  grid.classList.add('product-motion-ready');
+  grid.classList.add('product-flight-enabled');
   void grid.offsetWidth;
   schedule();
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   new MutationObserver(records=>{
-   records.forEach(r=>r.addedNodes.forEach(node=>{if(node.nodeType===1)register(node)}));
+   records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)register(node)}));
    schedule();
   }).observe(grid,{childList:true,subtree:true});
  }catch(error){
-  grid.classList.remove('product-motion-ready');
-  cards().forEach(card=>card.classList.add('product-side-visible'));
+  grid.classList.remove('product-flight-enabled');
+  getCards().forEach(card=>{const visual=card.querySelector('.product-visual');if(visual)visual.classList.remove('product-flight-ready')});
  }
 })();
