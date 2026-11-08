@@ -880,3 +880,41 @@ footer{padding:16px 5%}
   mix-blend-mode:normal!important;
   object-fit:contain!important;
 }
+
+
+/* اصلاح فاصله قیمت و لینک مشخصات در کارت محصولات */
+#productGrid .product-card-meta{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:flex-start!important;
+  gap:7px!important;
+  margin-top:10px!important;
+  width:100%!important;
+  min-width:0!important;
+  line-height:1.8!important;
+}
+#productGrid .product-card-meta b,
+#productGrid .product-card-meta span{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+  line-height:1.8!important;
+}
+#productGrid .product-card-meta b{
+  font-size:clamp(8px,1vw,11px)!important;
+}
+#productGrid .product-card-meta span{
+  font-size:clamp(8px,.9vw,10px)!important;
+  padding-top:4px!important;
+  border-top:1px solid #dfe8dc!important;
+}
+@media(max-width:620px){
+  #productGrid .product-card-meta{gap:6px!important;margin-top:8px!important}
+  #productGrid .product-card-meta b{font-size:8px!important}
+  #productGrid .product-card-meta span{font-size:8px!important;padding-top:5px!important}
+}
