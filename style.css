@@ -1490,3 +1490,38 @@ body>.scroll-atmosphere{display:none!important}
  .site-qr-image-link{padding:6px;border-radius:11px}
  .site-qr-image{width:112px}
 }
+
+
+/* AMIR STORE — product cards: side-entry, soft 3D depth and restrained floating */
+#productGrid .product-card{perspective:1100px;transform-style:preserve-3d}
+#productGrid .product-visual{
+  opacity:0;
+  transform:translate3d(-54px,0,24px) rotateY(8deg);
+  transform-origin:center center;
+  transition:opacity .85s ease,transform .95s cubic-bezier(.18,.72,.22,1);
+  will-change:transform,opacity;
+}
+#productGrid .product-card.product-side-right .product-visual{transform:translate3d(54px,0,24px) rotateY(-8deg)}
+#productGrid .product-card.product-side-visible .product-visual{opacity:1;transform:translate3d(0,0,0) rotateY(0)}
+#productGrid .product-photo{
+  animation:amirPhotoGentleFloat 5.8s ease-in-out infinite;
+  backface-visibility:hidden;
+}
+@keyframes amirPhotoGentleFloat{
+  0%,100%{translate:0 0}
+  50%{translate:0 -5px}
+}
+#productGrid .product-card:hover .product-photo{animation-duration:4.2s}
+.product-modal.is-closing{animation:amirModalFadeOut .3s ease both;pointer-events:none}
+.product-modal.is-closing .product-detail-panel{animation:amirDetailExit .3s cubic-bezier(.4,0,.8,.3) both}
+@keyframes amirModalFadeOut{to{opacity:0}}
+@keyframes amirDetailExit{to{opacity:0;transform:translateY(14px) scale(.97);filter:blur(4px)}}
+@media(max-width:700px){
+ #productGrid .product-visual{transform:translate3d(-28px,0,12px) rotateY(5deg)}
+ #productGrid .product-card.product-side-right .product-visual{transform:translate3d(28px,0,12px) rotateY(-5deg)}
+}
+@media(prefers-reduced-motion:reduce){
+ #productGrid .product-visual{opacity:1!important;transform:none!important;transition:none!important}
+ #productGrid .product-photo{animation:none!important;translate:none!important}
+ .product-modal.is-closing,.product-modal.is-closing .product-detail-panel{animation:none!important}
+}
