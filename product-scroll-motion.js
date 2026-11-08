@@ -52,9 +52,9 @@
    if(!target.width||!target.height)continue;
    const cardTop=card.getBoundingClientRect().top+scroll;
    const stagger=rec.index*vh*.11;
-   let start=categoryTop-vh*.28+stagger;
-   let end=cardTop-vh*.48+stagger;
-   if(end-start<vh*.48)start=end-vh*.72;
+   let start=categoryTop-vh*.08+stagger;
+   let end=cardTop-vh*.18+stagger;
+   if(end-start<vh*.30)start=end-vh*.30;
    const raw=(scroll-start)/(end-start);
    const p=clamp(raw,0,1);
    const t=ease(p);
