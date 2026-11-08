@@ -851,3 +851,32 @@ footer{padding:16px 5%}
 @media(prefers-reduced-motion:no-preference){
   #productGrid .product-photo-float{animation:amirProductFloat 4.8s ease-in-out infinite!important}
 }
+
+
+/* FINAL FIX: remove the pale/white catalog canvas as well as card panels */
+#products.products-section{
+  background:transparent!important;
+}
+#productGrid,
+#productGrid>.product-card,
+#productGrid>.product-card:hover,
+#productGrid>.product-card>.product-visual,
+#productGrid>.product-card>.product-info,
+#productGrid .product-card-meta{
+  background:transparent!important;
+  background-color:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+#productGrid>.product-card{overflow:visible!important}
+#productGrid>.product-card>.product-visual{
+  background-image:none!important;
+  padding:0!important;
+}
+#productGrid>.product-card>.product-visual>.product-photo{
+  background:none!important;
+  background-color:transparent!important;
+  padding:0!important;
+  mix-blend-mode:normal!important;
+  object-fit:contain!important;
+}
