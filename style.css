@@ -1624,3 +1624,23 @@ body>.scroll-atmosphere{display:none!important}
 @media(prefers-reduced-motion:reduce){
  #productGrid .product-card .product-visual{opacity:1!important;translate:0 0!important;transition:none!important;will-change:auto}
 }
+
+/* Scroll-scrubbed product flight: edge + upper viewport -> exact product-card position. */
+#productGrid.product-flight-enabled .product-card .product-visual.product-flight-ready{
+  opacity:var(--flight-opacity,0)!important;
+  transform:translate3d(var(--flight-x,0px),var(--flight-y,-110vh),24px)
+    scale(var(--flight-scale,.84)) rotateY(var(--flight-rotate,10deg))!important;
+  translate:none!important;
+  transition:none!important;
+  will-change:transform,opacity;
+  transform-origin:center center;
+  backface-visibility:hidden;
+}
+#productGrid.product-flight-enabled .product-card .product-visual.product-flight-ready.product-flight-landed{
+  will-change:auto;
+}
+@media(prefers-reduced-motion:reduce){
+ #productGrid.product-flight-enabled .product-card .product-visual.product-flight-ready{
+  opacity:1!important;transform:none!important;translate:none!important;transition:none!important;will-change:auto;
+ }
+}
