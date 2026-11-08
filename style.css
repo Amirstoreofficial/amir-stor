@@ -1603,3 +1603,24 @@ body>.scroll-atmosphere{display:none!important}
 @media(prefers-reduced-motion:reduce){
  #productGrid .product-visual{opacity:1!important;transform:none!important;translate:0 0!important;transition:none!important;will-change:auto}
 }
+
+
+/* Viewport-edge product entrance: each image starts fully beyond the screen edge. */
+#productGrid .product-card .product-visual{
+  opacity:1!important;
+  transform:none!important;
+  translate:0 0;
+  transition:opacity .85s ease,translate 1.15s cubic-bezier(.16,.78,.2,1)!important;
+  will-change:opacity,translate;
+}
+#productGrid.product-motion-ready .product-card .product-visual{
+  opacity:0!important;
+  translate:var(--product-entry-x,-110vw) 0;
+}
+#productGrid.product-motion-ready .product-card.product-side-visible .product-visual{
+  opacity:1!important;
+  translate:0 0;
+}
+@media(prefers-reduced-motion:reduce){
+ #productGrid .product-card .product-visual{opacity:1!important;translate:0 0!important;transition:none!important;will-change:auto}
+}
