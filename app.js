@@ -12,7 +12,7 @@ function renderProducts(){
  let cat=$("#categoryFilter").value;
  let list=products.filter(p=>(cat==="همه"||p.category===cat)&&(activeCategory==="همه"||p.category===activeCategory)&&normalizeText(`${p.name} ${p.description} ${p.volume||""} ${p.mouthSize||""} ${p.weight||p.weights||""}`).includes(q));
  const visibleList=showAllProducts?list:list.slice(0,12);
- const cards=visibleList.map(p=>`<article class="product-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><span>${p.symbol||"▱"}</span><small>جای تصویر محصول</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta"><b>${p.price!=null?money(p.price):"استعلام قیمت"}</b><span>مشاهده مشخصات و سفارش ←</span></div></div></article>`).join("");
+ const cards=visibleList.map(p=>`<article class="product-card ${p.motion?"product-card--motion":""}" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo ${p.motion?"product-photo-float":""}" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><span>${p.symbol||"▱"}</span><small>جای تصویر محصول</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta"><b>${p.price!=null?money(p.price):"استعلام قیمت"}</b><span>مشاهده مشخصات و سفارش ←</span></div></div></article>`).join("");
  $("#productGrid").innerHTML=cards||`<div class="catalog-empty"><span>AMIR / CATALOG</span><b>محصولی پیدا نشد</b><small>عبارت جست‌وجو یا دسته‌بندی را تغییر دهید.</small></div>`;
  const more=$("#productsMoreWrap");
  more.hidden=list.length<=12||showAllProducts;
@@ -26,7 +26,7 @@ function openProductDetail(id){
   const p=products.find(x=>x.id==id);if(!p)return;
   const modal=$("#productModal");
   $("#detailTitle").textContent=p.name||"جزئیات محصول";
-  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";
+  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";$("#detailImage").classList.toggle("detail-photo-float",!!p.motion);
   $("#detailImage").hidden=!p.image;$("#detailPlaceholder").hidden=!!p.image;
   $("#detailCategory").textContent=p.category||"";
   $("#detailDescription").textContent=p.description||"توضیحی ثبت نشده است.";
