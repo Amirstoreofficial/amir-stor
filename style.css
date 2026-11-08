@@ -1548,3 +1548,29 @@ body>.scroll-atmosphere{display:none!important}
  #productGrid .product-visual{opacity:1!important;transform:none!important;transition:none!important}
  #productGrid .product-photo{animation:none!important;translate:none!important}
 }
+
+
+/* Final side-entry implementation: use the independent CSS translate channel.
+   This avoids transform rules used by product photos and existing 3D effects. */
+#productGrid .product-visual{
+  translate:0 0;
+  transition:translate .95s cubic-bezier(.18,.72,.22,1);
+  will-change:translate;
+}
+#productGrid.product-motion-ready .product-card .product-visual{
+  translate:-46px 0;
+}
+#productGrid.product-motion-ready .product-card.product-side-right .product-visual{
+  translate:46px 0;
+}
+#productGrid.product-motion-ready .product-card.product-side-visible .product-visual{
+  translate:0 0;
+}
+@media(max-width:700px){
+  #productGrid.product-motion-ready .product-card .product-visual{translate:-25px 0}
+  #productGrid.product-motion-ready .product-card.product-side-right .product-visual{translate:25px 0}
+  #productGrid.product-motion-ready .product-card.product-side-visible .product-visual{translate:0 0}
+}
+@media(prefers-reduced-motion:reduce){
+  #productGrid .product-visual{translate:0 0!important;transition:none!important;will-change:auto}
+}
