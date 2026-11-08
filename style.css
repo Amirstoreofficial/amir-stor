@@ -784,3 +784,8 @@ footer{padding:16px 5%}
  .experience-grid article>b{font-size:9px!important}
  .experience-grid article>small{font-size:7px!important}
 }
+
+/* تثبیت سه پیام اصلی در یک ردیف کنار هم */
+.trust-strip{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;}
+.trust-strip>div{grid-column:auto!important;width:100%!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;text-align:center!important;}
+@media(max-width:620px){.trust-strip{grid-template-columns:repeat(3,minmax(0,1fr))!important;}.trust-strip>div:last-child{grid-column:auto!important;}.trust-strip b{white-space:normal!important;}}
