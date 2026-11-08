@@ -41,5 +41,23 @@ window.AMIR_PRODUCTS = [
     price: 3250,
     unit: "عدد",
     symbol: "▣"
+  },
+  {
+    id: 1003,
+    name: "جار شش گوش",
+    category: "بطری و جار",
+    description: "جار شش‌گوش با حجم ۷۰۰ سی‌سی و دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف و با درب‌های رنگ‌بندی متنوع.",
+    image: "images/6.png",
+    volume: "۷۰۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    packCount: 150,
+    weights: "در وزن‌های مختلف",
+    capHandle: "درب در رنگ‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["بسته", "عدد"],
+    motion: true,
+    symbol: "▣"
   }
 ];
