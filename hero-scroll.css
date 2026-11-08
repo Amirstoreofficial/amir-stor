@@ -1,0 +1,12 @@
+/* Scroll-linked hero artwork: gently drifts to the corner and fades, then reverses on upward scroll. */
+.hero-products-showcase{--hero-scroll-progress:0;perspective:1000px}
+.hero-products-image{
+ transform:translate3d(calc(var(--hero-scroll-progress)*-17vw),calc(var(--hero-scroll-progress)*-13vh),0) scale(calc(1.17 - var(--hero-scroll-progress)*.68)) rotateY(calc(var(--hero-scroll-progress)*-9deg))!important;
+ opacity:calc(1 - var(--hero-scroll-progress)*1.08);
+ filter:drop-shadow(0 28px 34px rgba(31,57,37,.19)) contrast(1.035) saturate(1.035)!important;
+ animation:heroProductsFloat 6s ease-in-out infinite;will-change:transform,opacity
+}
+.hero-products-showcase{overflow:visible!important}
+@media(max-width:850px){.hero-products-image{transform:translate3d(calc(var(--hero-scroll-progress)*-12vw),calc(var(--hero-scroll-progress)*-9vh),0) scale(calc(1.12 - var(--hero-scroll-progress)*.58)) rotateY(calc(var(--hero-scroll-progress)*-7deg))!important}}
+@media(max-width:620px){.hero-products-image{transform:translate3d(calc(var(--hero-scroll-progress)*-8vw),calc(var(--hero-scroll-progress)*-7vh),0) scale(calc(1.04 - var(--hero-scroll-progress)*.48)) rotateY(calc(var(--hero-scroll-progress)*-5deg))!important}}
+@media(prefers-reduced-motion:reduce){.hero-products-image{transform:none!important;opacity:1!important;animation:none!important}}
