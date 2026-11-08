@@ -976,3 +976,55 @@ footer{padding:16px 5%}
   .trust-strip b{font-size:8px!important}
   .trust-strip small{font-size:7px!important}
 }
+
+
+/* AMIR STORE - final centered three-benefit strip */
+body .trust-strip{
+  box-sizing:border-box!important;
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:stretch!important;
+  justify-items:stretch!important;
+  width:min(1040px,calc(100% - 40px))!important;
+  max-width:1040px!important;
+  margin:18px auto 0!important;
+  padding:18px 20px!important;
+  gap:12px!important;
+  direction:rtl!important;
+  text-align:center!important;
+}
+body .trust-strip>div{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  width:100%!important;
+  grid-column:auto!important;
+  text-align:center!important;
+  gap:5px!important;
+}
+body .trust-strip>div>b,
+body .trust-strip>div>small{
+  display:block!important;
+  width:100%!important;
+  text-align:center!important;
+  overflow-wrap:anywhere!important;
+}
+@media(max-width:620px){
+  body .trust-strip{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    width:calc(100% - 24px)!important;
+    margin:12px auto 0!important;
+    padding:13px 7px!important;
+    gap:4px!important;
+  }
+  body .trust-strip>div{gap:4px!important}
+  body .trust-strip>div>b{font-size:clamp(9px,2.7vw,11px)!important;line-height:1.55!important}
+  body .trust-strip>div>small{font-size:clamp(7px,2vw,9px)!important;line-height:1.55!important}
+}
+@media(max-width:360px){
+  body .trust-strip{padding-inline:4px!important;gap:2px!important}
+  body .trust-strip>div>b{font-size:8px!important}
+  body .trust-strip>div>small{font-size:7px!important}
+}
