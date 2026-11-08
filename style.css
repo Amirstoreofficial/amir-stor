@@ -1241,3 +1241,142 @@ footer{color:#71877a!important}
   .hero .primary,.experience-grid article,.category-card,#productGrid>.product-card,#productGrid .product-photo{transition:none!important}
   .experience-grid article:hover,.category-card:hover,#productGrid>.product-card:hover{transform:none!important}
 }
+
+
+/* AMIR STORE — seamless hero-to-content transition */
+html,body{
+  background:#edf3e7!important;
+  background-color:#edf3e7!important;
+}
+body{
+  background:
+    radial-gradient(ellipse at 14% 10%,rgba(195,222,177,.44) 0%,transparent 34%),
+    radial-gradient(ellipse at 88% 28%,rgba(174,222,203,.32) 0%,transparent 38%),
+    radial-gradient(ellipse at 45% 67%,rgba(220,235,207,.28) 0%,transparent 42%),
+    linear-gradient(180deg,#eaf2e1 0%,#edf3e7 38%,#edf3e7 72%,#e8f0e1 100%)!important;
+  background-attachment:scroll!important;
+}
+main{
+  position:relative!important;
+  isolation:isolate!important;
+  background:transparent!important;
+}
+main>section,
+main>.section,
+main>.hero,
+main>.trust-strip,
+main>.experience-section,
+main>#categories,
+main>.products-section,
+main>.about{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  border-top:0!important;
+  border-bottom:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.hero{
+  position:relative!important;
+  z-index:1!important;
+  margin:0!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background:
+    radial-gradient(ellipse at 76% 36%,rgba(119,211,169,.12),transparent 42%),
+    linear-gradient(180deg,rgba(234,242,225,.26) 0%,rgba(237,243,231,.08) 72%,rgba(237,243,231,0) 100%)!important;
+}
+.hero:before,.hero:after{
+  content:none!important;
+  display:none!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  background:none!important;
+}
+.hero-copy,.hero-art,.hero-products-showcase{
+  background:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+.hero-products-showcase:before{
+  opacity:.58!important;
+}
+.hero-products-showcase:after{
+  opacity:.48!important;
+}
+.trust-strip{
+  position:relative!important;
+  z-index:2!important;
+  margin:0 auto!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  background-color:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+.trust-strip:before,.trust-strip:after{
+  content:none!important;
+  display:none!important;
+}
+.trust-strip>div{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.experience-section{
+  position:relative!important;
+  z-index:1!important;
+  margin-top:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.experience-section:before,.experience-section:after{
+  content:none!important;
+  display:none!important;
+}
+.section{
+  position:relative;
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.section:before,.section:after{
+  border:0!important;
+  box-shadow:none!important;
+}
+#categories,#products,.products-section,.about{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+#categories{padding-top:clamp(34px,5vw,66px)!important}
+#products{padding-top:clamp(34px,5vw,66px)!important}
+.section-head{
+  border:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+}
+.announcement-bar{
+  border:0!important;
+  box-shadow:none!important;
+}
+.topbar{
+  border-left:0!important;
+  border-right:0!important;
+}
+@media(max-width:620px){
+  .hero{padding-bottom:12px!important}
+  .trust-strip{padding-top:10px!important;padding-bottom:10px!important}
+  .experience-section{padding-top:26px!important}
+  #categories,#products{padding-top:32px!important}
+}
