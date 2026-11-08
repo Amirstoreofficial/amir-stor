@@ -1028,3 +1028,34 @@ body .trust-strip>div>small{
   body .trust-strip>div>b{font-size:8px!important}
   body .trust-strip>div>small{font-size:7px!important}
 }
+
+
+/* Override the older mobile rule that forced the last trust item onto a new row */
+html body .trust-strip > div:last-child{
+  grid-column:auto!important;
+}
+html body .trust-strip > div:nth-child(1),
+html body .trust-strip > div:nth-child(2),
+html body .trust-strip > div:nth-child(3){
+  grid-column:auto!important;
+  justify-self:stretch!important;
+  align-self:center!important;
+  width:100%!important;
+  min-width:0!important;
+}
+html body .trust-strip{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  justify-content:center!important;
+  justify-items:stretch!important;
+  align-items:center!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+@media(max-width:620px){
+  html body .trust-strip{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    width:calc(100% - 24px)!important;
+  }
+  html body .trust-strip > div:last-child{grid-column:auto!important}
+}
