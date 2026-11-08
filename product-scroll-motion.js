@@ -1,70 +1,95 @@
-/* Scroll-linked 3D product flight: images travel from beyond the viewport into their own cards. */
+/* Independent floating product cutouts: scroll drives each object from category area into its own catalog image slot. */
 (()=>{'use strict';
  const grid=document.getElementById('productGrid');
- if(!grid)return;
- const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- if(reduce)return;
+ const categories=document.getElementById('categories');
+ if(!grid||!categories||!document.body)return;
+ const records=new Map();
  let frame=0;
- const registered=new WeakSet();
- const getCards=()=>[...grid.querySelectorAll('.product-card')];
- function register(root){
-  const list=[];
-  if(root.nodeType===1&&root.matches&&root.matches('.product-card'))list.push(root);
-  if(root.querySelectorAll)root.querySelectorAll('.product-card').forEach(card=>list.push(card));
-  list.forEach(card=>{
-   if(registered.has(card))return;
-   registered.add(card);
-   const visual=card.querySelector('.product-visual');
-   if(visual)visual.classList.add('product-flight-ready');
+ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+ const ease=v=>v*v*(3-2*v);
+ function sideFor(card,index){
+  const name=(card.querySelector('.product-info h3')?.textContent||'').trim();
+  if(/جار/.test(name))return 'left';
+  if(/بطری/.test(name))return 'right';
+  return index%2?'left':'right';
+ }
+ function sync(){
+  const cards=[...grid.querySelectorAll('.product-card')];
+  const alive=new Set(cards);
+  for(const [card,rec] of records){
+   if(!alive.has(card)){
+    rec.img.style.visibility=rec.originalVisibility;
+    rec.overlay.remove();
+    records.delete(card);
+   }
+  }
+  cards.forEach((card,index)=>{
+   if(records.has(card))return;
+   const img=card.querySelector('img.product-photo');
+   if(!img||!img.getAttribute('src'))return;
+   const overlay=document.createElement('img');
+   overlay.className='amir-product-flight-object';
+   overlay.alt='';
+   overlay.setAttribute('aria-hidden','true');
+   overlay.draggable=false;
+   overlay.decoding='async';
+   overlay.loading='eager';
+   overlay.src=img.currentSrc||img.src;
+   document.body.appendChild(overlay);
+   records.set(card,{img,overlay,index,side:sideFor(card,index),originalVisibility:img.style.visibility});
   });
  }
- function clamp(value,min,max){return Math.max(min,Math.min(max,value))}
  function update(){
   frame=0;
-  const width=window.innerWidth||document.documentElement.clientWidth;
-  const height=window.innerHeight||document.documentElement.clientHeight;
+  sync();
   const scroll=window.scrollY||window.pageYOffset||0;
-  const list=getCards();
-  list.forEach((card,index)=>{
-   const visual=card.querySelector('.product-visual');
-   if(!visual)return;
-   const cardRect=card.getBoundingClientRect();
-   const visualRect=visual.getBoundingClientRect();
-   const cardTop=cardRect.top+scroll;
-   const center=cardRect.left+cardRect.width/2;
-   const fromRight=Math.abs(center-width/2)<cardRect.width*.16 ? index%2===1 : center>width/2;
-   const endScroll=cardTop-height*.55;
-   const startScroll=endScroll-height*.9;
-   const progress=clamp((scroll-startScroll)/(endScroll-startScroll),0,1);
-   const startX=(fromRight?1:-1)*(width+visualRect.width+80);
-   const startY=-(cardTop-startScroll+visualRect.height+24);
-   const x=startX*(1-progress);
-   const y=startY*(1-progress);
-   const opacity=clamp(progress*2.1,0,1);
-   const scale=.84+.16*progress;
-   const rotate=(fromRight?-1:1)*10*(1-progress);
-   visual.style.setProperty('--flight-x',x.toFixed(1)+'px');
-   visual.style.setProperty('--flight-y',y.toFixed(1)+'px');
-   visual.style.setProperty('--flight-opacity',opacity.toFixed(3));
-   visual.style.setProperty('--flight-scale',scale.toFixed(3));
-   visual.style.setProperty('--flight-rotate',rotate.toFixed(2)+'deg');
-   visual.classList.toggle('product-flight-landed',progress>=1);
-  });
+  const vh=window.innerHeight||document.documentElement.clientHeight;
+  const vw=window.innerWidth||document.documentElement.clientWidth;
+  const categoryTop=categories.getBoundingClientRect().top+scroll;
+  for(const [card,rec] of records){
+   if(!card.isConnected||!rec.img.isConnected)continue;
+   const target=rec.img.getBoundingClientRect();
+   if(!target.width||!target.height)continue;
+   const cardTop=card.getBoundingClientRect().top+scroll;
+   const stagger=rec.index*vh*.11;
+   let start=categoryTop-vh*.28+stagger;
+   let end=cardTop-vh*.48+stagger;
+   if(end-start<vh*.48)start=end-vh*.72;
+   const raw=(scroll-start)/(end-start);
+   const p=clamp(raw,0,1);
+   const t=ease(p);
+   const w=target.width;
+   const h=target.height;
+   const fromRight=rec.side==='right';
+   const startX=fromRight?vw+w*.72:-w*.72;
+   const endX=target.left+w/2;
+   const startY=vh*(.19+(rec.index%3)*.075);
+   const endY=target.top+h/2;
+   const x=startX+(endX-startX)*t;
+   const y=startY+(endY-startY)*t-Math.sin(p*Math.PI)*vh*.10;
+   const scale=1.28-.28*t;
+   const rotate=(fromRight?1:-1)*(16*(1-t)+Math.sin(p*Math.PI*2)*2.2);
+   const active=raw>0&&raw<1;
+   rec.img.style.visibility=active?'hidden':rec.originalVisibility;
+   rec.overlay.style.width=w+'px';
+   rec.overlay.style.height=h+'px';
+   rec.overlay.style.left=x+'px';
+   rec.overlay.style.top=y+'px';
+   rec.overlay.style.transform='translate3d(-50%,-50%,0) scale('+scale+') rotate('+rotate+'deg)';
+   rec.overlay.style.opacity=active?String(clamp(Math.min(p/.08,(1-p)/.045),0,1)):'0';
+   rec.overlay.style.visibility=active?'visible':'hidden';
+  }
  }
  function schedule(){if(!frame)frame=requestAnimationFrame(update)}
  try{
-  register(grid);
-  grid.classList.add('product-flight-enabled');
-  void grid.offsetWidth;
+  sync();
   schedule();
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
-  new MutationObserver(records=>{
-   records.forEach(record=>record.addedNodes.forEach(node=>{if(node.nodeType===1)register(node)}));
-   schedule();
-  }).observe(grid,{childList:true,subtree:true});
+  new MutationObserver(schedule).observe(grid,{childList:true,subtree:true});
+  window.addEventListener('load',schedule,{once:true});
  }catch(error){
-  grid.classList.remove('product-flight-enabled');
-  getCards().forEach(card=>{const visual=card.querySelector('.product-visual');if(visual)visual.classList.remove('product-flight-ready')});
+  for(const rec of records.values()){rec.img.style.visibility=rec.originalVisibility;rec.overlay.remove()}
+  records.clear();
  }
 })();
