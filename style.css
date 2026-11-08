@@ -918,3 +918,61 @@ footer{padding:16px 5%}
   #productGrid .product-card-meta b{font-size:8px!important}
   #productGrid .product-card-meta span{font-size:8px!important;padding-top:5px!important}
 }
+
+
+/* FINAL LAYOUT: سه مزیت فروشگاه در یک ردیف، منظم و دقیقاً وسط صفحه */
+.trust-strip{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:center!important;
+  justify-items:center!important;
+  width:min(100% - 32px,1040px)!important;
+  margin:18px auto 0!important;
+  padding:20px 24px!important;
+  gap:18px!important;
+  text-align:center!important;
+  direction:rtl!important;
+  border:1px solid #e5ecdf!important;
+  border-radius:18px!important;
+}
+.trust-strip>div{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  min-width:0!important;
+  grid-column:auto!important;
+  gap:6px!important;
+  text-align:center!important;
+}
+.trust-strip b{
+  display:block!important;
+  font-size:13px!important;
+  line-height:1.8!important;
+  white-space:normal!important;
+  text-align:center!important;
+}
+.trust-strip small{
+  display:block!important;
+  font-size:10px!important;
+  line-height:1.8!important;
+  text-align:center!important;
+}
+@media(max-width:620px){
+  .trust-strip{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    width:calc(100% - 24px)!important;
+    margin:12px auto 0!important;
+    padding:14px 8px!important;
+    gap:5px!important;
+  }
+  .trust-strip>div{gap:4px!important}
+  .trust-strip b{font-size:clamp(9px,2.7vw,11px)!important;line-height:1.6!important}
+  .trust-strip small{font-size:clamp(7px,2vw,9px)!important;line-height:1.6!important}
+}
+@media(max-width:360px){
+  .trust-strip{padding:12px 5px!important;gap:3px!important}
+  .trust-strip b{font-size:8px!important}
+  .trust-strip small{font-size:7px!important}
+}
