@@ -811,3 +811,43 @@ footer{padding:16px 5%}
 #productGrid.product-grid>.product-card{min-width:0!important;width:auto!important;max-width:none!important}
 @media(max-width:900px){#productGrid.product-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:9px!important}}
 @media(max-width:620px){#productGrid.product-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important}#productGrid .product-visual{height:clamp(66px,19vw,112px)!important;min-height:0!important;padding:2px!important}#productGrid .product-info{padding:5px!important}#productGrid .product-info h3{font-size:clamp(7px,2.2vw,10px)!important;line-height:1.5!important;overflow-wrap:anywhere}#productGrid .product-card-meta{display:block!important;margin-top:4px!important}#productGrid .product-card-meta b{display:block!important;font-size:clamp(7px,1.9vw,9px)!important}#productGrid .product-card-meta span{display:block!important;font-size:7px!important;line-height:1.5!important;margin-top:3px!important}}
+
+/* Amir Store — transparent product cutouts, no white image/info panels */
+#productGrid .product-card,
+#productGrid .product-card:hover{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#productGrid .product-visual{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+#productGrid .product-visual .product-photo{
+  background:transparent!important;
+  background-color:transparent!important;
+  mix-blend-mode:normal!important;
+  object-fit:contain!important;
+  padding:0!important;
+}
+#productGrid .product-info{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+#productGrid .product-card-meta,
+#productGrid .product-card-meta b,
+#productGrid .product-card-meta span{
+  background:transparent!important;
+}
+#productGrid .product-card-meta b{color:#08713e!important}
+#productGrid .product-card-meta span{color:#60766a!important}
+#productGrid .product-photo-float{
+  transform-origin:50% 65%;
+  will-change:transform,filter;
+}
+@media(prefers-reduced-motion:no-preference){
+  #productGrid .product-photo-float{animation:amirProductFloat 4.8s ease-in-out infinite!important}
+}
