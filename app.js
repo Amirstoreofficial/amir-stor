@@ -23,11 +23,12 @@ function packageQuantity(p){if(Number(p.packCount)>0)return Number(p.packCount);
 function productUnits(p){return Array.isArray(p.salesUnits)&&p.salesUnits.length?p.salesUnits:["بسته","عدد"]}
 function selectedUnit(p){return productUnits(p)[0]}
 function unitPrice(p,unit){if(unit==="بسته")return p.packPrice??null;if(unit==="کیلوگرم")return p.kgPrice??null;return p.price??null}
+let detailCloseTimer=null;
 function openProductDetail(id){
   const p=products.find(x=>x.id==id);if(!p)return;
-  const modal=$("#productModal");
+  const modal=$("#productModal");clearTimeout(detailCloseTimer);modal.classList.remove("is-closing");
   $("#detailTitle").textContent=p.name||"جزئیات محصول";
-  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";$("#detailImage").classList.toggle("detail-photo-float",!!p.motion);
+  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";$("#detailImage").classList.add("detail-photo-float");
   $("#detailImage").onerror=()=>{$("#detailImage").hidden=true;$("#detailPlaceholder").hidden=false;$("#detailPlaceholder").textContent="تصویر واقعی این محصول در دسترس نیست"};
   $("#detailImage").hidden=!p.image;$("#detailPlaceholder").hidden=!!p.image;
   $("#detailCategory").textContent=p.category||"";
@@ -51,7 +52,7 @@ function openProductDetail(id){
   $("#detailImage").onclick=()=>$("#detailImage").classList.toggle("zoomed");
   modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open")
 }
-function closeProductDetail(){const m=$("#productModal");m.classList.remove("show");m.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");$("#detailImage").classList.remove("zoomed")}
+function closeProductDetail(){const m=$("#productModal");if(!m.classList.contains("show"))return;m.classList.add("is-closing");clearTimeout(detailCloseTimer);detailCloseTimer=setTimeout(()=>{m.classList.remove("show","is-closing");m.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");$("#detailImage").classList.remove("zoomed")},300)}
 $("#productGrid").addEventListener("click",e=>{const card=e.target.closest("[data-product-detail]");if(card&&!e.target.closest("button"))openProductDetail(card.dataset.productDetail)});$("#productGrid").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-product-detail]")){e.preventDefault();openProductDetail(e.target.dataset.productDetail)}});$("#productModal").addEventListener("click",e=>{if(e.target.matches("[data-close-modal]"))closeProductDetail()});$("#detailClose").onclick=closeProductDetail;$("#detailImage").onclick=()=>$("#detailImage").classList.toggle("zoomed");document.addEventListener("keydown",e=>{if(e.key==="Escape")closeProductDetail()});
 window.addToCart=(id,unit,qty=1)=>{const p=products.find(x=>x.id==id);if(!p)return;unit=unit||selectedUnit(p);const key=String(id)+"::"+unit;cart[key]={id,unit,qty:(cart[key]?.qty||0)+qty};renderCart();$("#cartDrawer").classList.add("show");$("#overlay").classList.add("show")};
 function renderCart(){let entries=Object.entries(cart).filter(([,item])=>item.qty>0);$("#cartCount").textContent=new Intl.NumberFormat("fa-IR").format(entries.reduce((a,[,item])=>a+item.qty,0));$("#cartItems").innerHTML=entries.length?entries.map(([key,item])=>{let p=products.find(x=>x.id==item.id),price=unitPrice(p,item.unit);const inPack=packageQuantity(p);const quantityNote=item.unit==="بسته"&&inPack?` (${new Intl.NumberFormat("fa-IR").format(item.qty*inPack)} عدد در مجموع)`: "";return `<div class="cart-item"><div><b>${p.name}</b><small>${new Intl.NumberFormat("fa-IR").format(item.qty)} ${item.unit}${quantityNote} · ${price==null?"استعلام قیمت":money(price)+" / "+item.unit}</small></div><div class="qty"><button onclick="changeQty('${key}',-1)">−</button><b>${new Intl.NumberFormat("fa-IR").format(item.qty)}</b><button onclick="changeQty('${key}',1)">+</button></div></div>`}).join(""):`<p class="empty">هنوز محصولی انتخاب نکرده‌اید.</p>`;let total=entries.reduce((a,[,item])=>{let p=products.find(x=>x.id==item.id),price=unitPrice(p,item.unit);return a+(price||0)*item.qty},0);$("#cartTotal").textContent=total?money(total):"نیازمند استعلام"}
