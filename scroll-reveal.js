@@ -15,7 +15,6 @@
     '.section-head h2',
     '.section-head > p',
     '.category-card',
-    '.product-card:not(.product-empty-slot)',
     '.about > div > *',
     '.contact > div > *'
   ];
