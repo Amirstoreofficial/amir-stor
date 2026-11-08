@@ -57,36 +57,3 @@ renderProducts();renderCart();
 
 /* Scroll-linked background products with a bounded full-page layer and responsive mobile navigation */
 (()=>{const hero=document.querySelector(".hero"),layers=[...document.querySelectorAll("[data-depth]")];let ticking=false;const scrollItems=[...document.querySelectorAll(".scroll-item[data-scroll-depth]")];const atmosphere=document.querySelector("body>.scroll-atmosphere");const bgProducts=[...document.querySelectorAll(".scroll-atmosphere>.bg-product")];let resizeFrame=0;const sizeAtmosphere=()=>{if(!atmosphere)return;const footer=document.querySelector("body>footer");const main=document.querySelector("body>main");const end=footer?footer.getBoundingClientRect().bottom+window.scrollY:(main?main.getBoundingClientRect().bottom+window.scrollY:document.documentElement.clientHeight);atmosphere.style.setProperty("height",Math.ceil(end)+"px","important")};const scheduleSize=()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(sizeAtmosphere)};sizeAtmosphere();if("ResizeObserver"in window){const atmosphereObserver=new ResizeObserver(scheduleSize);const pageMain=document.querySelector("body>main"),pageFooter=document.querySelector("body>footer");if(pageMain)atmosphereObserver.observe(pageMain);if(pageFooter)atmosphereObserver.observe(pageFooter)}window.addEventListener("load",scheduleSize,{once:true});const move=()=>{const scroll=window.scrollY||0;const rect=hero?.getBoundingClientRect();if(rect){const progress=Math.max(-1,Math.min(1,(window.innerHeight/2-(rect.top+rect.height/2))/(window.innerHeight+rect.height)));layers.forEach((el,i)=>{const depth=Number(el.dataset.depth||.2),y=progress*110*depth,x=Math.sin(progress*2.2+i*.8)*13*depth;el.style.translate=x+"px "+y+"px"})}scrollItems.forEach((el,i)=>{const depth=Number(el.dataset.scrollDepth||.15);const drift=scroll*depth;const sway=Math.sin(scroll/310+i*1.2)*18;el.style.translate=sway+"px "+drift+"px"});bgProducts.forEach((el,i)=>{const depth=.66+(i%4)*.055;const drift=scroll*depth;const sway=Math.sin(scroll/260+i*1.05)*15;el.style.translate=sway+"px "+drift+"px"});ticking=false};window.addEventListener("scroll",()=>{if(!ticking){requestAnimationFrame(move);ticking=true}},{passive:true});window.addEventListener("resize",()=>{scheduleSize();move()},{passive:true});move();const menu=document.getElementById("mobileMenuBtn"),nav=document.getElementById("mainNav");menu?.addEventListener("click",()=>{const open=nav.classList.toggle("open");menu.setAttribute("aria-expanded",String(open));menu.textContent=open?"×":"☰"});nav?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu?.setAttribute("aria-expanded","false");if(menu)menu.textContent="☰"}))})();
-
-/* Reliable sequential scroll reveal; re-applies to dynamically rendered cards */
-(()=>{
- const selectors=['.hero-copy .eyebrow','.hero-copy h1','.hero-copy>p','.hero-copy .hero-actions','.hero-copy .hero-points','.trust-strip>div','.experience-heading>*','.experience-grid article','.section-head .eyebrow','.section-head h2','.section-head>p','.category-card','.product-card','.about>div>*','.contact>div>*'];
- const observed=new WeakSet();
- const revealObserver=new IntersectionObserver(entries=>{
-  for(const entry of entries){
-   if(entry.isIntersecting)entry.target.classList.add('is-visible');
-   else entry.target.classList.remove('is-visible');
-  }
- },{threshold:0.08,rootMargin:'0px 0px -8% 0px'});
- function prepare(root=document){
-  const found=[];
-  for(const selector of selectors){
-   if(root.matches?.(selector))found.push(root);
-   found.push(...root.querySelectorAll(selector));
-  }
-  [...new Set(found)].forEach(el=>{
-   if(observed.has(el))return;
-   observed.add(el);
-   const siblings=[...el.parentElement.children].filter(sibling=>selectors.some(selector=>sibling.matches(selector)));
-   const order=Math.max(0,siblings.indexOf(el));
-   el.classList.add('scroll-reveal');
-   el.style.setProperty('--reveal-delay',Math.min(order,6)*110+'ms');
-   revealObserver.observe(el);
-  });
- }
- prepare();
- const mutationObserver=new MutationObserver(records=>{
-  for(const record of records)for(const node of record.addedNodes)if(node.nodeType===1)prepare(node);
- });
- mutationObserver.observe(document.body,{childList:true,subtree:true});
-})();
