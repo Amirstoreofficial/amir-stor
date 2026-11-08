@@ -1,8 +1,9 @@
-/* Independent floating product cutouts: scroll drives each object from category area into its own catalog image slot. */
+/* Category-to-catalog scroll flight: independent 3D cutouts follow scroll and land with the first product row. */
 (()=>{'use strict';
  const grid=document.getElementById('productGrid');
  const categories=document.getElementById('categories');
- if(!grid||!categories||!document.body)return;
+ const products=document.getElementById('products');
+ if(!grid||!categories||!products||!document.body)return;
  const records=new Map();
  let frame=0;
  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -18,6 +19,7 @@
   const alive=new Set(cards);
   for(const [card,rec] of records){
    if(!alive.has(card)){
+    rec.img.style.opacity=rec.originalOpacity;
     rec.img.style.visibility=rec.originalVisibility;
     rec.overlay.remove();
     records.delete(card);
@@ -36,7 +38,8 @@
    overlay.loading='eager';
    overlay.src=img.currentSrc||img.src;
    document.body.appendChild(overlay);
-   records.set(card,{img,overlay,index,side:sideFor(card,index),originalVisibility:img.style.visibility});
+   records.set(card,{img,overlay,index,side:sideFor(card,index),
+    originalOpacity:img.style.opacity,originalVisibility:img.style.visibility});
   });
  }
  function update(){
@@ -46,38 +49,43 @@
   const vh=window.innerHeight||document.documentElement.clientHeight;
   const vw=window.innerWidth||document.documentElement.clientWidth;
   const categoryTop=categories.getBoundingClientRect().top+scroll;
+  const cards=[...grid.querySelectorAll('.product-card')];
+  if(!cards.length)return;
+  const firstRowTop=Math.min(...cards.map(card=>card.getBoundingClientRect().top+scroll));
+  let startScroll=categoryTop-vh*.72;
+  let endScroll=firstRowTop-vh*.72;
+  if(endScroll-startScroll<vh*.28)endScroll=startScroll+vh*.28;
+  const range=endScroll-startScroll;
   for(const [card,rec] of records){
    if(!card.isConnected||!rec.img.isConnected)continue;
    const target=rec.img.getBoundingClientRect();
    if(!target.width||!target.height)continue;
-   const cardTop=card.getBoundingClientRect().top+scroll;
-   const stagger=rec.index*vh*.11;
-   let start=categoryTop-vh*.08+stagger;
-   let end=cardTop-vh*.18+stagger;
-   if(end-start<vh*.30)start=end-vh*.30;
-   const raw=(scroll-start)/(end-start);
-   const p=clamp(raw,0,1);
+   const delay=rec.index*range*.012;
+   const p=clamp((scroll-startScroll-delay)/(range-delay),0,1);
    const t=ease(p);
-   const w=target.width;
-   const h=target.height;
+   const w=target.width,h=target.height;
    const fromRight=rec.side==='right';
-   const startX=fromRight?vw+w*.72:-w*.72;
+   const startX=fromRight?vw+w*.62:-w*.62;
    const endX=target.left+w/2;
-   const startY=vh*(.19+(rec.index%3)*.075);
+   const startY=categoryTop+vh*.18-scroll;
    const endY=target.top+h/2;
    const x=startX+(endX-startX)*t;
-   const y=startY+(endY-startY)*t-Math.sin(p*Math.PI)*vh*.10;
-   const scale=1.28-.28*t;
-   const rotate=(fromRight?1:-1)*(16*(1-t)+Math.sin(p*Math.PI*2)*2.2);
-   const active=raw>0&&raw<1;
-   rec.img.style.visibility=active?'hidden':rec.originalVisibility;
+   const y=startY+(endY-startY)*t-Math.sin(p*Math.PI)*vh*.075;
+   const scale=1.22-.22*t;
+   const rotate=(fromRight?1:-1)*(14*(1-t)+Math.sin(p*Math.PI*2)*1.8);
+   const fadeIn=clamp(p/.11,0,1);
+   const fadeOut=clamp((1-p)/.035,0,1);
+   const alpha=Math.min(fadeIn,fadeOut);
+   const active=p>0&&p<1;
+   rec.img.style.opacity=active?String(1-alpha):rec.originalOpacity;
+   rec.img.style.visibility=rec.originalVisibility;
    rec.overlay.style.width=w+'px';
    rec.overlay.style.height=h+'px';
    rec.overlay.style.left=x+'px';
    rec.overlay.style.top=y+'px';
    rec.overlay.style.transform='translate3d(-50%,-50%,0) scale('+scale+') rotate('+rotate+'deg)';
-   rec.overlay.style.opacity=active?String(clamp(Math.min(p/.08,(1-p)/.045),0,1)):'0';
-   rec.overlay.style.visibility=active?'visible':'hidden';
+   rec.overlay.style.opacity=active?String(alpha):'0';
+   rec.overlay.style.visibility=active&&alpha>.002?'visible':'hidden';
   }
  }
  function schedule(){if(!frame)frame=requestAnimationFrame(update)}
@@ -89,7 +97,11 @@
   new MutationObserver(schedule).observe(grid,{childList:true,subtree:true});
   window.addEventListener('load',schedule,{once:true});
  }catch(error){
-  for(const rec of records.values()){rec.img.style.visibility=rec.originalVisibility;rec.overlay.remove()}
+  for(const rec of records.values()){
+   rec.img.style.opacity=rec.originalOpacity;
+   rec.img.style.visibility=rec.originalVisibility;
+   rec.overlay.remove();
+  }
   records.clear();
  }
 })();
