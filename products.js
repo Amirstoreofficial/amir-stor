@@ -43,7 +43,6 @@ window.AMIR_PRODUCTS = [
     packCount: 300,
     price: null,
     packPrice: null,
-    priceHidden: true,
     unit: "بسته",
     salesUnits: ["بسته", "عدد"],
     featuredOffer: true,
