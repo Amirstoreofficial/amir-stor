@@ -5,7 +5,7 @@ window.AMIR_PRODUCTS = [
     name: "بطری گرد ۱۰۰۰ سی‌سی",
     category: "بطری و جار",
     description: "بطری گرد با حجم ۱۰۰۰ سی‌سی و دهانه ۲۸ میلی‌متر؛ عرضه در وزن‌های مختلف.",
-    image: "images/4.png",
+    image: "images/4.png?v=2",
     motion: true,
     volume: "۱۰۰۰ سی‌سی",
     mouthSize: "۲۸ میلی‌متر",
