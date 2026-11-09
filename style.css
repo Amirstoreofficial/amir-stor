@@ -1966,52 +1966,79 @@ body>.scroll-atmosphere{display:none!important}
 }
 
 
-/* Shahoo featured offer — desktop composition: one hero roll centered, two smaller rolls at its sides */
+/* Shahoo featured offer — corrected horizontal roll composition.
+   Source artwork is portrait (339x1019); its box must be landscape BEFORE rotation. */
 #offers .offer-card[data-product-detail="1004"] .offer-card-visual{
   position:relative!important;
+  display:block!important;
   overflow:hidden!important;
-  padding:26px 8px 8px!important;
+  padding:0!important;
 }
 #offers .offer-card[data-product-detail="1004"] .shahoo-pile{
-  position:absolute!important;inset:0!important;
-  width:100%!important;height:100%!important;min-height:0!important;
-  display:block!important;overflow:hidden!important;
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  overflow:hidden!important;
 }
 #offers .offer-card[data-product-detail="1004"] .shahoo-piece{
-  position:absolute!important;display:block!important;
-  width:48%!important;height:88%!important;
-  max-width:none!important;max-height:none!important;
-  object-fit:contain!important;object-position:center!important;
-  padding:0!important;margin:0!important;
-  animation:none!important;will-change:auto!important;
-  filter:drop-shadow(0 7px 6px #153b2b38)!important;
+  position:absolute!important;
+  display:block!important;
+  width:90%!important;
+  height:70%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:0!important;
+  margin:0!important;
+  animation:none!important;
+  transition:none!important;
+  transform-origin:center center!important;
+  filter:drop-shadow(0 6px 5px #153b2b38)!important;
 }
 #offers .offer-card[data-product-detail="1004"] .shahoo-piece-center{
-  left:26%!important;top:5%!important;
-  transform:rotate(90deg) scale(1)!important;z-index:4!important;
+  left:5%!important;
+  top:15%!important;
+  transform:rotate(90deg) scale(.96)!important;
+  z-index:4!important;
 }
 #offers .offer-card[data-product-detail="1004"] .shahoo-piece-left{
-  left:-5%!important;top:12%!important;
-  transform:rotate(90deg) scale(.78)!important;z-index:2!important;
+  left:-30%!important;
+  top:15%!important;
+  transform:rotate(90deg) scale(.62)!important;
+  z-index:3!important;
 }
 #offers .offer-card[data-product-detail="1004"] .shahoo-piece-right{
-  left:57%!important;top:18%!important;
-  transform:rotate(90deg) scale(.62)!important;z-index:1!important;
+  left:40%!important;
+  top:15%!important;
+  transform:rotate(90deg) scale(.62)!important;
+  z-index:3!important;
 }
 @media(max-width:560px){
   #offers .offer-card[data-product-detail="1004"] .offer-card-visual{
-    position:relative!important;padding:24px 2px 3px!important;
+    height:148px!important;
+    min-height:148px!important;
+    padding:0!important;
   }
   #offers .offer-card[data-product-detail="1004"] .shahoo-piece{
-    width:49%!important;height:84%!important;
+    width:90%!important;
+    height:70%!important;
   }
   #offers .offer-card[data-product-detail="1004"] .shahoo-piece-center{
-    left:25%!important;top:8%!important;transform:rotate(90deg) scale(1)!important;
+    left:5%!important;
+    top:15%!important;
+    transform:rotate(90deg) scale(.96)!important;
   }
   #offers .offer-card[data-product-detail="1004"] .shahoo-piece-left{
-    left:-9%!important;top:13%!important;transform:rotate(90deg) scale(.72)!important;
+    left:-30%!important;
+    top:15%!important;
+    transform:rotate(90deg) scale(.62)!important;
   }
   #offers .offer-card[data-product-detail="1004"] .shahoo-piece-right{
-    left:60%!important;top:20%!important;transform:rotate(90deg) scale(.56)!important;
+    left:40%!important;
+    top:15%!important;
+    transform:rotate(90deg) scale(.62)!important;
   }
 }
