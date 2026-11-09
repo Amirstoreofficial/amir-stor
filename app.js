@@ -50,11 +50,11 @@ function openProductDetail(id){
     {title:"قیمت هر عدد",value:p.price!=null?money(p.price):"استعلام قیمت",note:"قیمت مستقل فروش یک عدد"},
     {title:"قیمت هر بسته",value:p.packPrice!=null?money(p.packPrice):"استعلام قیمت",note:"قیمت مستقل فروش یک بسته"},
     {title:"تعداد در بسته",value:packageQuantity(p)?new Intl.NumberFormat("fa-IR").format(packageQuantity(p))+" عدد":null,note:"از فیلد تعداد بسته یا توضیحات محصول خوانده می‌شود"},
-    {title:"واحد فروش",value:p.unit||null,note:"واحد محاسبه و ثبت سفارش"},
+    {title:"واحد فروش",value:productUnits(p).join("، "),note:"واحدهای قابل انتخاب برای فروش"},
     {title:"ابعاد محصول",value:p.dimensions||null,note:"اندازه و ابعاد اعلام‌شده محصول"},
     {title:"حجم محصول",value:p.volume||null,note:"ظرفیت اعلام‌شده محصول"},
     {title:"قطر دهانه",value:p.mouthSize||null,note:"اندازه دهانه یا محل ورودی بطری"},
-    {title:"درب و دستگیره",value:p.capHandle||null,note:"رنگ‌بندی درب و دستگیره"},
+    {title:"رنگ درب / دستگیره",value:p.capHandle||null,note:"رنگ‌بندی درب یا دستگیره محصول"},
     {title:"وزن",value:p.weight||p.weights||null,note:"وزن اعلام‌شده محصول"}
   ].filter(x=>x.value);
   const units=productUnits(p);const defaultUnit=selectedUnit(p);
