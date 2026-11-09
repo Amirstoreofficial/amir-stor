@@ -2158,3 +2158,15 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
   padding:0!important;
   background:transparent!important;
 }
+
+
+/* PERFORMANCE PASS: compositor-friendly, viewport-only movement. */
+body>.scroll-atmosphere>.bg-product{filter:none!important;mix-blend-mode:normal!important;will-change:auto!important;opacity:.10!important}
+#productGrid .product-visual,#productGrid.product-motion-ready .product-card .product-visual,#productGrid .product-card .product-visual,#productGrid.product-flight-enabled .product-card .product-visual.product-flight-ready{opacity:1!important;transform:none!important;translate:0 0!important;transition:none!important;will-change:auto!important}
+#productGrid .product-photo,#productGrid .product-photo-float{animation:amirPhotoGentleFloat 7s ease-in-out infinite!important;animation-play-state:paused!important;filter:none!important;will-change:auto!important;backface-visibility:hidden}
+#productGrid .product-card.motion-in-view .product-photo{animation-play-state:running!important}
+#offers .offer-card-visual>img,#offers .offer-card-visual .shahoo-piece{animation-play-state:paused!important;will-change:auto!important;filter:none!important}
+#offers .offer-card.motion-in-view .offer-card-visual>img,#offers .offer-card.motion-in-view .offer-card-visual .shahoo-piece{animation-play-state:running!important}
+.amir-product-flight-object{display:none!important}
+@media(max-width:700px){#productGrid .product-photo{animation-duration:8s!important}#offers .offer-card-visual>img{animation-duration:7s!important}}
+@media(prefers-reduced-motion:reduce){#productGrid .product-photo,#offers .offer-card-visual>img,#offers .offer-card-visual .shahoo-piece{animation:none!important}}
