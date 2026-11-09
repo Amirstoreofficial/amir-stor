@@ -2091,3 +2091,37 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
 #offers .offer-card[data-product-detail="1004"] .offer-card-visual{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;padding:10px!important}
 #offers .offer-card[data-product-detail="1004"] .shahoo-single-image{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;padding:0!important;transform:none!important;animation:amirOfferProductDrift 5s ease-in-out infinite!important;filter:drop-shadow(0 5px 5px #153b2b30)!important}
 @media(max-width:560px){#offers .offer-card[data-product-detail="1004"] .offer-card-visual{padding:8px!important}#offers .offer-card[data-product-detail="1004"] .shahoo-single-image{width:100%!important;height:100%!important;max-height:112px!important;object-fit:contain!important}}
+
+
+/* Offers heading contrast: clear, accessible colors on the deep green section */
+#offers.offers-section .offers-heading .eyebrow{
+  color:#e6ffad!important;
+  font-weight:900!important;
+  text-shadow:0 1px 3px #071f16!important;
+}
+#offers.offers-section .offers-heading h2{
+  color:#ffffff!important;
+  font-weight:900!important;
+  text-shadow:0 2px 8px #061d1766!important;
+}
+#offers.offers-section .offers-heading p{
+  color:#f3f8ef!important;
+  font-size:13px!important;
+  font-weight:600!important;
+  line-height:2!important;
+  text-shadow:0 1px 3px #061d1766!important;
+}
+#offers.offers-section .offers-heading-mark{
+  color:#173d2d!important;
+  background:linear-gradient(135deg,#efffc9 0%,#c8ed8d 100%)!important;
+  border:1px solid #f4ffd9!important;
+  font-weight:900!important;
+  box-shadow:0 8px 24px #061d174d!important;
+  text-shadow:none!important;
+}
+@media(max-width:560px){
+  #offers.offers-section .offers-heading{gap:12px!important}
+  #offers.offers-section .offers-heading .eyebrow{color:#eaffb9!important}
+  #offers.offers-section .offers-heading p{color:#ffffff!important;font-size:12px!important}
+  #offers.offers-section .offers-heading-mark{color:#173d2d!important;background:#d9f3a7!important}
+}
