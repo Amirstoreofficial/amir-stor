@@ -25,7 +25,7 @@ function renderFeaturedOffers(){
  const grid=$("#offersGrid");
  if(!grid)return;
  grid.innerHTML=offers.map(p=>`<article class="offer-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده پیشنهاد ویژه ${p.name}">
-  <div class="offer-card-visual">${p.image?(p.id===1004?`<div class="shahoo-pile" aria-label="سه رول سفره شاهو خوابیده؛ رول اصلی در مرکز و دو رول کوچک‌تر در طرفین"><img class="shahoo-piece shahoo-piece-left" src="${p.image}" alt="${p.name}" loading="lazy"><img class="shahoo-piece shahoo-piece-center" src="${p.image}" alt="" loading="lazy"><img class="shahoo-piece shahoo-piece-right" src="${p.image}" alt="" loading="lazy"></div>`:`<img src="${p.image}" alt="${p.name}" loading="lazy">`):""}<span class="offer-ribbon">✦ تخفیف ویژه</span><span class="offer-glow"></span></div>
+  <div class="offer-card-visual">${p.image?(p.id===1004?`<img class="shahoo-single-image" src="${p.image}" alt="${p.name}" loading="lazy">`:`<img src="${p.image}" alt="${p.name}" loading="lazy">`):""}<span class="offer-ribbon">✦ تخفیف ویژه</span><span class="offer-glow"></span></div>
   <div class="offer-card-info"><span class="offer-kicker">پیشنهاد ویژه فروشگاه امیر</span><h3>${p.name}</h3><p>${p.description||"برای اطلاع از جزئیات این پیشنهاد با ما در تماس باشید."}</p><div class="offer-card-bottom"><b>${p.price!=null?money(p.price):"استعلام قیمت"}</b><span>مشاهده و سفارش <i>←</i></span></div></div>
  </article>`).join("");
  grid.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>img.remove(),{once:true}));
