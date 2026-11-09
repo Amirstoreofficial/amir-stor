@@ -2,7 +2,7 @@ const products = Array.isArray(window.AMIR_PRODUCTS) ? window.AMIR_PRODUCTS : []
 const $=s=>document.querySelector(s);
 const money=n=>new Intl.NumberFormat("fa-IR").format(n)+" تومان";
 const normalizeText=value=>String(value??"").normalize("NFKC").replace(/[يى]/g,"ی").replace(/ك/g,"ک").replace(/[\u064B-\u065F\u0670]/g,"").toLocaleLowerCase("fa");
-const categories=[...new Set(products.map(p=>p.category))];
+const preferredCategories=["بطری و جار","سفره","محصولات فومی"];const categories=[...preferredCategories.filter(c=>products.some(p=>p.category===c)),...new Set(products.map(p=>p.category).filter(c=>!preferredCategories.includes(c)))];
 if(!products.length){document.querySelector("#categories").hidden=true;document.querySelector("#products").hidden=true;}
 $("#categoryGrid").innerHTML=categories.map((c,i)=>`<button class="category-card" data-category="${c}"><span class="cat-icon">${["▤","▣","◉","♧","◇","✳"][i%6]}</span><b>${c}</b><small>مشاهده محصولات ←</small></button>`).join("");
 $("#categoryFilter").innerHTML+=[...categories].map(c=>`<option>${c}</option>`).join("");
