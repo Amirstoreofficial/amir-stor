@@ -2085,3 +2085,9 @@ body>.scroll-atmosphere{display:none!important}
 
 /* Stop all catalog flight overlays immediately while a product detail is open. */
 body.modal-open .amir-product-flight-object{display:none!important;opacity:0!important;visibility:hidden!important}
+
+
+/* Shahoo featured offer: one complete product photo */
+#offers .offer-card[data-product-detail="1004"] .offer-card-visual{display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;padding:10px!important}
+#offers .offer-card[data-product-detail="1004"] .shahoo-single-image{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;object-position:center!important;margin:0!important;padding:0!important;transform:none!important;animation:amirOfferProductDrift 5s ease-in-out infinite!important;filter:drop-shadow(0 5px 5px #153b2b30)!important}
+@media(max-width:560px){#offers .offer-card[data-product-detail="1004"] .offer-card-visual{padding:8px!important}#offers .offer-card[data-product-detail="1004"] .shahoo-single-image{width:100%!important;height:100%!important;max-height:112px!important;object-fit:contain!important}}
