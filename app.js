@@ -41,7 +41,7 @@ function openProductDetail(id){
   const p=products.find(x=>x.id==id);if(!p)return;
   const modal=$("#productModal");clearTimeout(detailCloseTimer);modal.classList.remove("is-closing");
   $("#detailTitle").textContent=p.name||"جزئیات محصول";
-  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";$("#detailImage").classList.add("detail-photo-float");
+  $("#detailImage").src=p.image||"";$("#detailImage").alt=p.name||"";$("#detailImage").classList.remove("detail-photo-float");
   $("#detailImage").onerror=()=>{$("#detailImage").hidden=true;$("#detailPlaceholder").hidden=false;$("#detailPlaceholder").textContent="تصویر واقعی این محصول در دسترس نیست"};
   $("#detailImage").hidden=!p.image;$("#detailPlaceholder").hidden=!!p.image;
   $("#detailCategory").textContent=p.category||"";
