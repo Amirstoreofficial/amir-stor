@@ -1757,3 +1757,32 @@ body>.scroll-atmosphere{display:none!important}
     animation:none!important;translate:none!important;
   }
 }
+
+
+/* AMIR STORE — guaranteed offer motion, including devices with global reduced-motion CSS */
+@keyframes amirOfferFloatCompat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg) scale(1)}
+  50%{transform:translate3d(0,-11px,0) rotate(1.2deg) scale(1.025)}
+}
+@keyframes amirOfferGlowCompat{
+  0%,100%{opacity:.28;transform:scale(.88)}
+  50%{opacity:.78;transform:scale(1.16)}
+}
+@keyframes amirOfferBadgePulse{
+  0%,100%{box-shadow:0 7px 18px #b73b2b44}
+  50%{box-shadow:0 8px 27px #ff8b39a6,0 0 0 5px #ff9a3a1c}
+}
+#offers .offer-card-visual img{
+  animation:amirOfferFloatCompat 4.6s ease-in-out infinite!important;
+  transform-origin:50% 58%;
+  will-change:transform;
+}
+#offers .offer-card:nth-child(2) .offer-card-visual img{animation-delay:-1.4s!important}
+#offers .offer-card:nth-child(3) .offer-card-visual img{animation-delay:-2.8s!important}
+#offers .offer-glow{animation:amirOfferGlowCompat 4.2s ease-in-out infinite!important}
+#offers .offer-ribbon{animation:amirOfferBadgePulse 3.4s ease-in-out infinite!important}
+@media(prefers-reduced-motion:reduce){
+  #offers .offer-card-visual img{animation:amirOfferFloatCompat 4.6s ease-in-out infinite!important}
+  #offers .offer-glow{animation:amirOfferGlowCompat 4.2s ease-in-out infinite!important}
+  #offers .offer-ribbon{animation:amirOfferBadgePulse 3.4s ease-in-out infinite!important}
+}
