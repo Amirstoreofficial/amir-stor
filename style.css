@@ -2166,7 +2166,6 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
 .site-location-map-title{font-size:13px;font-weight:800;margin:0 0 12px}
 .site-location-map>a.neshan-map-image-link{display:block;color:#f6d982;text-decoration:none;border-radius:13px;overflow:hidden;border:1px solid rgba(246,217,130,.35);background:rgba(255,255,255,.06)}
 .site-location-map .neshan-map-image{display:block;width:100%;height:190px;object-fit:cover;border-radius:12px 12px 0 0}
-.site-location-map>a.neshan-map-image-link>span{display:block;padding:10px 12px;font-size:12px;font-weight:800;text-align:center}
 .site-location-map>a.neshan-map-image-link:hover{filter:brightness(1.06)}
 @media(max-width:620px){
  .site-qr-card{align-items:stretch!important}
@@ -2229,4 +2228,13 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
   #contact .site-location-map .neshan-map-image{
     height:210px!important;
   }
+}
+
+/* Neshan image is the complete clickable location control (no text button). */
+#contact .site-location-map{display:block!important;flex:1 1 280px!important;width:100%!important;max-width:360px!important;min-width:0!important}
+#contact .site-location-map>a.neshan-map-image-link{display:block!important;width:100%!important;padding:0!important;margin:0!important;overflow:hidden!important;border-radius:14px!important;line-height:0!important;cursor:pointer!important}
+#contact .site-location-map .neshan-map-image{display:block!important;width:100%!important;height:auto!important;max-height:230px!important;aspect-ratio:1.58!important;object-fit:cover!important;border-radius:13px!important}
+@media(max-width:620px){
+ #contact .site-location-map{flex:1 1 100%!important;width:100%!important;max-width:none!important;order:3!important}
+ #contact .site-location-map .neshan-map-image{max-height:220px!important}
 }
