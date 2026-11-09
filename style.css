@@ -1657,3 +1657,10 @@ body>.scroll-atmosphere{display:none!important}
  transform-origin:center center!important;transition:none!important;
  will-change:transform,left,top,opacity;backface-visibility:hidden;
 }
+
+
+/* Remove the black matte embedded in the 4L bottle JPEG without changing its motion. */
+#productGrid [data-product-detail="1002"] .product-photo,
+img.amir-product-flight-object[src*="images/3.jpg"]{
+  mix-blend-mode:screen!important;
+}
