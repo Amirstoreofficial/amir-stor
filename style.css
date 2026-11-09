@@ -2173,3 +2173,60 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
  .site-location-map{flex:1 1 100%;max-width:none;order:3}
  .site-location-map iframe{height:210px}
 }
+
+
+/* FIX: ensure the QR + Neshan location card spans the available width,
+   especially on mobile where #contact aligns its children to the start. */
+#contact .site-qr-card{
+  display:flex!important;
+  width:100%!important;
+  max-width:980px!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  margin-inline:auto!important;
+  align-items:center!important;
+  flex-wrap:wrap!important;
+}
+#contact .site-qr-card .site-qr-copy{
+  flex:1 1 260px!important;
+  min-width:0!important;
+}
+#contact .site-qr-card .site-qr-image-link{
+  flex:0 0 auto!important;
+}
+#contact .site-qr-card .site-location-map{
+  display:block!important;
+  flex:1 1 280px!important;
+  width:100%!important;
+  min-width:0!important;
+  max-width:360px!important;
+  box-sizing:border-box!important;
+}
+#contact .site-location-map .neshan-map-image{
+  display:block!important;
+  width:100%!important;
+  height:190px!important;
+  object-fit:cover!important;
+}
+@media(max-width:620px){
+  #contact .site-qr-card{
+    width:100%!important;
+    align-items:stretch!important;
+    gap:14px!important;
+  }
+  #contact .site-qr-card .site-qr-copy{
+    flex:1 1 100%!important;
+  }
+  #contact .site-qr-card .site-qr-image-link{
+    align-self:flex-start!important;
+  }
+  #contact .site-qr-card .site-location-map{
+    flex:1 1 100%!important;
+    width:100%!important;
+    max-width:none!important;
+    order:3!important;
+  }
+  #contact .site-location-map .neshan-map-image{
+    height:210px!important;
+  }
+}
