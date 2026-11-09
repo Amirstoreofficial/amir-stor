@@ -12,7 +12,7 @@ function renderProducts(){
  let cat=$("#categoryFilter").value;
  let list=products.filter(p=>(cat==="همه"||p.category===cat)&&(activeCategory==="همه"||p.category===activeCategory)&&normalizeText(`${p.name} ${p.description} ${p.volume||""} ${p.mouthSize||""} ${p.weight||p.weights||""}`).includes(q));
  const visibleList=showAllProducts?list:list.slice(0,12);
- const cards=visibleList.map(p=>`<article class="product-card ${p.motion?"product-card--motion":""} ${p.featuredOffer?"product-card--offer":""}" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo ${p.motion?"product-photo-float":""}" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><small>تصویر واقعی این محصول هنوز ثبت نشده است</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta"><b>${p.price!=null?money(p.price):"استعلام قیمت"}</b><span>مشاهده مشخصات و سفارش ←</span></div>${p.featuredOffer?`<span class="product-offer-badge">✦ تخفیف ویژه</span>`:""}</div></article>`).join("");
+ const cards=visibleList.map(p=>`<article class="product-card ${p.motion?"product-card--motion":""} ${p.featuredOffer?"product-card--offer":""}" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo ${p.motion?"product-photo-float":""}" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><small>تصویر واقعی این محصول هنوز ثبت نشده است</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta">${p.priceHidden?"":`<b>${p.price!=null?money(p.price):"استعلام قیمت"}</b>`}<span>مشاهده مشخصات و سفارش ←</span></div>${p.featuredOffer?`<span class="product-offer-badge">✦ تخفیف ویژه</span>`:""}</div></article>`).join("");
  $("#productGrid").innerHTML=cards||`<div class="catalog-empty"><span>AMIR / CATALOG</span><b>محصولی پیدا نشد</b><small>عبارت جست‌وجو یا دسته‌بندی را تغییر دهید.</small></div>`;
  $("#productGrid").querySelectorAll("img.product-photo").forEach(img=>img.addEventListener("error",()=>{const box=document.createElement("div");box.className="product-image-placeholder";box.textContent="تصویر واقعی این محصول در دسترس نیست";img.replaceWith(box)},{once:true}));
  const more=$("#productsMoreWrap");
@@ -26,7 +26,7 @@ function renderFeaturedOffers(){
  if(!grid)return;
  grid.innerHTML=offers.map(p=>`<article class="offer-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده پیشنهاد ویژه ${p.name}">
   <div class="offer-card-visual">${p.image?((p.id===1004||p.id===1005)?`<img class="shahoo-single-image" src="${p.image}" alt="${p.name}" loading="lazy">`:`<img src="${p.image}" alt="${p.name}" loading="lazy">`):""}<span class="offer-ribbon">✦ تخفیف ویژه</span><span class="offer-glow"></span></div>
-  <div class="offer-card-info"><span class="offer-kicker">پیشنهاد ویژه فروشگاه امیر</span><h3>${p.name}</h3><p>${p.description||"برای اطلاع از جزئیات این پیشنهاد با ما در تماس باشید."}</p><div class="offer-card-bottom"><b>${p.price!=null?money(p.price):"استعلام قیمت"}</b><span>مشاهده و سفارش <i>←</i></span></div></div>
+  <div class="offer-card-info"><span class="offer-kicker">پیشنهاد ویژه فروشگاه امیر</span><h3>${p.name}</h3><p>${p.description||"برای اطلاع از جزئیات این پیشنهاد با ما در تماس باشید."}</p><div class="offer-card-bottom">${p.priceHidden?"":`<b>${p.price!=null?money(p.price):"استعلام قیمت"}</b>`}<span>مشاهده و سفارش <i>←</i></span></div></div>
  </article>`).join("");
  grid.querySelectorAll("img").forEach(img=>img.addEventListener("error",()=>img.remove(),{once:true}));
 }
@@ -56,7 +56,7 @@ function openProductDetail(id){
     {title:"قطر دهانه",value:p.mouthSize||null,note:"اندازه دهانه یا محل ورودی بطری"},
     {title:"درب و دستگیره",value:p.capHandle||null,note:"رنگ‌بندی درب و دستگیره"},
     {title:"وزن",value:p.weight||p.weights||null,note:"وزن اعلام‌شده محصول"}
-  ].filter(x=>x.value);
+  ].filter(x=>x.value && !(p.priceHidden && x.title.startsWith("قیمت")));
   const units=productUnits(p);const defaultUnit=selectedUnit(p);
   $("#detailSpecs").innerHTML=specs.map(x=>`<div class="detail-spec"><small>${x.title}</small><b>${x.value}</b><span>${x.note}</span></div>`).join("")+
     `<div class="detail-spec" style="grid-column:1/-1"><small>واحد خرید</small><div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0">${units.map((u,i)=>`<label style="display:flex;align-items:center;gap:6px;padding:9px 13px;border:1px solid var(--line,#d7dfdc);border-radius:12px;cursor:pointer"><input type="radio" name="detailSalesUnit" value="${u}" ${i===0?"checked":""}> ${u}</label>`).join("")}</div><small>تعداد داخل هر بسته: ${packageQuantity(p)?new Intl.NumberFormat("fa-IR").format(packageQuantity(p))+" عدد":"در توضیحات مشخص نشده"}</small></div>
