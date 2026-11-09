@@ -72,6 +72,7 @@ window.AMIR_PRODUCTS = [
     weight: "۴۰۰ گرم",
     length: "حدود ۵۰ متر",
     packaging: "رولی، پرفراژدار، طرح‌دار",
+    featuredOffer: true,
     price: null,
     packPrice: null,
     unit: "رول",
