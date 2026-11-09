@@ -1708,3 +1708,52 @@ body>.scroll-atmosphere{display:none!important}
  .offer-card-info p{font-size:10px;min-height:0}
  .offer-card-bottom{align-items:flex-start;flex-direction:column;gap:8px;margin-top:12px;padding-top:10px}
 }
+
+
+/* AMIR STORE — lively but elegant motion for featured offer cards */
+@keyframes amirOfferFloat{
+  0%,100%{translate:0 0;rotate:0deg}
+  50%{translate:0 -9px;rotate:1deg}
+}
+@keyframes amirOfferGlowPulse{
+  0%,100%{opacity:.38;scale:.92}
+  50%{opacity:.72;scale:1.12}
+}
+@keyframes amirOfferRibbonShine{
+  0%,65%,100%{background-position:0% 50%}
+  82%{background-position:100% 50%}
+}
+@keyframes amirOfferCardEnter{
+  from{opacity:0;translate:0 24px;scale:.985}
+  to{opacity:1;translate:0 0;scale:1}
+}
+.offers-section .offer-card{
+  animation:amirOfferCardEnter .75s cubic-bezier(.2,.75,.25,1) both;
+}
+.offers-section .offer-card:nth-child(2){animation-delay:.12s}
+.offers-section .offer-card:nth-child(3){animation-delay:.24s}
+.offers-section .offer-card-visual img{
+  animation:amirOfferFloat 5.2s ease-in-out infinite;
+  will-change:translate,rotate;
+}
+.offers-section .offer-card:nth-child(2) .offer-card-visual img{animation-delay:-1.7s}
+.offers-section .offer-card:nth-child(3) .offer-card-visual img{animation-delay:-3.2s}
+.offers-section .offer-glow{animation:amirOfferGlowPulse 4.8s ease-in-out infinite}
+.offers-section .offer-ribbon{
+  background-size:220% 100%;
+  animation:amirOfferRibbonShine 6s ease-in-out infinite;
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .offers-section .offer-card:hover .offer-card-visual img{
+    animation-play-state:paused;
+    transform:scale(1.09) rotate(-2deg);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .offers-section .offer-card,
+  .offers-section .offer-card-visual img,
+  .offers-section .offer-glow,
+  .offers-section .offer-ribbon{
+    animation:none!important;translate:none!important;
+  }
+}
