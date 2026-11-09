@@ -79,5 +79,22 @@ window.AMIR_PRODUCTS = [
     salesUnits: ["رول"],
     motion: true,
     symbol: "▤"
+  },
+  {
+    id: 1005,
+    name: "سفره یکبار مصرف",
+    category: "سفره و محصولات پلاستیکی",
+    description: "سفره یکبار مصرف مقاوم، رولی و پرفراژدار؛ ابعاد ۱۰۰×۱۰۰ سانتی‌متر و وزن ۱۰۰۰ گرم.",
+    image: "images/8.png",
+    dimensions: "۱۰۰×۱۰۰ سانتی‌متر",
+    weight: "۱۰۰۰ گرم",
+    packaging: "رولی، پرفراژدار",
+    featuredOffer: true,
+    price: null,
+    packPrice: null,
+    unit: "رول",
+    salesUnits: ["رول"],
+    motion: true,
+    symbol: "▤"
   }
 ];
