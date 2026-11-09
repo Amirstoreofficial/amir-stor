@@ -36,12 +36,18 @@ window.AMIR_PRODUCTS = [
   },
   {
     id: 9,
-    name: "فوم تک پرسی",
+    name: "فوم تک پرسی ام جی-سپیده",
     category: "محصولات پلاستیکی",
-    description: "ظرف فوم تک‌پرسی مناسب بسته‌بندی و سرو غذا.",
+    description: "ظرف فوم تک‌پرسی ام‌جی-سپیده؛ عرضه در بسته‌های ۳۰۰ عددی.",
+    image: "9.png",
     packCount: 300,
-    price: 3250,
-    unit: "عدد",
+    price: null,
+    packPrice: null,
+    priceHidden: true,
+    unit: "بسته",
+    salesUnits: ["بسته", "عدد"],
+    featuredOffer: true,
+    motion: true,
     symbol: "▣"
   },
   {
