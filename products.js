@@ -39,7 +39,7 @@ window.AMIR_PRODUCTS = [
     name: "فوم تک پرسی ام جی-سپیده",
     category: "محصولات فومی",
     description: "ظرف فوم تک‌پرسی ام‌جی-سپیده؛ عرضه در بسته‌های ۳۰۰ عددی.",
-    image: "9.png",
+    image: "9.png?v=20261109-1",
     packCount: 300,
     price: null,
     packPrice: null,
