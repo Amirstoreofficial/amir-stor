@@ -14,7 +14,6 @@ window.AMIR_PRODUCTS = [
     packCount: 100,
     salesUnits: ["بسته", "عدد"],
     unit: "عدد",
-    motion: true,
     symbol: "▱"
   },
   {
@@ -31,6 +30,7 @@ window.AMIR_PRODUCTS = [
     packCount: 40,
     salesUnits: ["بسته", "عدد"],
     unit: "عدد",
+    motion: true,
     symbol: "▱"
   },
   {
