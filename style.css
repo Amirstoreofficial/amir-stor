@@ -2145,3 +2145,16 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
     width:100%!important;height:100%!important;max-height:112px!important;object-fit:contain!important;
   }
 }
+
+
+/* Keep the MG-Sepideh foam product photo proportionate to other catalog products */
+#productGrid .product-card[data-product-detail="9"] .product-visual .product-photo{
+  width:76%!important;
+  height:76%!important;
+  max-width:76%!important;
+  max-height:76%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  padding:0!important;
+  background:transparent!important;
+}
