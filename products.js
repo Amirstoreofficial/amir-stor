@@ -17,6 +17,22 @@ window.AMIR_PRODUCTS = [
     symbol: "▱"
   },
   {
+    id: 1002,
+    name: "بطری گرد پافیلی ۴ لیتری",
+    category: "بطری و جار",
+    description: "بطری گرد پافیلی با حجم ۴۰۰۰ سی‌سی و دهانه ۴۵ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    volume: "۴۰۰۰ سی‌سی",
+    mouthSize: "۴۵ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    packCount: 40,
+    salesUnits: ["بسته", "عدد"],
+    unit: "عدد",
+    motion: true,
+    symbol: "▱"
+  },
+  {
     id: 9,
     name: "فوم تک پرسی",
     category: "محصولات پلاستیکی",
