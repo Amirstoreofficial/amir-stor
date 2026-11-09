@@ -2125,3 +2125,23 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
   #offers.offers-section .offers-heading p{color:#ffffff!important;font-size:12px!important}
   #offers.offers-section .offers-heading-mark{color:#173d2d!important;background:#d9f3a7!important}
 }
+
+
+/* New 1000g disposable tablecloth: match the existing Shahoo single-photo offer layout */
+#offers .offer-card[data-product-detail="1005"] .offer-card-visual{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  overflow:hidden!important;padding:10px!important;
+}
+#offers .offer-card[data-product-detail="1005"] .shahoo-single-image{
+  display:block!important;width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;object-fit:contain!important;
+  object-position:center!important;margin:0!important;padding:0!important;
+  transform:none!important;animation:amirOfferProductDrift 5s ease-in-out infinite!important;
+  filter:drop-shadow(0 5px 5px #153b2b30)!important;
+}
+@media(max-width:560px){
+  #offers .offer-card[data-product-detail="1005"] .offer-card-visual{padding:8px!important}
+  #offers .offer-card[data-product-detail="1005"] .shahoo-single-image{
+    width:100%!important;height:100%!important;max-height:112px!important;object-fit:contain!important;
+  }
+}
