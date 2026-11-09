@@ -14,14 +14,15 @@ window.AMIR_PRODUCTS = [
     packCount: 100,
     salesUnits: ["بسته", "عدد"],
     unit: "عدد",
+    motion: true,
     symbol: "▱"
   },
   {
     id: 1002,
-    name: "بطری گرد پافیلی",
+    name: "بطری گرد پافیلی ۴ لیتری",
     category: "بطری و جار",
     description: "بطری گرد پافیلی با حجم ۴۰۰۰ سی‌سی و دهانه ۴۵ میلی‌متر؛ عرضه در وزن‌های مختلف.",
-    image: "images/3.png",
+    image: "images/3.jpg",
     volume: "۴۰۰۰ سی‌سی",
     mouthSize: "۴۵ میلی‌متر",
     weights: "در وزن‌های مختلف",
