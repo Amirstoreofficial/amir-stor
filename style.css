@@ -1786,3 +1786,64 @@ body>.scroll-atmosphere{display:none!important}
   #offers .offer-glow{animation:amirOfferGlowCompat 4.2s ease-in-out infinite!important}
   #offers .offer-ribbon{animation:amirOfferBadgePulse 3.4s ease-in-out infinite!important}
 }
+
+
+/* Mobile optimization: featured offer product image and discount badges */
+@media(max-width:560px){
+  #offers .offer-card{
+    grid-template-columns:34% minmax(0,1fr)!important;
+    min-height:148px;
+    align-items:stretch;
+  }
+  #offers .offer-card-visual{
+    min-height:148px!important;
+    height:148px!important;
+    padding:28px 7px 7px!important;
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  #offers .offer-card-visual img{
+    display:block;
+    width:100%!important;
+    height:108px!important;
+    max-width:100%!important;
+    max-height:108px!important;
+    padding:2px!important;
+    object-fit:contain!important;
+  }
+  #offers .offer-ribbon{
+    top:7px!important;
+    right:6px!important;
+    left:6px!important;
+    width:max-content;
+    max-width:calc(100% - 12px);
+    padding:4px 7px!important;
+    font-size:8px!important;
+    line-height:1.4!important;
+    white-space:nowrap;
+  }
+  #offers .offer-card-info{padding:12px 10px!important;min-width:0}
+  #offers .offer-card-info h3{font-size:13px!important;line-height:1.6}
+  #offers .offer-card-info p{font-size:9px!important;line-height:1.7}
+  #offers .offer-card-bottom{font-size:9px!important;gap:6px}
+  #offers .offer-card-bottom b,#offers .offer-card-bottom span{font-size:9px!important}
+  #productGrid .product-card--offer .product-offer-badge{
+    top:5px!important;
+    right:5px!important;
+    padding:3px 6px!important;
+    font-size:7px!important;
+    line-height:1.35!important;
+    border-radius:999px!important;
+    max-width:calc(100% - 10px);
+    white-space:nowrap;
+    box-shadow:0 2px 7px #b73b2b2e!important;
+  }
+}
+@media(max-width:380px){
+  #offers .offer-card{grid-template-columns:32% minmax(0,1fr)!important}
+  #offers .offer-card-visual{height:136px!important;min-height:136px!important}
+  #offers .offer-card-visual img{height:96px!important;max-height:96px!important}
+  #offers .offer-card-info{padding:10px 8px!important}
+  #productGrid .product-card--offer .product-offer-badge{font-size:6px!important;padding:3px 5px!important}
+}
