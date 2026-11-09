@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amirstoreofficial.github.io/amir-stor/sitemap.xml
