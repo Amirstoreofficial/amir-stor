@@ -61,5 +61,22 @@ window.AMIR_PRODUCTS = [
     salesUnits: ["بسته", "عدد"],
     motion: true,
     symbol: "▣"
+  },
+  {
+    id: 1004,
+    name: "سفره شاهو",
+    category: "سفره و محصولات پلاستیکی",
+    description: "سفره شاهو به‌صورت رولی، پرفراژدار و طرح‌دار؛ سایز ۱۰۰×۱۰۰ سانتی‌متر، وزن ۴۰۰ گرم و متراژ حدود ۵۰ متر.",
+    image: "images/7.png",
+    dimensions: "۱۰۰×۱۰۰ سانتی‌متر",
+    weight: "۴۰۰ گرم",
+    length: "حدود ۵۰ متر",
+    packaging: "رولی، پرفراژدار، طرح‌دار",
+    price: null,
+    packPrice: null,
+    unit: "رول",
+    salesUnits: ["رول"],
+    motion: true,
+    symbol: "▤"
   }
 ];
