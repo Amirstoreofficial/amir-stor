@@ -2042,3 +2042,46 @@ body>.scroll-atmosphere{display:none!important}
     transform:rotate(90deg) scale(.62)!important;
   }
 }
+
+
+/* Offer cards: compact footprint, still more prominent than catalog cards. */
+@media(min-width:561px){
+  #offers .offers-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))!important;gap:18px!important}
+  #offers .offer-card{min-height:238px!important;grid-template-columns:38% minmax(0,1fr)!important}
+  #offers .offer-card-visual{height:238px!important;min-height:238px!important;padding:24px 9px 9px!important}
+  #offers .offer-card-visual>img{width:100%!important;height:178px!important;max-width:100%!important;max-height:178px!important;object-fit:contain!important;padding:3px!important}
+  #offers .offer-card-info{padding:17px 15px!important}
+  #offers .offer-card-info h3{font-size:16px!important}
+}
+@media(max-width:560px){
+  #offers .offer-card{min-height:136px!important;grid-template-columns:32% minmax(0,1fr)!important}
+  #offers .offer-card-visual{height:136px!important;min-height:136px!important;padding:20px 4px 4px!important}
+  #offers .offer-card-visual>img{width:100%!important;height:104px!important;max-width:100%!important;max-height:104px!important;object-fit:contain!important;padding:2px!important}
+  #offers .offer-card-info{padding:11px 9px!important}
+}
+@media(max-width:380px){
+  #offers .offer-card{grid-template-columns:30% minmax(0,1fr)!important;min-height:128px!important}
+  #offers .offer-card-visual{height:128px!important;min-height:128px!important}
+  #offers .offer-card-visual>img{height:96px!important;max-height:96px!important}
+}
+
+/* Product art always remains fully visible; motion is subtle and independent. */
+@keyframes amirOfferProductDrift{
+  0%,100%{translate:0 0;rotate:0deg}
+  50%{translate:0 -5px;rotate:.7deg}
+}
+#offers .offer-card-visual>img{
+  object-fit:contain!important;
+  animation:amirOfferProductDrift 4.8s ease-in-out infinite!important;
+  will-change:translate,rotate;
+}
+#offers .offer-card:nth-child(2) .offer-card-visual>img{animation-delay:-1.6s!important}
+#offers .offer-card:nth-child(3) .offer-card-visual>img{animation-delay:-3.1s!important}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece{
+  animation:amirOfferProductDrift 5.2s ease-in-out infinite!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-left{animation-delay:-1.7s!important}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-right{animation-delay:-3.2s!important}
+
+/* Stop all catalog flight overlays immediately while a product detail is open. */
+body.modal-open .amir-product-flight-object{display:none!important;opacity:0!important;visibility:hidden!important}
