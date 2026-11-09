@@ -63,3 +63,22 @@
 @keyframes amirDetailImageEnter{from{opacity:0;transform:scale(.86) rotateY(-9deg);filter:blur(7px)}to{opacity:1;transform:scale(1) rotateY(0);filter:blur(0)}}
 @keyframes amirDetailTextEnter{from{opacity:0;transform:translateY(12px);filter:blur(4px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
 @media(prefers-reduced-motion:reduce){.product-photo-float,.detail-image-wrap img.detail-photo-float,.product-modal.show .product-detail-panel,.product-modal.show .detail-image-wrap,.product-modal.show .detail-content>*{animation:none!important;transition:none!important}}
+
+
+/* AMIR MOTION FIX — animate only products explicitly marked as motion-enabled.
+   Use the independent top-position channel so old transform/translate rules
+   and reduced-motion overrides cannot cancel the card float. */
+#productGrid .product-card--motion .product-photo-float{
+  position:relative!important;
+  animation:amirProductCardFloatFixed 4.8s ease-in-out infinite!important;
+  will-change:top;
+}
+@keyframes amirProductCardFloatFixed{
+  0%,100%{top:0}
+  50%{top:-8px}
+}
+@media(hover:hover){
+  #productGrid .product-card--motion:hover .product-photo-float{
+    animation-duration:3.2s!important;
+  }
+}
