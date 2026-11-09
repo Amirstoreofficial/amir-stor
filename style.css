@@ -1918,3 +1918,49 @@ body>.scroll-atmosphere{display:none!important}
   #offers .offer-card[data-product-detail="1004"] .offer-card-visual{min-height:136px!important;height:136px!important}
   #offers .offer-card[data-product-detail="1004"] .offer-card-visual img{max-height:88px!important}
 }
+
+
+/* Shahoo offer: several tablecloth rolls lying in a loose, natural pile */
+#offers .offer-card[data-product-detail="1004"] .offer-card-visual{
+  position:relative!important;
+  padding:28px 8px 8px!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-pile{
+  position:relative!important;
+  width:100%!important;height:100%!important;min-height:0!important;
+  display:block!important;overflow:hidden!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece{
+  position:absolute!important;
+  display:block!important;
+  width:88%!important;height:48%!important;
+  max-width:none!important;max-height:none!important;
+  object-fit:contain!important;object-position:center!important;
+  padding:0!important;margin:0!important;
+  animation:none!important;transform-origin:center!important;
+  filter:drop-shadow(0 5px 4px #183d2928)!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-1{
+  left:3%!important;top:35%!important;transform:rotate(87deg)!important;z-index:2!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-2{
+  left:13%!important;top:17%!important;transform:rotate(94deg)!important;z-index:3!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-3{
+  left:-5%!important;top:48%!important;transform:rotate(82deg)!important;z-index:1!important;
+}
+#offers .offer-card[data-product-detail="1004"] .shahoo-piece-4{
+  left:19%!important;top:42%!important;transform:rotate(101deg)!important;z-index:4!important;
+}
+@media(max-width:560px){
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual{
+    padding:27px 3px 4px!important;
+  }
+  #offers .offer-card[data-product-detail="1004"] .shahoo-piece{
+    width:100%!important;height:54%!important;
+  }
+  #offers .offer-card[data-product-detail="1004"] .shahoo-piece-1{left:-7%!important;top:35%!important}
+  #offers .offer-card[data-product-detail="1004"] .shahoo-piece-2{left:4%!important;top:18%!important}
+  #offers .offer-card[data-product-detail="1004"] .shahoo-piece-3{left:-12%!important;top:48%!important}
+  #offers .offer-card[data-product-detail="1004"] .shahoo-piece-4{left:10%!important;top:43%!important}
+}
