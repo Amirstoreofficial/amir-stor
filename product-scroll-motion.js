@@ -45,6 +45,16 @@
  function update(){
   frame=0;
   sync();
+  const detailModal=document.getElementById('productModal');
+  if(document.body.classList.contains('modal-open')||(detailModal&&detailModal.classList.contains('show'))){
+   for(const rec of records.values()){
+    rec.img.style.opacity=rec.originalOpacity;
+    rec.img.style.visibility=rec.originalVisibility;
+    rec.overlay.style.opacity='0';
+    rec.overlay.style.visibility='hidden';
+   }
+   return;
+  }
   const scroll=window.scrollY||window.pageYOffset||0;
   const vh=window.innerHeight||document.documentElement.clientHeight;
   const vw=window.innerWidth||document.documentElement.clientWidth;
@@ -100,6 +110,9 @@
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   new MutationObserver(schedule).observe(grid,{childList:true,subtree:true});
+  const detailModal=document.getElementById('productModal');
+  if(detailModal)new MutationObserver(schedule).observe(detailModal,{attributes:true,attributeFilter:['class','aria-hidden']});
+  new MutationObserver(schedule).observe(document.body,{attributes:true,attributeFilter:['class']});
   window.addEventListener('load',schedule,{once:true});
  }catch(error){
   for(const rec of records.values()){
