@@ -68,6 +68,24 @@ window.AMIR_PRODUCTS = [
     symbol: "▣"
   },
   {
+    id: 1006,
+    name: "جار چهار گوش",
+    category: "بطری و جار",
+    description: "جار چهارگوش با حجم ۷۰۰ سی‌سی و دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف، با درب‌های رنگ‌بندی متنوع و بسته‌های ۸۰ عددی.",
+    image: "images/10.png",
+    volume: "۷۰۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    capHandle: "درب در رنگ‌های مختلف",
+    packCount: 80,
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
+  {
     id: 1004,
     name: "سفره شاهو",
     category: "سفره",
