@@ -37,7 +37,7 @@ window.AMIR_PRODUCTS = [
   {
     id: 9,
     name: "فوم تک پرسی ام جی-سپیده",
-    category: "محصولات پلاستیکی",
+    category: "محصولات فومی",
     description: "ظرف فوم تک‌پرسی ام‌جی-سپیده؛ عرضه در بسته‌های ۳۰۰ عددی.",
     image: "9.png",
     packCount: 300,
@@ -70,7 +70,7 @@ window.AMIR_PRODUCTS = [
   {
     id: 1004,
     name: "سفره شاهو",
-    category: "سفره و محصولات پلاستیکی",
+    category: "سفره",
     description: "سفره شاهو به‌صورت رولی، پرفراژدار و طرح‌دار؛ سایز ۱۰۰×۱۰۰ سانتی‌متر، وزن ۴۰۰ گرم و متراژ حدود ۵۰ متر.",
     image: "images/7.png",
     dimensions: "۱۰۰×۱۰۰ سانتی‌متر",
@@ -88,7 +88,7 @@ window.AMIR_PRODUCTS = [
   {
     id: 1005,
     name: "سفره یکبار مصرف",
-    category: "سفره و محصولات پلاستیکی",
+    category: "سفره",
     description: "سفره یکبار مصرف مقاوم، رولی و پرفراژدار؛ ابعاد ۱۰۰×۱۰۰ سانتی‌متر و وزن ۱۰۰۰ گرم.",
     image: "images/8.png",
     dimensions: "۱۰۰×۱۰۰ سانتی‌متر",
