@@ -2158,3 +2158,16 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
   padding:0!important;
   background:transparent!important;
 }
+
+
+/* AMIR STORE — compact interactive shop location map beside the website QR */
+.site-qr-card{max-width:980px!important;flex-wrap:wrap!important}
+.site-location-map{flex:1 1 280px;min-width:0;max-width:360px;color:#fff}
+.site-location-map-title{font-size:13px;font-weight:800;margin:0 0 9px}
+.site-location-map iframe{display:block;width:100%;height:190px;border:0;border-radius:13px;background:#fff}
+.site-location-map>a{display:inline-block;margin-top:8px;color:#f6d982;font-size:11px;font-weight:800}
+@media(max-width:620px){
+ .site-qr-card{align-items:stretch!important}
+ .site-location-map{flex:1 1 100%;max-width:none;order:3}
+ .site-location-map iframe{height:210px}
+}
