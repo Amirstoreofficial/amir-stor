@@ -1894,3 +1894,27 @@ body>.scroll-atmosphere{display:none!important}
 @media(max-width:380px){
   #productGrid .product-card--offer .product-offer-badge{font-size:7px!important;padding:3px 7px!important}
 }
+
+
+/* Shahoo tablecloth offer: show the complete product image without cropping or overscaling */
+#offers .offer-card[data-product-detail="1004"] .offer-card-visual{
+  box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  padding:42px 12px 12px!important;overflow:hidden!important;
+}
+#offers .offer-card[data-product-detail="1004"] .offer-card-visual img{
+  display:block!important;width:auto!important;height:auto!important;max-width:100%!important;max-height:178px!important;
+  object-fit:contain!important;object-position:center!important;padding:0!important;margin:0 auto!important;
+  transform:none!important;animation:none!important;
+}
+@media(min-width:561px){
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual{min-height:260px!important;height:260px!important}
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual img{max-height:190px!important}
+}
+@media(max-width:560px){
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual{min-height:148px!important;height:148px!important;padding:31px 7px 7px!important}
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual img{max-height:102px!important;max-width:100%!important}
+}
+@media(max-width:380px){
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual{min-height:136px!important;height:136px!important}
+  #offers .offer-card[data-product-detail="1004"] .offer-card-visual img{max-height:88px!important}
+}
