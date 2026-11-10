@@ -2238,3 +2238,12 @@ body.modal-open .amir-product-flight-object{display:none!important;opacity:0!imp
  #contact .site-location-map{flex:1 1 100%!important;width:100%!important;max-width:none!important;order:3!important}
  #contact .site-location-map .neshan-map-image{max-height:220px!important}
 }
+
+
+/* Special offer pricing for Nice 4-pack tissue: crossed former price + red sale price */
+.tissue-price-stack{display:inline-flex;flex-direction:column;align-items:flex-start;gap:3px;line-height:1.25;white-space:nowrap}
+.tissue-price-stack del{color:#7b8580!important;font-size:.82em;font-weight:700;text-decoration:line-through;text-decoration-thickness:2px}
+.tissue-price-stack strong{color:#d71920!important;font-size:1.12em;font-weight:950;letter-spacing:-.3px;text-shadow:0 1px 0 #ffffff55}
+.product-card-meta .tissue-price-stack strong,.offer-card-bottom .tissue-price-stack strong{color:#d71920!important}
+.product-card-meta .tissue-price-stack,.offer-card-bottom .tissue-price-stack{margin-inline-end:auto}
+@media(max-width:560px){.tissue-price-stack strong{font-size:1.02em}.tissue-price-stack del{font-size:.76em}}
