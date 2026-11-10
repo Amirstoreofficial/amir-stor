@@ -119,5 +119,20 @@ window.AMIR_PRODUCTS = [
     salesUnits: ["رول"],
     motion: true,
     symbol: "▤"
+  },
+  {
+    id: 1007,
+    name: "دستمال کاغذی نایس بسته ۴ عددی",
+    category: "محصولات سلولوزی",
+    description: "محتوی ۴ بسته دستمال کاغذی نایس؛ هر بسته ۵۰۰ برگ (۲۵۰ برگ دولایه).",
+    image: "images/11.png?v=20261110-1",
+    packCount: 4,
+    price: null,
+    packPrice: null,
+    unit: "بسته",
+    salesUnits: ["بسته"],
+    featuredOffer: true,
+    motion: true,
+    symbol: "▤"
   }
 ];
