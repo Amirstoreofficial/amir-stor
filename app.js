@@ -12,7 +12,7 @@ function renderProducts(){
  let cat=$("#categoryFilter").value;
  let list=products.filter(p=>(cat==="همه"||p.category===cat)&&(activeCategory==="همه"||p.category===activeCategory)&&normalizeText(`${p.name} ${p.description} ${p.volume||""} ${p.mouthSize||""} ${p.weight||p.weights||""}`).includes(q));
  const visibleList=showAllProducts?list:list.slice(0,12);
- const cards=visibleList.map(p=>`<article class="product-card ${p.motion?"product-card--motion":""} ${p.featuredOffer?"product-card--offer":""}" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo ${p.motion?"product-photo-float":""}" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><small>تصویر واقعی این محصول هنوز ثبت نشده است</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta">${p.discountPrice!=null?`<span class="tissue-price-stack"><del>${money(p.price)}</del><strong>${money(p.discountPrice)}</strong></span>`:`<b>${p.price!=null?money(p.price):"استعلام قیمت"}</b>`}<span>مشاهده مشخصات و سفارش ←</span></div>${p.featuredOffer?`<span class="product-offer-badge">✦ تخفیف ویژه</span>`:""}</div></article>`).join("");
+ const cards=visibleList.map(p=>`<article class="product-card ${p.motion?"product-card--motion":""} ${p.featuredOffer?"product-card--offer":""}" data-product-detail="${p.id}" onclick="window.openProductDetail(this.dataset.productDetail)" tabindex="0" role="button" aria-label="مشاهده جزئیات ${p.name}"><div class="product-visual">${p.image?`<img class="product-photo ${p.motion?"product-photo-float":""}" src="${p.image}" alt="${p.name}" loading="lazy">`:`<div class="product-image-placeholder"><small>تصویر واقعی این محصول هنوز ثبت نشده است</small></div>`}</div><div class="product-info"><h3>${p.name}</h3><div class="product-card-meta">${p.discountPrice!=null?`<span class="tissue-price-stack"><del>${money(p.price)}</del><strong>${money(p.discountPrice)}</strong></span>`:`<b>${p.price!=null?money(p.price):"استعلام قیمت"}</b>`}<span>مشاهده مشخصات و سفارش ←</span></div>${p.featuredOffer?`<span class="product-offer-badge">✦ تخفیف ویژه</span>`:""}</div></article>`).join("");
  $("#productGrid").innerHTML=cards||`<div class="catalog-empty"><span>AMIR / CATALOG</span><b>محصولی پیدا نشد</b><small>عبارت جست‌وجو یا دسته‌بندی را تغییر دهید.</small></div>`;
 
  $("#productGrid").querySelectorAll("img.product-photo").forEach(img=>img.addEventListener("error",()=>{const box=document.createElement("div");box.className="product-image-placeholder";box.textContent="تصویر واقعی این محصول در دسترس نیست";img.replaceWith(box)},{once:true}));
@@ -25,7 +25,7 @@ function renderFeaturedOffers(){
  const offers=products.filter(p=>p.featuredOffer);
  const grid=$("#offersGrid");
  if(!grid)return;
- grid.innerHTML=offers.map(p=>`<article class="offer-card" data-product-detail="${p.id}" tabindex="0" role="button" aria-label="مشاهده پیشنهاد ویژه ${p.name}">
+ grid.innerHTML=offers.map(p=>`<article class="offer-card" data-product-detail="${p.id}" onclick="window.openProductDetail(this.dataset.productDetail)" tabindex="0" role="button" aria-label="مشاهده پیشنهاد ویژه ${p.name}">
   <div class="offer-card-visual">${p.image?((p.id===1004||p.id===1005)?`<img class="shahoo-single-image" src="${p.image}" alt="${p.name}" loading="lazy">`:`<img src="${p.image}" alt="${p.name}" loading="lazy">`):""}<span class="offer-ribbon">✦ تخفیف ویژه</span><span class="offer-glow"></span></div>
   <div class="offer-card-info"><span class="offer-kicker">پیشنهاد ویژه فروشگاه امیر</span><h3>${p.name}</h3><p>${p.description||"برای اطلاع از جزئیات این پیشنهاد با ما در تماس باشید."}</p><div class="offer-card-bottom">${p.discountPrice!=null?`<span class="tissue-price-stack"><del>${money(p.price)}</del><strong>${money(p.discountPrice)}</strong></span>`:`<b>${p.price!=null?money(p.price):"استعلام قیمت"}</b>`}<span>مشاهده و سفارش <i>←</i></span></div></div>
  </article>`).join("");
@@ -66,6 +66,7 @@ function openProductDetail(id){
   $("#detailImage").onclick=()=>$("#detailImage").classList.toggle("zoomed");
   modal.classList.add("show");modal.setAttribute("aria-hidden","false");document.body.classList.add("modal-open")
 }
+window.openProductDetail=openProductDetail;
 function closeProductDetail(){const m=$("#productModal");if(!m.classList.contains("show"))return;m.classList.add("is-closing");clearTimeout(detailCloseTimer);detailCloseTimer=setTimeout(()=>{m.classList.remove("show","is-closing");m.setAttribute("aria-hidden","true");document.body.classList.remove("modal-open");$("#detailImage").classList.remove("zoomed")},300)}
 // One document-level capture handler covers product cards after every render
 // and prevents nested elements or other bubbling handlers from swallowing the click.
