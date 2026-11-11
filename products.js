@@ -135,7 +135,7 @@ window.AMIR_PRODUCTS = [
     featuredOffer: true,
     motion: true,
     symbol: "▤"
-  }
+  },
   {
     id: 1008,
     name: "جار گرد",
