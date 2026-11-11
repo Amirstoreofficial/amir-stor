@@ -136,4 +136,20 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▤"
   }
+  {
+    id: 1008,
+    name: "جار گرد",
+    category: "بطری و جار",
+    description: "جار گرد ۷۰۰ سی‌سی با قطر دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/13.png?v=20261111-1",
+    volume: "۷۰۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
