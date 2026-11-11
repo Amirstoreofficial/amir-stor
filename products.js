@@ -186,4 +186,20 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1011,
+    name: "جار هلالی",
+    category: "بطری و جار",
+    description: "جار هلالی با حجم ۳۵۰ سی‌سی و قطر دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/17.png",
+    volume: "۳۵۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
