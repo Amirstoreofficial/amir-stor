@@ -267,4 +267,20 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1016,
+    name: "جار بیضی",
+    category: "بطری و جار",
+    description: "جار بیضی با حجم ۷۰۰ سی‌سی و قطر دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/20.png",
+    volume: "۷۰۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
