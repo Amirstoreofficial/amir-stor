@@ -315,4 +315,18 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1019,
+    name: "سطل ۱۰ کیلویی IML",
+    category: "ظروف IML",
+    description: "سطل IML با حجم ۱۰٬۰۰۰ سی‌سی.",
+    image: "images/23.png",
+    volume: "۱۰٬۰۰۰ سی‌سی",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
