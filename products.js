@@ -217,7 +217,7 @@ window.AMIR_PRODUCTS = [
     salesUnits: ["عدد", "بسته"],
     motion: true,
     symbol: "▣"
-  },,
+  },
   {
     id: 1013,
     name: "جار گرد استوانه",
