@@ -168,4 +168,20 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1010,
+    name: "جار چهارگوش",
+    category: "بطری و جار",
+    description: "جار چهارگوش با حجم ۱۵۰۰ سی‌سی و قطر دهانه ۹۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/14.png?v=20261111-1",
+    volume: "۱۵۰۰ سی‌سی",
+    mouthSize: "۹۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
