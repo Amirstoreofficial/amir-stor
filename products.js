@@ -217,5 +217,21 @@ window.AMIR_PRODUCTS = [
     salesUnits: ["عدد", "بسته"],
     motion: true,
     symbol: "▣"
+  },,
+  {
+    id: 1013,
+    name: "جار گرد استوانه",
+    category: "بطری و جار",
+    description: "جار گرد استوانه با حجم ۳۲۰ سی‌سی و قطر دهانه ۷۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/15.png",
+    volume: "۳۲۰ سی‌سی",
+    mouthSize: "۷۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
   },
 ];
