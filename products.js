@@ -250,4 +250,21 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1015,
+    name: "بطری الماس",
+    category: "بطری و جار",
+    description: "بطری الماس با حجم ۱۰۰۰ سی‌سی و قطر دهانه ۲۸ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/19.png",
+    packCount: 100,
+    volume: "۱۰۰۰ سی‌سی",
+    mouthSize: "۲۸ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
