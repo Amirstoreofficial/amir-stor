@@ -299,4 +299,20 @@ window.AMIR_PRODUCTS = [
     motion: true,
     symbol: "▣"
   },
+  {
+    id: 1018,
+    name: "جار گرد",
+    category: "بطری و جار",
+    description: "جار گرد با حجم ۱۰۰۰ سی‌سی و قطر دهانه ۹۰ میلی‌متر؛ عرضه در وزن‌های مختلف.",
+    image: "images/22.png",
+    volume: "۱۰۰۰ سی‌سی",
+    mouthSize: "۹۰ میلی‌متر",
+    weights: "در وزن‌های مختلف",
+    price: null,
+    packPrice: null,
+    unit: "عدد",
+    salesUnits: ["عدد", "بسته"],
+    motion: true,
+    symbol: "▣"
+  },
 ];
